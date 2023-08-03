@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "format": "npx prettier . --write",
+    "check": "npx prettier . --check"
   },
   "type": "module",
   "repository": {
@@ -20,7 +22,8 @@
   },
   "homepage": "https://github.com/otago-polytechnic-bit-courses/s2-23-project-mintep1-student#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "prettier": "^3.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"

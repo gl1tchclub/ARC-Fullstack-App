@@ -1,6 +1,6 @@
 // Create a GET route
 const get = (req, res) => {
-    res.send('home page')
+    res.send('courses page')
 }
 
 // Export the get function

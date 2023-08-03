@@ -2,7 +2,7 @@
 import express from 'express'
 
 // Import the index controllers module
-import { get } from '../controllers/index.js'
+import { get } from '../controllers/contact.js'
 
 // Create an Express router
 const router = express.Router()
