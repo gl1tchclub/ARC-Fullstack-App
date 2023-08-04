@@ -1,0 +1,8 @@
+ASYNC & AWAIT
+They both handle asynchronous operations.
+
+ASYNC = declare an asynchronous function
+AWAIT = wait for async operation to complete
+
+RES.JSON = send a JSON response (res)
+RES.STATUS = set the HTTP status code 
