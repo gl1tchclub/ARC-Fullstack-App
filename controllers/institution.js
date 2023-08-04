@@ -1,122 +1,128 @@
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
 
 const createInstitution = async (req, res) => {
     try {
-      await prisma.institution.create({ //creating an institution
-        data: { ...req.body },
-      });
-  
-      const newInstitutions = await prisma.institution.findMany();
-  
-      return res.status(201).json({
-        msg: "Institution successfully created",
-        data: newInstitutions,
-      });
-    } catch (err) {
-      return res.status(500).json({
-        msg: err.message,
-      });
-    }
-  };
+        await prisma.institution.create({
+            //creating an institution
+            data: { ...req.body },
+        })
 
-  const getInstitutions = async (req, res) => {
+        const newInstitutions = await prisma.institution.findMany()
+
+        return res.status(201).json({
+            msg: 'Institution successfully created',
+            data: newInstitutions,
+        })
+    } catch (err) {
+        return res.status(500).json({
+            msg: err.message,
+        })
+    }
+}
+
+const getInstitutions = async (req, res) => {
     try {
-      const institutions = await prisma.institution.findMany();
-  
-      if (institutions.length === 0) {
-        return res.status(404).json({ msg: "No institutions found" });
-      }
-  
-      return res.json({ data: institutions });
-    } catch (err) {
-      return res.status(500).json({
-        msg: err.message,
-      });
-    }
-  };
+        const institutions = await prisma.institution.findMany()
 
-  const getInstitution = async (req, res) => {
+        if (institutions.length === 0) {
+            return res.status(404).json({ msg: 'No institutions found' })
+        }
+
+        return res.json({ data: institutions })
+    } catch (err) {
+        return res.status(500).json({
+            msg: err.message,
+        })
+    }
+}
+
+const getInstitution = async (req, res) => {
     try {
-      const institution = await prisma.institution.findUnique({
-        where: { id: Number(req.params.id) },
-      });
-  
-      if (!institution) {
-        return res
-          .status(404)
-          .json({ msg: `No institution with the id: ${req.params.id} found` });
-      }
-  
-      return res.json({
-        data: institution,
-      });
-    } catch (err) {
-      return res.status(500).json({
-        msg: err.message,
-      });
-    }
-  };
+        const institution = await prisma.institution.findUnique({
+            where: { id: Number(req.params.id) },
+        })
 
-  const updateInstitution = async (req, res) => {
+        if (!institution) {
+            return res
+                .status(404)
+                .json({
+                    msg: `No institution with the id: ${req.params.id} found`,
+                })
+        }
+
+        return res.json({
+            data: institution,
+        })
+    } catch (err) {
+        return res.status(500).json({
+            msg: err.message,
+        })
+    }
+}
+
+const updateInstitution = async (req, res) => {
     try {
-      let institution = await prisma.institution.findUnique({
-        where: { id: Number(req.params.id) },
-      });
-  
-      if (!institution) {
-        return res
-          .status(404)
-          .json({ msg: `No institution with the id: ${req.params.id} found` });
-      }
-  
-      institution = await prisma.institution.update({
-        where: { id: Number(req.params.id) },
-        data: { ...req.body },
-      });
-  
-      return res.json({
-        msg: `Institution with the id: ${req.params.id} successfully updated`,
-        data: institution,
-      });
-    } catch (err) {
-      return res.status(500).json({
-        msg: err.message,
-      });
-    }
-  };
+        let institution = await prisma.institution.findUnique({
+            where: { id: Number(req.params.id) },
+        })
 
-  const deleteInstitution = async (req, res) => {
+        if (!institution) {
+            return res
+                .status(404)
+                .json({
+                    msg: `No institution with the id: ${req.params.id} found`,
+                })
+        }
+
+        institution = await prisma.institution.update({
+            where: { id: Number(req.params.id) },
+            data: { ...req.body },
+        })
+
+        return res.json({
+            msg: `Institution with the id: ${req.params.id} successfully updated`,
+            data: institution,
+        })
+    } catch (err) {
+        return res.status(500).json({
+            msg: err.message,
+        })
+    }
+}
+
+const deleteInstitution = async (req, res) => {
     try {
-      const institution = await prisma.institution.findUnique({
-        where: { id: Number(req.params.id) },
-      });
-  
-      if (!institution) {
-        return res
-          .status(404)
-          .json({ msg: `No institution with the id: ${req.params.id} found` });
-      }
-  
-      await prisma.institution.delete({
-        where: { id: Number(req.params.id) },
-      });
-  
-      return res.json({
-        msg: `Institution with the id: ${req.params.id} successfully deleted`,
-      });
-    } catch (err) {
-      return res.status(500).json({
-        msg: err.message,
-      });
-    }
-  };
+        const institution = await prisma.institution.findUnique({
+            where: { id: Number(req.params.id) },
+        })
 
-  export {
+        if (!institution) {
+            return res
+                .status(404)
+                .json({
+                    msg: `No institution with the id: ${req.params.id} found`,
+                })
+        }
+
+        await prisma.institution.delete({
+            where: { id: Number(req.params.id) },
+        })
+
+        return res.json({
+            msg: `Institution with the id: ${req.params.id} successfully deleted`,
+        })
+    } catch (err) {
+        return res.status(500).json({
+            msg: err.message,
+        })
+    }
+}
+
+export {
     createInstitution,
     getInstitutions,
     getInstitution,
     updateInstitution,
     deleteInstitution,
-  };
-
+}

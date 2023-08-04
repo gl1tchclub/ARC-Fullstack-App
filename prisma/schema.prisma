@@ -10,11 +10,37 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Institution { //model = defines a database table
-  id         Int          @id @default(autoincrement()) //@id = specify the primary key
-  name       String
-  region     String
-  country    String
-  createdAt  DateTime     @default(now()) //these last two do not include in total variables/attributes
-  updatedAt  DateTime     @updatedAt
+model Institution {
+  id        Int      @id @default(autoincrement()) //@id = specify the primary key
+  name      String
+  region    String
+  country   String
+  createdAt DateTime @default(now()) //these last two do not include in total variables/attributes
+  updatedAt DateTime @updatedAt
+}
+
+model Cat {
+  id        Int @id @default(autoincrement())
+  name      String
+  age       Int?
+  health    String
+  isAdopted Boolean
+}
+
+model Customer {
+  id        Int @id @default(autoincrement())
+  name      String
+  age       Int
+  likes     String?
+  dislikes  String?
+}
+
+model Car {
+  id            Int @id @default(autoincrement())
+  model         String
+  make          String
+  year          Int
+  registration  Int @unique
+  name          String
+  color         String
 }
