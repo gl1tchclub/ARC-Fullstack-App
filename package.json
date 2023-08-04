@@ -22,13 +22,13 @@
   },
   "homepage": "https://github.com/otago-polytechnic-bit-courses/s2-23-project-mintep1-student#readme",
   "dependencies": {
-    "@prisma/client": "^5.1.1",
+    "@prisma/client": "^4.16.2",
     "express": "^4.18.2",
     "prettier": "^3.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1",
     "prettier-plugin-prisma": "^5.0.0",
-    "prisma": "4.16.2"
+    "prisma": "^4.16.2"
   }
 }
