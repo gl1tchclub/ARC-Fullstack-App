@@ -6,9 +6,8 @@ import institutionRoutes from './routes/institution.js'
 
 // Import the index routes module
 import indexRoutes from './routes/index.js'
-import aboutRoutes from './routes/about.js'
-import coursesRoutes from './routes/courses.js'
-import contactRoutes from './routes/contact.js'
+import departmentRoutes from './routes/department.js'
+import institutionRoutes from './routes/institution.js'
 
 // Create an Express application
 const app = express()
@@ -21,12 +20,10 @@ app.use(express.json()) // To parse the incoming requests with JSON payloads. Fo
 
 // Use the routes module
 app.use('/', indexRoutes)
-app.use('/about', aboutRoutes)
-app.use('/courses', coursesRoutes)
-app.use('/contact', contactRoutes)
 
 // This should be declared under app.use("/", indexRoutes);
 app.use('/api/institutions', institutionRoutes)
+app.use('/api/departments', departmentRoutes)
 
 // Start the server on port 3000
 app.listen(3000, () => {
