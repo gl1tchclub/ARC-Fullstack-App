@@ -51,8 +51,68 @@ const createDepartment = async (req, res) => {
     }
   }
 
+  const updateDepartment = async (req, res) => {
+    try {
+        let department = await prisma.department.findUnique({
+            where: { id: Number(req.params.id) },
+        })
+
+        if (!department) {
+            return res
+                .status(404)
+                .json({
+                    msg: `No Department with the id: ${req.params.id} found`,
+                })
+        }
+
+        department = await prisma.department.update({
+            where: { id: Number(req.params.id) },
+            data: { ...req.body },
+        })
+
+        return res.json({
+            msg: `Department with the id: ${req.params.id} successfully updated`,
+            data: department,
+        })
+    } catch (err) {
+        return res.status(500).json({
+            msg: err.message,
+        })
+    }
+}
+
+const deleteDepartment = async (req, res) => {
+    try {
+        const department = await prisma.department.findUnique({
+            where: { id: Number(req.params.id) },
+        })
+
+        if (!department) {
+            return res
+                .status(404)
+                .json({
+                    msg: `No Department with the id: ${req.params.id} found`,
+                })
+        }
+
+        await prisma.department.delete({
+            where: { id: Number(req.params.id) },
+        })
+
+        return res.json({
+            msg: `Department with the id: ${req.params.id} successfully deleted`,
+        })
+    } catch (err) {
+        return res.status(500).json({
+            msg: err.message,
+        })
+    }
+}
+
   export {
     createDepartment,
     getDepartments,
-    getDepartment
+    getDepartment,
+    updateDepartment,
+    deleteDepartment
   }
