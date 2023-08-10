@@ -9,6 +9,9 @@
     "format": "npx prettier . --write",
     "check": "npx prettier . --check"
   },
+  "engines": {
+    "node" : ">=16.13"
+  },
   "type": "module",
   "repository": {
     "type": "git",
