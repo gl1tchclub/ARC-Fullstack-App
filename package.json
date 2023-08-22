@@ -10,7 +10,7 @@
     "check": "npx prettier . --check"
   },
   "engines": {
-    "node" : ">=16.13"
+    "node": ">=16.13"
   },
   "type": "module",
   "repository": {
