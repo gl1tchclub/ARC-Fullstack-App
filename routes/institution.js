@@ -1,4 +1,4 @@
-import express from 'express'
+import express from 'express';
 
 import {
     createInstitution,
@@ -6,14 +6,14 @@ import {
     getInstitution,
     updateInstitution,
     deleteInstitution,
-} from '../controllers/institution.js'
+} from "../controllers/institution.js";
 
-const router = express.Router()
+const router = express.Router();
 
-router.post('/', createInstitution)
-router.get('/', getInstitutions)
-router.get('/:id', getInstitution) //:id = route parameter. Retrieves the id from the request (req) URL. If URL is http://localhost:3000/api/institutions/1, :id will be 1
-router.put('/:id', updateInstitution)
-router.delete('/:id', deleteInstitution)
+router.post('/', createInstitution);
+router.get('/', getInstitutions);
+router.get('/:id', getInstitution); //:id = route parameter. Retrieves the id from the request (req) URL. If URL is http://localhost:3000/api/institutions/1, :id will be 1
+router.put('/:id', updateInstitution);
+router.delete('/:id', deleteInstitution);
 
-export default router
+export default router;

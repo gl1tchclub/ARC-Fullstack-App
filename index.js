@@ -1,9 +1,6 @@
 // Import the Express module
 import express from 'express'
 
-// This should be declared under import indexRoutes from "./routes/index.js";
-import institutionRoutes from './routes/institution.js'
-
 // Import the index routes module
 import indexRoutes from './routes/index.js'
 import departmentRoutes from './routes/department.js'

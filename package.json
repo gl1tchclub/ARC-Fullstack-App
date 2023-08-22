@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
     "format": "npx prettier . --write",
-    "check": "npx prettier . --check"
+    "check": "npx prettier . --check",
+    "mdev" : "npx prisma migrate dev",
+    "mreset" : "npx prisma migrate reset"
   },
   "engines": {
     "node": ">=16.13"
