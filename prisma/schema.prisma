@@ -10,11 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum rank {
-  owner : 0,
-  admin : 1
-}
-
 model Institution {
   id        Int      @id @default(autoincrement()) //@id = specify the primary key
   name      String
@@ -35,13 +30,13 @@ model Department {
 }
 
 model Animal {
-
+  animalId  Int   @id @default(autoincrement())
 }
 
 model Enclosure {
-
+  enclosureId   Int   @id @default(autoincrement())
 }
 
 model Staff {
-
+  staffId   Int   @id @default(autoincrement())
 }
