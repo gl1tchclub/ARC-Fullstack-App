@@ -10,33 +10,44 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Institution {
-  id        Int      @id @default(autoincrement()) //@id = specify the primary key
-  name      String
-  region    String
-  country   String
-  departments Department[]
-  createdAt DateTime @default(now()) //these last two do not include in total variables/attributes
-  updatedAt DateTime @updatedAt
+// TABLES
+model Country {
+  country   String  @unique
 }
 
-model Department {
-  id            Int         @id @default(autoincrement())
-  name          String
-  institutionId Int
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
-  institution   Institution @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+model Participant {
+  participantId   Int       @id @default(autoincrement())
+  alias           String    @unique
 }
 
 model Animal {
-  animalId  Int   @id @default(autoincrement())
+  animalId  Int       @id @default(autoincrement())
+  name      String    @unique
+  rankId    Int     
 }
 
-model Enclosure {
-  enclosureId   Int   @id @default(autoincrement())
+model Colosseum {
+  colosseumId   Int   @id @default(autoincrement())
 }
 
-model Staff {
+model Team {
   staffId   Int   @id @default(autoincrement())
+}
+
+model Fight {
+  customerId  Int   @id @default(autoincrement())
+}
+
+model Award {
+  ticketId  Int   @id @default(autoincrement())
+}
+
+enum Ranks {
+  OLYMPUS
+  ELYSIUM
+  VALHALLA
+  IMMORTAL
+  EMPIRE
+  UNDYING
+  TARTAROS
 }
