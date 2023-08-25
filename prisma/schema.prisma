@@ -11,27 +11,40 @@ datasource db {
 }
 
 // TABLES
-model Region {
-  country   String  @unique
-}
 
 model Participant {
   participantId   Int       @id @default(autoincrement())
   alias           String    @unique
+  memberOf        String  
+  animals         Animal[]
+  numberOfAwards  Int
+  team            Team      @relation(fields: [memberOf], references: [name])
 }
 
 model Animal {
   animalId  Int       @id @default(autoincrement())
   name      String    @unique
-  rankId    Int     
+  class     Classes
+  species   String
+  terrain   String
+  rank      Ranks
+  ownerId   Int
+  owner     Participant    @relation(fields: [ownerId], references: [participantId], onDelete: Cascade) //cascade?
 }
 
 model Colosseum {
-  colosseumId   Int   @id @default(autoincrement())
+  colosseumId   Int     @id @default(autoincrement())
+  country       String  @unique  //only one in each country maybe?
+  city          String
 }
 
 model Team {
-  staffId   Int   @id @default(autoincrement())
+  teamId        Int     @id @default(autoincrement())
+  name          String  @unique
+  members       Participant[]
+  continent     String
+  country       String
+  city          String  @unique
 }
 
 model Fight {
@@ -50,4 +63,13 @@ enum Ranks {
   EMPIRE
   UNDYING
   TARTAROS
+}
+
+enum Classes {
+  MAMMAL
+  FISH
+  AMPHIBIAN
+  REPTILE
+  BIRD
+  INSECT
 }
