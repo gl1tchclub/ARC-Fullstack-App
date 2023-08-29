@@ -1,3 +1,7 @@
+/**
+ * @file 
+ * @author Elizabeth Minty
+ */
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 

@@ -62,7 +62,7 @@ model Event {
 model Award {
   awardId     Int     @id @default(autoincrement())
   awardName   String  @unique
-  type        String    //i.e. cash, trophy, etc
+  type        String   //i.e. cash, trophy, etc
   quantity    Int  //num times this can be given in an event i.e. honorary 3 times, gold twice, silver twice, etc...
   eventId     Int
   event       Event   @relation(fields: [eventId], references: [eventId])

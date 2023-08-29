@@ -1,5 +1,7 @@
-// Note: Some code has been omitted for brevity
-
+/**
+ * @file 
+ * @author Elizabeth Minty
+ */
 const createParticipant = async (req, res) => {
     try {
       await prisma.participant.create({

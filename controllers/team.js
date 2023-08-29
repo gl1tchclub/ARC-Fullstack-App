@@ -1,5 +1,7 @@
-// Note: Some code has been omitted for brevity
-
+/**
+ * @file 
+ * @author Elizabeth Minty
+ */
 const createTeam = async (req, res) => {
     try {
       await prisma.team.create({

@@ -1,3 +1,7 @@
+/**
+ * @file importing the functions to the route page
+ * @author Elizabeth Minty
+ */
 import express from 'express';
 
 import {
