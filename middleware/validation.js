@@ -37,4 +37,5 @@ const validatePostInstitution = (req, res, next) => {
   next();
 };
 
-export { validatePostInstitution };
+export { validatePostInstitution, validatePostAnimal, validatePostParticipant, validatePostCustomer, validatePostTeam, validatePostColosseum, validatePostEvent, validatePostAward,
+  validatePostTicket };

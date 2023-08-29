@@ -1,16 +1,16 @@
 // Note: Some code has been omitted for brevity
 
-const createDepartment = async (req, res) => {
+const createColosseum = async (req, res) => {
     try {
-      await prisma.department.create({
+      await prisma.colosseum.create({
         data: { ...req.body },
       });
   
-      const newDepartments = await prisma.department.findMany();
+      const newColosseums = await prisma.colosseum.findMany();
   
       return res.status(201).json({
-        msg: "Department successfully created",
-        data: newDepartments,
+        msg: "Colosseum successfully created",
+        data: newColosseums,
       });
     } catch (err) {
       return res.status(500).json({
@@ -19,15 +19,15 @@ const createDepartment = async (req, res) => {
     }
   };
   
-  const getDepartments = async (req, res) => {
+  const getColosseums = async (req, res) => {
     try {
-      const departments = await prisma.department.findMany();
+      const colosseums = await prisma.colosseum.findMany();
   
-      if (departments.length === 0) {
-        return res.status(404).json({ msg: "No departments found" });
+      if (colosseums.length === 0) {
+        return res.status(404).json({ msg: "No colosseums found" });
       }
   
-      return res.json({ data: departments });
+      return res.json({ data: colosseums });
     } catch (err) {
       return res.status(500).json({
         msg: err.message,
@@ -35,14 +35,14 @@ const createDepartment = async (req, res) => {
     }
   };
 
-  const getDepartment = async (req, res) => {
+  const getColosseum = async (req, res) => {
     try {
-        const department = await prisma.department.findUnique( {
+        const colosseum = await prisma.colosseum.findUnique( {
             where: { id: Number(req.params.id) },
         })
 
-        if (!department) {
-            res.status(404).json({ msg: `Department with ID ${res.params.id} does not exist`})
+        if (!colosseum) {
+            res.status(404).json({ msg: `Colosseum with ID ${res.params.id} does not exist`})
         }
     } catch (err) {
         return res.status(500).json({
@@ -51,28 +51,28 @@ const createDepartment = async (req, res) => {
     }
   }
 
-  const updateDepartment = async (req, res) => {
+  const updateColosseum = async (req, res) => {
     try {
-        let department = await prisma.department.findUnique({
+        let colosseum = await prisma.colosseum.findUnique({
             where: { id: Number(req.params.id) },
         })
 
-        if (!department) {
+        if (!colosseum) {
             return res
                 .status(404)
                 .json({
-                    msg: `No Department with the id: ${req.params.id} found`,
+                    msg: `No colosseum with the id: ${req.params.id} found`,
                 })
         }
 
-        department = await prisma.department.update({
+        colosseum = await prisma.colosseum.update({
             where: { id: Number(req.params.id) },
             data: { ...req.body },
         })
 
         return res.json({
-            msg: `Department with the id: ${req.params.id} successfully updated`,
-            data: department,
+            msg: `Colosseum with the id: ${req.params.id} successfully updated`,
+            data: colosseum,
         })
     } catch (err) {
         return res.status(500).json({
@@ -81,26 +81,26 @@ const createDepartment = async (req, res) => {
     }
 }
 
-const deleteDepartment = async (req, res) => {
+const deleteColosseum = async (req, res) => {
     try {
-        const department = await prisma.department.findUnique({
+        const colosseum = await prisma.colosseum.findUnique({
             where: { id: Number(req.params.id) },
         })
 
-        if (!department) {
+        if (!colosseum) {
             return res
                 .status(404)
                 .json({
-                    msg: `No Department with the id: ${req.params.id} found`,
+                    msg: `No colosseum with the id: ${req.params.id} found`,
                 })
         }
 
-        await prisma.department.delete({
+        await prisma.colosseum.delete({
             where: { id: Number(req.params.id) },
         })
 
         return res.json({
-            msg: `Department with the id: ${req.params.id} successfully deleted`,
+            msg: `Colosseum with the id: ${req.params.id} successfully deleted`,
         })
     } catch (err) {
         return res.status(500).json({
@@ -110,9 +110,9 @@ const deleteDepartment = async (req, res) => {
 }
 
   export {
-    createDepartment,
-    getDepartments,
-    getDepartment,
-    updateDepartment,
-    deleteDepartment
+    createColosseum,
+    getColosseums,
+    getColosseum,
+    updateColosseum,
+    deleteColosseum
   }

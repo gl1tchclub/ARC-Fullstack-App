@@ -1,16 +1,16 @@
 // Note: Some code has been omitted for brevity
 
-const createDepartment = async (req, res) => {
+const createAward = async (req, res) => {
     try {
-      await prisma.department.create({
+      await prisma.Award.create({
         data: { ...req.body },
       });
   
-      const newDepartments = await prisma.department.findMany();
+      const newAwards = await prisma.award.findMany();
   
       return res.status(201).json({
-        msg: "Department successfully created",
-        data: newDepartments,
+        msg: "Award successfully created",
+        data: newAwards,
       });
     } catch (err) {
       return res.status(500).json({
@@ -19,15 +19,15 @@ const createDepartment = async (req, res) => {
     }
   };
   
-  const getDepartments = async (req, res) => {
+  const getAwards = async (req, res) => {
     try {
-      const departments = await prisma.department.findMany();
+      const awards = await prisma.award.findMany();
   
-      if (departments.length === 0) {
-        return res.status(404).json({ msg: "No departments found" });
+      if (awards.length === 0) {
+        return res.status(404).json({ msg: "No awards found" });
       }
   
-      return res.json({ data: departments });
+      return res.json({ data: awards });
     } catch (err) {
       return res.status(500).json({
         msg: err.message,
@@ -35,14 +35,14 @@ const createDepartment = async (req, res) => {
     }
   };
 
-  const getDepartment = async (req, res) => {
+  const getAward = async (req, res) => {
     try {
-        const department = await prisma.department.findUnique( {
+        const award = await prisma.award.findUnique( {
             where: { id: Number(req.params.id) },
         })
 
-        if (!department) {
-            res.status(404).json({ msg: `Department with ID ${res.params.id} does not exist`})
+        if (!award) {
+            res.status(404).json({ msg: `Award with ID ${res.params.id} does not exist`})
         }
     } catch (err) {
         return res.status(500).json({
@@ -51,28 +51,28 @@ const createDepartment = async (req, res) => {
     }
   }
 
-  const updateDepartment = async (req, res) => {
+  const updateAward = async (req, res) => {
     try {
-        let department = await prisma.department.findUnique({
+        let award = await prisma.award.findUnique({
             where: { id: Number(req.params.id) },
         })
 
-        if (!department) {
+        if (!award) {
             return res
                 .status(404)
                 .json({
-                    msg: `No Department with the id: ${req.params.id} found`,
+                    msg: `No award with the id: ${req.params.id} found`,
                 })
         }
 
-        department = await prisma.department.update({
+        award = await prisma.award.update({
             where: { id: Number(req.params.id) },
             data: { ...req.body },
         })
 
         return res.json({
-            msg: `Department with the id: ${req.params.id} successfully updated`,
-            data: department,
+            msg: `Award with the id: ${req.params.id} successfully updated`,
+            data: award,
         })
     } catch (err) {
         return res.status(500).json({
@@ -81,26 +81,26 @@ const createDepartment = async (req, res) => {
     }
 }
 
-const deleteDepartment = async (req, res) => {
+const deleteAward = async (req, res) => {
     try {
-        const department = await prisma.department.findUnique({
+        const award = await prisma.award.findUnique({
             where: { id: Number(req.params.id) },
         })
 
-        if (!department) {
+        if (!award) {
             return res
                 .status(404)
                 .json({
-                    msg: `No Department with the id: ${req.params.id} found`,
+                    msg: `No award with the id: ${req.params.id} found`,
                 })
         }
 
-        await prisma.department.delete({
+        await prisma.award.delete({
             where: { id: Number(req.params.id) },
         })
 
         return res.json({
-            msg: `Department with the id: ${req.params.id} successfully deleted`,
+            msg: `Award with the id: ${req.params.id} successfully deleted`,
         })
     } catch (err) {
         return res.status(500).json({
@@ -110,9 +110,9 @@ const deleteDepartment = async (req, res) => {
 }
 
   export {
-    createDepartment,
-    getDepartments,
-    getDepartment,
-    updateDepartment,
-    deleteDepartment
+    createAward,
+    getAwards,
+    getAward,
+    updateAward,
+    deleteAward
   }

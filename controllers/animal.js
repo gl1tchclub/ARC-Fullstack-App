@@ -1,16 +1,16 @@
 // Note: Some code has been omitted for brevity
 
-const createDepartment = async (req, res) => {
+const createAnimal = async (req, res) => {
     try {
-      await prisma.department.create({
+      await prisma.animal.create({
         data: { ...req.body },
       });
   
-      const newDepartments = await prisma.department.findMany();
+      const newAnimals = await prisma.animal.findMany();
   
       return res.status(201).json({
-        msg: "Department successfully created",
-        data: newDepartments,
+        msg: "Animal successfully created",
+        data: newAnimals,
       });
     } catch (err) {
       return res.status(500).json({
@@ -19,15 +19,15 @@ const createDepartment = async (req, res) => {
     }
   };
   
-  const getDepartments = async (req, res) => {
+  const getAnimals = async (req, res) => {
     try {
-      const departments = await prisma.department.findMany();
+      const animals = await prisma.animal.findMany();
   
-      if (departments.length === 0) {
-        return res.status(404).json({ msg: "No departments found" });
+      if (animals.length === 0) {
+        return res.status(404).json({ msg: "No animals found" });
       }
   
-      return res.json({ data: departments });
+      return res.json({ data: animals });
     } catch (err) {
       return res.status(500).json({
         msg: err.message,
@@ -35,14 +35,14 @@ const createDepartment = async (req, res) => {
     }
   };
 
-  const getDepartment = async (req, res) => {
+  const getAnimal = async (req, res) => {
     try {
-        const department = await prisma.department.findUnique( {
+        const animal = await prisma.animal.findUnique( {
             where: { id: Number(req.params.id) },
         })
 
-        if (!department) {
-            res.status(404).json({ msg: `Department with ID ${res.params.id} does not exist`})
+        if (!animal) {
+            res.status(404).json({ msg: `Animal with ID ${res.params.id} does not exist`})
         }
     } catch (err) {
         return res.status(500).json({
@@ -51,28 +51,28 @@ const createDepartment = async (req, res) => {
     }
   }
 
-  const updateDepartment = async (req, res) => {
+  const updateAnimal = async (req, res) => {
     try {
-        let department = await prisma.department.findUnique({
+        let animal = await prisma.animal.findUnique({
             where: { id: Number(req.params.id) },
         })
 
-        if (!department) {
+        if (!animal) {
             return res
                 .status(404)
                 .json({
-                    msg: `No Department with the id: ${req.params.id} found`,
+                    msg: `No animal with the id: ${req.params.id} found`,
                 })
         }
 
-        department = await prisma.department.update({
+        animal = await prisma.animal.update({
             where: { id: Number(req.params.id) },
             data: { ...req.body },
         })
 
         return res.json({
-            msg: `Department with the id: ${req.params.id} successfully updated`,
-            data: department,
+            msg: `Animal with the id: ${req.params.id} successfully updated`,
+            data: animal,
         })
     } catch (err) {
         return res.status(500).json({
@@ -81,26 +81,26 @@ const createDepartment = async (req, res) => {
     }
 }
 
-const deleteDepartment = async (req, res) => {
+const deleteAnimal = async (req, res) => {
     try {
-        const department = await prisma.department.findUnique({
+        const animal = await prisma.animal.findUnique({
             where: { id: Number(req.params.id) },
         })
 
-        if (!department) {
+        if (!animal) {
             return res
                 .status(404)
                 .json({
-                    msg: `No Department with the id: ${req.params.id} found`,
+                    msg: `No animal with the id: ${req.params.id} found`,
                 })
         }
 
-        await prisma.department.delete({
+        await prisma.animal.delete({
             where: { id: Number(req.params.id) },
         })
 
         return res.json({
-            msg: `Department with the id: ${req.params.id} successfully deleted`,
+            msg: `Animal with the id: ${req.params.id} successfully deleted`,
         })
     } catch (err) {
         return res.status(500).json({
@@ -110,9 +110,9 @@ const deleteDepartment = async (req, res) => {
 }
 
   export {
-    createDepartment,
-    getDepartments,
-    getDepartment,
-    updateDepartment,
-    deleteDepartment
+    createAnimal,
+    getAnimals,
+    getAnimal,
+    updateAnimal,
+    deleteAnimal
   }

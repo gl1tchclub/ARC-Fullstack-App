@@ -1,16 +1,16 @@
 // Note: Some code has been omitted for brevity
 
-const createDepartment = async (req, res) => {
+const createCustomer = async (req, res) => {
     try {
-      await prisma.department.create({
+      await prisma.customer.create({
         data: { ...req.body },
       });
   
-      const newDepartments = await prisma.department.findMany();
+      const newCustomers = await prisma.customer.findMany();
   
       return res.status(201).json({
-        msg: "Department successfully created",
-        data: newDepartments,
+        msg: "Customer successfully created",
+        data: newCustomers,
       });
     } catch (err) {
       return res.status(500).json({
@@ -19,15 +19,15 @@ const createDepartment = async (req, res) => {
     }
   };
   
-  const getDepartments = async (req, res) => {
+  const getCustomers = async (req, res) => {
     try {
-      const departments = await prisma.department.findMany();
+      const customers = await prisma.customer.findMany();
   
-      if (departments.length === 0) {
-        return res.status(404).json({ msg: "No departments found" });
+      if (customers.length === 0) {
+        return res.status(404).json({ msg: "No customers found" });
       }
   
-      return res.json({ data: departments });
+      return res.json({ data: customers });
     } catch (err) {
       return res.status(500).json({
         msg: err.message,
@@ -35,14 +35,14 @@ const createDepartment = async (req, res) => {
     }
   };
 
-  const getDepartment = async (req, res) => {
+  const getCustomer = async (req, res) => {
     try {
-        const department = await prisma.department.findUnique( {
+        const customer = await prisma.customer.findUnique( {
             where: { id: Number(req.params.id) },
         })
 
-        if (!department) {
-            res.status(404).json({ msg: `Department with ID ${res.params.id} does not exist`})
+        if (!customer) {
+            res.status(404).json({ msg: `customer with ID ${res.params.id} does not exist`})
         }
     } catch (err) {
         return res.status(500).json({
@@ -51,28 +51,28 @@ const createDepartment = async (req, res) => {
     }
   }
 
-  const updateDepartment = async (req, res) => {
+  const updateCustomer = async (req, res) => {
     try {
-        let department = await prisma.department.findUnique({
+        let customer = await prisma.customer.findUnique({
             where: { id: Number(req.params.id) },
         })
 
-        if (!department) {
+        if (!customer) {
             return res
                 .status(404)
                 .json({
-                    msg: `No Department with the id: ${req.params.id} found`,
+                    msg: `No customer with the id: ${req.params.id} found`,
                 })
         }
 
-        department = await prisma.department.update({
+        customer = await prisma.customer.update({
             where: { id: Number(req.params.id) },
             data: { ...req.body },
         })
 
         return res.json({
-            msg: `Department with the id: ${req.params.id} successfully updated`,
-            data: department,
+            msg: `Customer with the id: ${req.params.id} successfully updated`,
+            data: customer,
         })
     } catch (err) {
         return res.status(500).json({
@@ -81,26 +81,26 @@ const createDepartment = async (req, res) => {
     }
 }
 
-const deleteDepartment = async (req, res) => {
+const deleteCustomer = async (req, res) => {
     try {
-        const department = await prisma.department.findUnique({
+        const customer = await prisma.customer.findUnique({
             where: { id: Number(req.params.id) },
         })
 
-        if (!department) {
+        if (!customer) {
             return res
                 .status(404)
                 .json({
-                    msg: `No Department with the id: ${req.params.id} found`,
+                    msg: `No customer with the id: ${req.params.id} found`,
                 })
         }
 
-        await prisma.department.delete({
+        await prisma.customer.delete({
             where: { id: Number(req.params.id) },
         })
 
         return res.json({
-            msg: `Department with the id: ${req.params.id} successfully deleted`,
+            msg: `Customer with the id: ${req.params.id} successfully deleted`,
         })
     } catch (err) {
         return res.status(500).json({
@@ -110,9 +110,9 @@ const deleteDepartment = async (req, res) => {
 }
 
   export {
-    createDepartment,
-    getDepartments,
-    getDepartment,
-    updateDepartment,
-    deleteDepartment
+    createCustomer,
+    getCustomers,
+    getCustomer,
+    updateCustomer,
+    deleteCustomer
   }

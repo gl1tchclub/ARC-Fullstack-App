@@ -3,6 +3,16 @@ import express from 'express'
 
 // Import the index routes module
 import indexRoutes from './routes/index.js'
+import animalRoutes from './routes/animal.js'
+import participantRoutes from './routes/participant.js'
+import eventRoutes from './routes/event.js'
+import teamRoutes from './routes/team.js'
+import customerRoutes from './routes/customer.js'
+import colosseumRoutes from './routes/colosseum.js'
+import awardRoutes from './routes/award.js'
+import ticketRoutes from './routes/ticket.js'
+
+//delete later
 import departmentRoutes from './routes/department.js'
 import institutionRoutes from './routes/institution.js'
 
@@ -17,8 +27,17 @@ app.use(express.json()) // To parse the incoming requests with JSON payloads. Fo
 
 // Use the routes module
 app.use('/', indexRoutes)
+app.use('/api/animals', animalRoutes)
+app.use('/api/participants', participantRoutes)
+app.use('/api/events', eventRoutes)
+app.use('/api/teams', teamRoutes)
+app.use('/api/customers', customerRoutes)
+app.use('/api/colosseums', colosseumRoutes)
+app.use('/api/awards', awardRoutes)
+app.use('/api/tickets', ticketRoutes)
 
-// This should be declared under app.use("/", indexRoutes);
+
+// delete later
 app.use('/api/institutions', institutionRoutes)
 app.use('/api/departments', departmentRoutes)
 
