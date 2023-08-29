@@ -51,7 +51,7 @@ model Team {
 
 model Event {
   eventId         Int         @id @default(autoincrement())
-  eventName       String
+  eventName       String  	  @unique
   location        String
   date            DateTime    @default(now())
   awards          Award[]
