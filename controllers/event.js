@@ -1,5 +1,5 @@
 /**
- * @file 
+ * @file manages all operations related to events
  * @author Elizabeth Minty
  */
 const createEvent = async (req, res) => {

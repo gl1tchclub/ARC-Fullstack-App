@@ -1,5 +1,5 @@
 /**
- * @file 
+ * @file manages all operations related to tickets
  * @author Elizabeth Minty
  */
 const createTicket = async (req, res) => {

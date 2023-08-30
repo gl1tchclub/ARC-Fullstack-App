@@ -1,5 +1,5 @@
 /**
- * @file 
+ * @file Manages routes related to animal operations
  * @author Elizabeth Minty
  */
 import express from 'express';
@@ -18,7 +18,7 @@ const router = express.Router();
 
 router.post("/", validatePostAnimal, createAnimal);
 router.get('/', getAnimals);
-router.get('/:id', getAnimal); //:id = route parameter. Retrieves the id from the request (req) URL. If URL is http://localhost:3000/api/Animals/1, :id will be 1
+router.get('/:id', getAnimal);
 router.put('/:id', updateAnimal);
 router.delete('/:id', deleteAnimal);
 

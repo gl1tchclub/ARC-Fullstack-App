@@ -1,5 +1,5 @@
 /**
- * @file 
+ * @file manages all operations related to awards
  * @author Elizabeth Minty
  */
 const createAward = async (req, res) => {

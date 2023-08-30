@@ -1,5 +1,5 @@
 /**
- * @file 
+ * @file manages all operations related to colosseums
  * @author Elizabeth Minty
  */
 const createColosseum = async (req, res) => {

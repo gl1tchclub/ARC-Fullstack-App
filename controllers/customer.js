@@ -1,5 +1,5 @@
 /**
-* @file 
+* @file manages all operations related to customers
 * @author Elizabeth Minty
 */
 const createCustomer = async (req, res) => {

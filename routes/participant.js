@@ -1,5 +1,5 @@
 /**
- * @file 
+ * @file Manages routes related to participant operations
  * @author Elizabeth Minty
  */
 import express from 'express';
@@ -18,7 +18,7 @@ const router = express.Router();
 
 router.post("/", validatePostParticipant, createParticipant);
 router.get('/', getParticipants);
-router.get('/:id', getParticipant); //:id = route parameter. Retrieves the id from the request (req) URL. If URL is http://localhost:3000/api/Participants/1, :id will be 1
+router.get('/:id', getParticipant);
 router.put('/:id', updateParticipant);
 router.delete('/:id', deleteParticipant);
 

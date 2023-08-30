@@ -1,5 +1,5 @@
 /**
- * @file importing the functions to the route page
+ * @file Manages routes related to ticket operations
  * @author Elizabeth Minty
  */
 import express from 'express';
@@ -18,7 +18,7 @@ const router = express.Router();
 
 router.post("/", validatePostTicket, createTicket);
 router.get('/', getTickets);
-router.get('/:id', getTicket); //:id = route parameter. Retrieves the id from the request (req) URL. If URL is http://localhost:3000/api/Tickets/1, :id will be 1
+router.get('/:id', getTicket);
 router.put('/:id', updateTicket);
 router.delete('/:id', deleteTicket);
 

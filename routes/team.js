@@ -1,5 +1,5 @@
 /**
- * @file 
+ * @file Manages routes related to team operations
  * @author Elizabeth Minty
  */
 import express from 'express';
@@ -18,7 +18,7 @@ const router = express.Router();
 
 router.post("/", validatePostTeam, createTeam);
 router.get('/', getTeams);
-router.get('/:id', getTeam); //:id = route parameter. Retrieves the id from the request (req) URL. If URL is http://localhost:3000/api/Teams/1, :id will be 1
+router.get('/:id', getTeam); 
 router.put('/:id', updateTeam);
 router.delete('/:id', deleteTeam);
 

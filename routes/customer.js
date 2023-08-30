@@ -1,5 +1,5 @@
 /**
- * @file 
+ * @file Manages routes related to customer operations
  * @author Elizabeth Minty
  */
 import express from 'express';
@@ -18,7 +18,7 @@ const router = express.Router();
 
 router.post("/", validatePostCustomer, createCustomer);
 router.get('/', getCustomers);
-router.get('/:id', getCustomer); //:id = route parameter. Retrieves the id from the request (req) URL. If URL is http://localhost:3000/api/Customers/1, :id will be 1
+router.get('/:id', getCustomer);
 router.put('/:id', updateCustomer);
 router.delete('/:id', deleteCustomer);
 

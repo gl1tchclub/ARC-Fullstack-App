@@ -1,5 +1,5 @@
 /**
- * @file 
+ * @file manages all operations related to teams
  * @author Elizabeth Minty
  */
 const createTeam = async (req, res) => {

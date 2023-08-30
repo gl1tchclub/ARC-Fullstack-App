@@ -1,5 +1,5 @@
 /**
- * @file 
+ * @file manages all operations related to participants
  * @author Elizabeth Minty
  */
 const createParticipant = async (req, res) => {

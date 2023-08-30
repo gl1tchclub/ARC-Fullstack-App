@@ -1,5 +1,5 @@
 /**
- * @file 
+ * @file Manages routes related to colosseum operations
  * @author Elizabeth Minty
  */
 import express from 'express';
@@ -18,7 +18,7 @@ const router = express.Router();
 
 router.post("/", validatePostColosseum, createColosseum);
 router.get('/', getColosseums);
-router.get('/:id', getColosseum); //:id = route parameter. Retrieves the id from the request (req) URL. If URL is http://localhost:3000/api/Colosseums/1, :id will be 1
+router.get('/:id', getColosseum);
 router.put('/:id', updateColosseum);
 router.delete('/:id', deleteColosseum);
 
