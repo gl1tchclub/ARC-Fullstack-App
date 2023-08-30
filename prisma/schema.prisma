@@ -11,7 +11,6 @@ datasource db {
 }
 
 // TABLES
-
 model Participant {
   participantId   Int       @id @default(autoincrement())
   alias           String    @unique
@@ -26,7 +25,6 @@ model Animal {
   name      String          @unique
   class     Classes
   species   String
-  terrain   String
   rank      Ranks
   ownerId   Int
   owner     Participant    @relation(fields: [ownerId], references: [participantId], onDelete: Cascade) //cascade?
@@ -35,8 +33,9 @@ model Animal {
 model Colosseum {
   colosseumId   Int     @id @default(autoincrement())
   colosseumName String  @unique
-  country       String  @unique  //only one in each country maybe?
+  country       String
   city          String
+  terrainType   String
   events        Event[]
 }
 

@@ -1,5 +1,5 @@
 /**
- * @file 
+ * @file validation functions for various data entities
  * @author Elizabeth Minty
  */
 import Joi from "joi";
@@ -27,7 +27,7 @@ const validatePostInstitution = (req, res, next) => {
       "string.min": "Country should have a minimum length of {#limit}",
       "string.max": "Country should have a maximum length of {#limit}",
       "any.required": "Country is required",
-    }),
+    })
   });
 
   const { error } = institutionSchema.validate(req.body);
@@ -44,7 +44,31 @@ const validatePostInstitution = (req, res, next) => {
 // ANIMAL
 const validatePostAnimal = (req, res, next) => {
   const animalSchema = Joi.object({
-    //insert checks
+    name: Joi.string().min(2).max(100).required().messages({
+      "string.base": "Name should be a string",
+      "string.empty": "Name cannot be empty",
+      "string.min": "Name must have a minimum length of {#limit}",
+      "string.max": "Name must have a maximum length of {#limit}",
+      "any.required": "Name is required",
+    }),
+    class: Joi.string().required().messages({
+      "string.base": "Class must be a string",
+      "string.empty": "Class must not be empty",
+      "any.required": "Class type is required",
+    }),
+    species: Joi.string().min(3).max(100).required().messages({
+      "string.base": "Species should be a string",
+      "string.empty": "Species cannot be empty",
+      "string.min": "Species must have a minimum length of {#limit}",
+      "string.max": "Species must have a maximum length of {#limit}",
+      "any.required": "Species is required",
+    }),
+    rank: Joi.string().required().messages({
+      "string.base": "Rank must be a string",
+      "string.empty": "Rank must not be empty",
+      "any.required": "Rank is required",
+    }),
+    ownerId: Joi.int().
   });
 
   const { error } = animalSchema.validate(req.body);
