@@ -51,7 +51,7 @@ const validatePostAnimal = (req, res, next) => {
       "string.max": "Name must have a maximum length of {#limit}",
       "any.required": "Name is required",
     }),
-    class: Joi.string().required().messages({
+    class: Joi.string().min(4).max(9).required().messages({
       "string.base": "Class must be a string",
       "string.empty": "Class must not be empty",
       "any.required": "Class type is required",
@@ -68,7 +68,7 @@ const validatePostAnimal = (req, res, next) => {
       "string.empty": "Rank must not be empty",
       "any.required": "Rank is required",
     }),
-    ownerId: Joi.int().
+    // ownerId: Joi.int().
   });
 
   const { error } = animalSchema.validate(req.body);
@@ -146,37 +146,37 @@ const validatePostColosseum = (req, res, next) => {
   next();
 };
 
-const validatePostCustomer = (req, res, next) => {
-  const customerSchema = Joi.object({
-    //insert checks
-  });
+// const validatePostCustomer = (req, res, next) => {
+//   const customerSchema = Joi.object({
+//     //insert checks
+//   });
 
-  const { error } = customerSchema.validate(req.body);
+//   const { error } = customerSchema.validate(req.body);
 
-  if (error) {
-    return res.status(400).json({
-      msg: error.details[0].message,
-    });
-  }
+//   if (error) {
+//     return res.status(400).json({
+//       msg: error.details[0].message,
+//     });
+//   }
 
-  next();
-};
+//   next();
+// };
 
-const validatePostTicket = (req, res, next) => {
-  const ticketSchema = Joi.object({
-    //insert checks
-  });
+// const validatePostTicket = (req, res, next) => {
+//   const ticketSchema = Joi.object({
+//     //insert checks
+//   });
 
-  const { error } = ticketSchema.validate(req.body);
+//   const { error } = ticketSchema.validate(req.body);
 
-  if (error) {
-    return res.status(400).json({
-      msg: error.details[0].message,
-    });
-  }
+//   if (error) {
+//     return res.status(400).json({
+//       msg: error.details[0].message,
+//     });
+//   }
 
-  next();
-};
+//   next();
+// };
 
 const validatePostTeam = (req, res, next) => {
   const teamSchema = Joi.object({
@@ -193,5 +193,4 @@ const validatePostTeam = (req, res, next) => {
 
   next();
 };
-export { validatePostInstitution, validatePostAnimal, validatePostParticipant, validatePostCustomer, validatePostTeam, validatePostColosseum, validatePostEvent, validatePostAward,
-  validatePostTicket };
+export { validatePostInstitution, validatePostAnimal, validatePostParticipant, validatePostTeam, validatePostColosseum, validatePostEvent, validatePostAward };

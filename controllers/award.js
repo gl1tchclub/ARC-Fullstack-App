@@ -2,6 +2,10 @@
  * @file manages all operations related to awards
  * @author Elizabeth Minty
  */
+
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
+
 const createAward = async (req, res) => {
     try {
       await prisma.Award.create({

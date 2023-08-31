@@ -2,6 +2,10 @@
 * @file manages all operations related to customers
 * @author Elizabeth Minty
 */
+
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
+
 const createCustomer = async (req, res) => {
     try {
       await prisma.customer.create({

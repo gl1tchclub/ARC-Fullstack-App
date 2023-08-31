@@ -2,6 +2,10 @@
  * @file manages all operations related to colosseums
  * @author Elizabeth Minty
  */
+
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
+
 const createColosseum = async (req, res) => {
     try {
       await prisma.colosseum.create({

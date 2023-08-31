@@ -3,6 +3,9 @@
  * @author Elizabeth Minty
  */
 
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
+
 /**
  * @description Creates a new animal.
  * @name createAnimal
@@ -24,6 +27,7 @@ const createAnimal = async (req, res) => {
         data: newAnimals,
       });
     } catch (err) {
+      
       return res.status(500).json({
         msg: err.message,
       });
@@ -53,7 +57,6 @@ const createAnimal = async (req, res) => {
       });
     }
   };
-
   
 /**
  * @description Retrieves a specific animal by its ID.

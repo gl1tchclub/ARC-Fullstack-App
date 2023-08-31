@@ -2,6 +2,10 @@
  * @file manages all operations related to events
  * @author Elizabeth Minty
  */
+
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
+
 const createEvent = async (req, res) => {
     try {
       await prisma.event.create({
