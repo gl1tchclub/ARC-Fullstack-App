@@ -21,9 +21,11 @@ model Event {
   eventId         Int         @id @default(autoincrement())
   eventName       String  	  @unique
   location        String
-  date            DateTime    @default(now())
+  date            DateTime
   awards          Award[]
   teams           Team[]
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @default(now())
   colosseum       Colosseum   @relation(fields: [location], references: [colosseumName])
 }
 
