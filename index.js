@@ -42,11 +42,8 @@ app.use('/api/animals', animalRoutes)
 app.use('/api/participants', participantRoutes)
 app.use('/api/events', eventRoutes)
 app.use('/api/teams', teamRoutes)
-// app.use('/api/customers', customerRoutes)
 app.use('/api/colosseums', colosseumRoutes)
 app.use('/api/awards', awardRoutes)
-// app.use('/api/tickets', ticketRoutes)
-
 
 // delete later
 app.use('/api/institutions', institutionRoutes)

@@ -2,6 +2,9 @@
  * @file manages all operations related to teams
  * @author Elizabeth Minty
  */
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
+
 const createTeam = async (req, res) => {
     try {
       await prisma.team.create({

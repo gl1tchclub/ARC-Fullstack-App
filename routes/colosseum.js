@@ -16,7 +16,7 @@ import { validatePostColosseum } from "../middleware/validation.js";
 
 const router = express.Router();
 
-router.post("/", validatePostColosseum, createColosseum);
+router.post('/', validatePostColosseum, createColosseum);
 router.get('/', getColosseums);
 router.get('/:id', getColosseum);
 router.put('/:id', updateColosseum);

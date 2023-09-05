@@ -2,6 +2,9 @@
  * @file manages all operations related to participants
  * @author Elizabeth Minty
  */
+import { PrismaClient } from '@prisma/client'
+const prisma = new PrismaClient()
+
 const createParticipant = async (req, res) => {
     try {
       await prisma.participant.create({

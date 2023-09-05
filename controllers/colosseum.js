@@ -121,4 +121,4 @@ const deleteColosseum = async (req, res) => {
     getColosseum,
     updateColosseum,
     deleteColosseum
-  }
+  };
