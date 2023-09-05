@@ -11,6 +11,46 @@ datasource db {
 }
 
 // TABLES
+model Colosseum {
+  colosseumId   Int     @id @default(autoincrement())
+  colosseumName String  @unique
+  country       String
+  city          String
+  terrainType   String
+  events        Event[]
+}
+
+model Event {
+  eventId         Int         @id @default(autoincrement())
+  eventName       String  	  @unique
+  location        String
+  date            DateTime    @default(now())
+  awards          Award[]
+  teams           Team[]
+  colosseum       Colosseum   @relation(fields: [location], references: [colosseumName])
+}
+
+model Award {
+  awardId     Int     @id @default(autoincrement())
+  awardName   String  @unique
+  type        String   //i.e. cash, trophy, etc
+  quantity    Int  //num times this can be given in an event i.e. honorary 3 times, gold twice, silver twice, etc...
+  eventId     Int
+  event       Event   @relation(fields: [eventId], references: [eventId])
+}
+
+model Team {
+  teamId        Int             @id @default(autoincrement())
+  name          String          @unique
+  members       Participant[]
+  eventName     String
+  continent     String
+  country       String
+  city          String          @unique
+  numMembers    Int
+  events        Event           @relation(fields: [eventName], references: [eventName])
+}
+
 model Participant {
   participantId   Int       @id @default(autoincrement())
   alias           String    @unique
@@ -30,66 +70,6 @@ model Animal {
   owner     Participant    @relation(fields: [ownerId], references: [participantId], onDelete: Cascade) //cascade?
 }
 
-model Colosseum {
-  colosseumId   Int     @id @default(autoincrement())
-  colosseumName String  @unique
-  country       String
-  city          String
-  terrainType   String
-  events        Event[]
-}
-
-model Team {
-  teamId        Int             @id @default(autoincrement())
-  name          String          @unique
-  members       Participant[]
-  eventName     String
-  continent     String
-  country       String
-  city          String          @unique
-  numMembers    Int
-  events        Event           @relation(fields: [eventName], references: [eventName])
-}
-
-model Event {
-  eventId         Int         @id @default(autoincrement())
-  eventName       String  	  @unique
-  location        String
-  date            DateTime    @default(now())
-  awards          Award[]
-  teams           Team[]
-  // tickets         Ticket[]
-  colosseum       Colosseum   @relation(fields: [location], references: [colosseumName])
-}
-
-model Award {
-  awardId     Int     @id @default(autoincrement())
-  awardName   String  @unique
-  type        String   //i.e. cash, trophy, etc
-  quantity    Int  //num times this can be given in an event i.e. honorary 3 times, gold twice, silver twice, etc...
-  eventId     Int
-  event       Event   @relation(fields: [eventId], references: [eventId])
-}
-
-// //Join table
-// model Ticket {
-//   ticketId    Int       @id @default(autoincrement())
-//   eventId     Int
-//   customerId  Int
-//   isVip       Boolean
-//   isPremium   Boolean
-//   event       Event     @relation(fields: [eventId], references: [eventId])
-//   customer    Customer  @relation(fields: [customerId], references: [customerId])
-// }
-
-// model Customer {
-//   customerId      Int       @id @default(autoincrement())
-//   customerAlias   String
-//   age             Int
-//   isRegular       Boolean //t? give discount
-//   tickets         Ticket[]
-// }
-
 enum Ranks {
   OLYMPUS
   ELYSIUM
@@ -107,4 +87,7 @@ enum Classes {
   REPTILE
   BIRD
   INSECT
+  MUTANT
+  DINOSAUR
+  ROBOT
 }
