@@ -8,10 +8,8 @@ import animalRoutes from './routes/animal.js'
 import participantRoutes from './routes/participant.js'
 import eventRoutes from './routes/event.js'
 import teamRoutes from './routes/team.js'
-// import customerRoutes from './routes/customer.js'
 import colosseumRoutes from './routes/colosseum.js'
 import awardRoutes from './routes/award.js'
-// import ticketRoutes from './routes/ticket.js'
 
 // Create an Express application
 const app = express()
