@@ -5,21 +5,21 @@
 import express from 'express';
 
 import {
-    createAnimal,
-    getAnimals,
-    getAnimal,
-    updateAnimal,
-    deleteAnimal,
-} from "../controllers/animal.js";
+    create,
+    getAll,
+    getID,
+    update,
+    deleteType,
+} from "../controllers/operations.js";
 
 import { validatePostAnimal } from "../middleware/validation.js";
 
 const router = express.Router();
 
-router.post("/", validatePostAnimal, createAnimal);
-router.get('/', getAnimals);
-router.get('/:id', getAnimal);
-router.put('/:id', updateAnimal);
-router.delete('/:id', deleteAnimal);
+router.post("/", validatePostAnimal, create("animal"));
+router.get('/', getAll("animal"));
+router.get('/:id', getID("animal"));
+router.put('/:id', update("animal"));
+router.delete('/:id', deleteType("animal"));
 
 export default router;

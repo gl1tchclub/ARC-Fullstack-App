@@ -13,10 +13,6 @@ import colosseumRoutes from './routes/colosseum.js'
 import awardRoutes from './routes/award.js'
 // import ticketRoutes from './routes/ticket.js'
 
-//delete later
-import departmentRoutes from './routes/department.js'
-import institutionRoutes from './routes/institution.js'
-
 // Create an Express application
 const app = express()
 
@@ -44,10 +40,6 @@ app.use('/api/events', eventRoutes)
 app.use('/api/teams', teamRoutes)
 app.use('/api/colosseums', colosseumRoutes)
 app.use('/api/awards', awardRoutes)
-
-// delete later
-app.use('/api/institutions', institutionRoutes)
-app.use('/api/departments', departmentRoutes)
 
 // Start the server on port 3000
 app.listen(3000, () => {

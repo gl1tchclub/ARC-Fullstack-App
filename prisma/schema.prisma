@@ -9,11 +9,13 @@ datasource db {
 
 // TABLES
 model Colosseum {
-  colosseumId   Int     @id @default(autoincrement())
-  colosseumName String  @unique
+  colosseumId   Int         @id @default(autoincrement())
+  colosseumName String      @unique
   country       String
   city          String
   terrainType   String
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @default(now())
   events        Event[]
 }
 
@@ -62,14 +64,14 @@ model Participant {
 model Animal {
   animalId  Int             @id @default(autoincrement())
   name      String          @unique
-  class     Classes
+  class     Class
   species   String
-  rank      Ranks
+  rank      Rank
   ownerId   Int
   owner     Participant    @relation(fields: [ownerId], references: [participantId], onDelete: Cascade) //cascade?
 }
 
-enum Ranks {
+enum Rank {
   OLYMPUS
   ELYSIUM
   VALHALLA
@@ -79,7 +81,7 @@ enum Ranks {
   TARTAROS
 }
 
-enum Classes {
+enum Class {
   MAMMAL
   FISH
   AMPHIBIAN

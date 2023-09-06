@@ -5,21 +5,21 @@
 import express from 'express';
 
 import {
-    createAward,
-    getAwards,
-    getAward,
-    updateAward,
-    deleteAward,
-} from "../controllers/award.js";
+    create,
+    getAll,
+    getID,
+    update,
+    deleteType,
+} from "../controllers/operations.js";
 
 import { validatePostAward } from "../middleware/validation.js";
 
 const router = express.Router();
 
-router.post("/", validatePostAward, createAward);
-router.get('/', getAwards);
-router.get('/:id', getAward); 
-router.put('/:id', updateAward);
-router.delete('/:id', deleteAward);
+router.post("/", validatePostAward, create("award"));
+router.get('/', getAll("award"));
+router.get('/:id', getID("award")); 
+router.put('/:id', update("award"));
+router.delete('/:id', deleteType("award"));
 
 export default router;

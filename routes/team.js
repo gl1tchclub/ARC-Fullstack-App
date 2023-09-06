@@ -5,21 +5,21 @@
 import express from 'express';
 
 import {
-    createTeam,
-    getTeams,
-    getTeam,
-    updateTeam,
-    deleteTeam,
-} from "../controllers/team.js";
+    create,
+    getAll,
+    getID,
+    update,
+    deleteType,
+} from "../controllers/operations.js";
 
 import { validatePostTeam } from "../middleware/validation.js";
 
 const router = express.Router();
 
-router.post("/", validatePostTeam, createTeam);
-router.get('/', getTeams);
-router.get('/:id', getTeam); 
-router.put('/:id', updateTeam);
-router.delete('/:id', deleteTeam);
+router.post("/", validatePostTeam, create("team"));
+router.get('/', getAll("team"));
+router.get('/:id', getID("team")); 
+router.put('/:id', update("team"));
+router.delete('/:id', deleteType("team"));
 
 export default router;

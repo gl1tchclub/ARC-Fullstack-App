@@ -5,21 +5,21 @@
 import express from 'express';
 
 import {
-    createColosseum,
-    getColosseums,
-    getColosseum,
-    updateColosseum,
-    deleteColosseum,
-} from "../controllers/colosseum.js";
+    create,
+    getAll,
+    getID,
+    update,
+    deleteType,
+} from "../controllers/operations.js";
 
 import { validatePostColosseum } from "../middleware/validation.js";
 
 const router = express.Router();
 
-router.post('/', validatePostColosseum, createColosseum);
-router.get('/', getColosseums);
-router.get('/:id', getColosseum);
-router.put('/:id', updateColosseum);
-router.delete('/:id', deleteColosseum);
+router.post('/', validatePostColosseum, create("colosseum"));
+router.get('/', getAll("colosseum"));
+router.get('/:id', getID("colosseum"));
+router.put('/:id', update("colosseum"));
+router.delete('/:id', deleteType("colosseum"));
 
 export default router;

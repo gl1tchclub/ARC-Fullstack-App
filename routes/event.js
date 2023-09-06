@@ -5,21 +5,21 @@
 import express from 'express';
 
 import {
-    createEvent,
-    getEvents,
-    getEvent,
-    updateEvent,
-    deleteEvent,
-} from "../controllers/event.js";
+    create,
+    getAll,
+    getID,
+    update,
+    deleteType,
+} from "../controllers/operations.js";
 
 import { validatePostEvent } from "../middleware/validation.js";
 
 const router = express.Router();
 
-router.post("/", validatePostEvent, createEvent);
-router.get('/', getEvents);
-router.get('/:id', getEvent); 
-router.put('/:id', updateEvent);
-router.delete('/:id', deleteEvent);
+router.post("/", validatePostEvent, create("event"));
+router.get('/', getAll("event"));
+router.get('/:id', getID("event")); 
+router.put('/:id', update("event"));
+router.delete('/:id', deleteType("event"));
 
 export default router;

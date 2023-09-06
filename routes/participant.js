@@ -5,21 +5,21 @@
 import express from 'express';
 
 import {
-    createParticipant,
-    getParticipants,
-    getParticipant,
-    updateParticipant,
-    deleteParticipant,
-} from "../controllers/participant.js";
+    create,
+    getAll,
+    getID,
+    update,
+    deleteType,
+} from "../controllers/operations.js";
 
 import { validatePostParticipant } from "../middleware/validation.js";
 
 const router = express.Router();
 
-router.post("/", validatePostParticipant, createParticipant);
-router.get('/', getParticipants);
-router.get('/:id', getParticipant);
-router.put('/:id', updateParticipant);
-router.delete('/:id', deleteParticipant);
+router.post("/", validatePostParticipant, create("participant"));
+router.get('/', getAll("participant"));
+router.get('/:id', getID("participant"));
+router.put('/:id', update("participant"));
+router.delete('/:id', deleteType("participant"));
 
 export default router;

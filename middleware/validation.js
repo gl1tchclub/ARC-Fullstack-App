@@ -113,11 +113,10 @@ const validatePostEvent = (req, res, next) => {
       "string.max": "Location should have a maximum length of {#limit}",
       "any.required": "Location is required",
     }),
-    date: Joi.date().greater('1-1-1990').max('12-12-2025').required().messages({
+    date: Joi.date().greater('1-1-1990').required().messages({
       "date.base": "Date should not be empty",
       "date.empty": "Date should not be empty",
       "date.greater": "Date must be greater than {#limit}",
-      "date.max": "Date must be less than {#limit}",
       "any.required": "Date is required"
     })
   });
@@ -135,7 +134,27 @@ const validatePostEvent = (req, res, next) => {
 
 const validatePostAward = (req, res, next) => {
   const awardSchema = Joi.object({
-    //insert checks
+    awardName: Joi.string().min(4).max(20).required().messages({
+      "string.base": "Award Name should be a string",
+      "string.empty": "Award Name cannot be empty",
+      "string.min": "Award Name should have a minimum length of {#limit}",
+      "string.max": "Award Name should have a maximum length of {#limit}",
+      "any.required": "Award Name is required"
+    }),
+    type: Joi.string().min(3).max(20).required().messages({
+      "string.base": "Type should be a string",
+      "string.empty": "Type cannot be empty",
+      "string.min": "Type should have a minimum length of {#limit}",
+      "string.max": "Type should have a maximum length of {#limit}",
+      "any.required": "Type is required"
+    }),
+    quantity: Joi.number().integer().min(1).max(10).required().messages({
+      "integer.base": "Quantity must be a number",
+      "number.empty": "Quantity cannot be empty",
+      "integer.min": "Quantity should have a minimum length of {#limit}",
+      "integer.max": "Quantity should have a maximum length of {#limit}",
+      "any.required": 
+    })
   });
 
   const { error } = awardSchema.validate(req.body);
