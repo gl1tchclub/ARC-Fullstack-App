@@ -10,6 +10,21 @@ const getColosseums = async (req, res) => {
             match.colosseumName = colosseumName
         }
         
+        if (country) {
+            match.country = country
+        }
+
+        if (city) {
+            match.city = city
+        }
+
+        if (terrainType) {
+            match.terrainType = terrainType
+        }
+
+        if (events) {
+            match.events = events
+        }
 
         const colosseums = await prisma.colosseum.findMany({
             where: match
@@ -22,4 +37,4 @@ const getColosseums = async (req, res) => {
     }
 }
 
-export { getAnimals }
+export { getColosseums }

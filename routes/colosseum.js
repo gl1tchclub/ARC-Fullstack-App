@@ -6,18 +6,19 @@ import express from 'express';
 
 import {
     create,
-    getAll,
     getID,
     update,
     deleteType,
 } from "../controllers/operations.js";
+
+import { getColosseums } from "../controllers/colosseums.js";
 
 import { validatePostColosseum } from "../middleware/validation.js";
 
 const router = express.Router();
 
 router.post('/', validatePostColosseum, create("colosseum"));
-router.get('/', getAll("colosseum"));
+router.get('/', getColosseums);
 router.get('/:id', getID("colosseum"));
 router.put('/:id', update("colosseum"));
 router.delete('/:id', deleteType("colosseum"));

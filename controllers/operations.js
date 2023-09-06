@@ -54,6 +54,7 @@ const getID = (type) => {
             if (!typeId) {
                 res.status(404).json({ msg: `${type} with ID ${res.params.id} does not exist`})
             }
+            return res.json({ data: typeId })
         } catch (err) {
             return res.status(500).json({
               msg: err.message,
@@ -63,7 +64,7 @@ const getID = (type) => {
 }
 
 const update = (type) => {
-    return async (req, res, type) => {
+    return async (req, res) => {
         try {
             let updatedType = await prisma[type].findUnique({
                 where: { id: Number(req.params.id) },
