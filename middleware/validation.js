@@ -153,7 +153,7 @@ const validatePostAward = (req, res, next) => {
       "number.empty": "Quantity cannot be empty",
       "integer.min": "Quantity should have a minimum length of {#limit}",
       "integer.max": "Quantity should have a maximum length of {#limit}",
-      "any.required": 
+      "any.required": "Quantity is required"
     })
   });
 
