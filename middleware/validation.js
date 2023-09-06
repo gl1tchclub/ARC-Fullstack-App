@@ -51,10 +51,10 @@ const validatePostAnimal = (req, res, next) => {
       "string.max": "Name must have a maximum length of {#limit}",
       "any.required": "Name is required",
     }),
-    class: Joi.string().min(4).max(9).required().messages({
-      "string.base": "Class must be a string",
-      "string.empty": "Class must not be empty",
-      "any.required": "Class type is required",
+    taxonomy: Joi.string().min(4).max(9).required().messages({
+      "string.base": "Taxonomy must be a string",
+      "string.empty": "Taxonomy must not be empty",
+      "any.required": "Taxonomy type is required",
     }),
     species: Joi.string().min(3).max(100).required().messages({
       "string.base": "Species should be a string",

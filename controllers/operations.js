@@ -30,7 +30,7 @@ const getAll = (type) => {
     return async (req, res) => {
         try {
             const types = await prisma[type].findMany()
-    
+
             if (types.length === 0) {
                 return res.status(404).json({ msg: `No ${type} found` })
             }

@@ -64,7 +64,7 @@ model Participant {
 model Animal {
   animalId  Int             @id @default(autoincrement())
   name      String          @unique
-  class     Class
+  taxonomy  Taxonomy
   species   String
   rank      Rank
   ownerId   Int
@@ -81,7 +81,7 @@ enum Rank {
   TARTAROS
 }
 
-enum Class {
+enum Taxonomy {
   MAMMAL
   FISH
   AMPHIBIAN
