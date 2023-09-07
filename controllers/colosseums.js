@@ -9,7 +9,7 @@ const getColosseums = async (req, res) => {
         if (colosseumName) {
             match.colosseumName = colosseumName
         }
-        
+
         if (country) {
             match.country = country
         }
@@ -26,10 +26,19 @@ const getColosseums = async (req, res) => {
             match.events = events
         }
 
+        //setting page number and page size from user for pagination
+        const page = req.query.page ? parseInt(req.query.page) : null
+        const pageSize = req.query.pageSize
+            ? parseInt(req.query.pageSize)
+            : null
+
+        //display requested data according to the filter and pagesize
         const colosseums = await prisma.colosseum.findMany({
-            where: match
+            skip: pageSize * (page - 1),
+            take: !pageSize ? 25 : pageSize, //if pageSize not defined, default is 25
+            where: match,
         })
-        return res.json({data: colosseums})
+        return res.json({ data: colosseums })
     } catch (err) {
         return res.status(500).json({
             msg: err.message,

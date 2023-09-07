@@ -28,37 +28,37 @@ model Event {
   teams           Team[]
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @default(now())
-  colosseum       Colosseum   @relation(fields: [location], references: [colosseumName])
+  colosseum       Colosseum   @relation(fields: [location], references: [colosseumName], onDelete: Cascade)
 }
 
 model Award {
   awardId     Int     @id @default(autoincrement())
-  awardName   String  @unique
+  awardName   String
   type        String   //i.e. cash, trophy, etc
   quantity    Int  //num times this can be given in an event i.e. honorary 3 times, gold twice, silver twice, etc...
   eventId     Int
-  event       Event   @relation(fields: [eventId], references: [eventId])
+  event       Event   @relation(fields: [eventId], references: [eventId], onDelete: Cascade)
 }
 
 model Team {
   teamId        Int             @id @default(autoincrement())
   name          String          @unique
   members       Participant[]
-  eventName     String
+  eventName     String?
   continent     String
   country       String
   city          String          @unique
   numMembers    Int
-  events        Event           @relation(fields: [eventName], references: [eventName])
+  events        Event?          @relation(fields: [eventName], references: [eventName], onDelete: Cascade)
 }
 
 model Participant {
   participantId   Int       @id @default(autoincrement())
   alias           String    @unique
-  memberOf        String  
+  memberOf        String? 
   animals         Animal[]
   numberOfAwards  Int
-  team            Team      @relation(fields: [memberOf], references: [name])
+  team            Team?     @relation(fields: [memberOf], references: [name])
 }
 
 model Animal {
@@ -68,7 +68,7 @@ model Animal {
   species   String
   rank      Rank
   ownerId   Int
-  owner     Participant    @relation(fields: [ownerId], references: [participantId], onDelete: Cascade) //cascade?
+  owner     Participant     @relation(fields: [ownerId], references: [participantId], onDelete: Cascade) //cascade?
 }
 
 enum Rank {

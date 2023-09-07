@@ -9,12 +9,11 @@ const getAnimals = async (req, res) => {
         if (name) {
             match.name = name
         }
-        
 
         const animals = await prisma.animal.findMany({
-            where: match
+            where: match,
         })
-        return res.json({data: animals})
+        return res.json({ data: animals })
     } catch (err) {
         return res.status(500).json({
             msg: err.message,

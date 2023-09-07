@@ -8,8 +8,10 @@
     "dev": "nodemon index.js",
     "format": "npx prettier . --write",
     "check": "npx prettier . --check",
-    "mdev": "npx prisma migrate dev",
-    "mreset": "npx prisma migrate reset"
+    "mig": "npx prisma migrate dev",
+    "reset": "npx prisma migrate reset",
+    "studio": "npx prisma studio",
+    "seed": "npx prisma db seed"
   },
   "prisma": {
     "seed": "node prisma/seed.js"
@@ -33,11 +35,11 @@
     "@prisma/client": "^4.16.2",
     "express": "^4.18.2",
     "express-rate-limit": "^6.10.0",
-    "joi": "^17.10.1",
-    "prettier": "^3.0.0"
+    "joi": "^17.10.1"
   },
   "devDependencies": {
     "nodemon": "^3.0.1",
+    "prettier": "^3.0.3",
     "prettier-plugin-prisma": "^5.0.0",
     "prisma": "^4.16.2"
   }

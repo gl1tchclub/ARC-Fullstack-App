@@ -2,7 +2,7 @@
  * @file Manages routes related to event operations
  * @author Elizabeth Minty
  */
-import express from 'express';
+import express from 'express'
 
 import {
     create,
@@ -10,16 +10,16 @@ import {
     getID,
     update,
     deleteType,
-} from "../controllers/operations.js";
+} from '../controllers/operations.js'
 
-import { validatePostEvent } from "../middleware/validation.js";
+import { validatePostEvent } from '../middleware/validation.js'
 
-const router = express.Router();
+const router = express.Router()
 
-router.post("/", validatePostEvent, create("event"));
-router.get('/', getAll("event"));
-router.get('/:id', getID("event")); 
-router.put('/:id', update("event"));
-router.delete('/:id', deleteType("event"));
+router.post('/', validatePostEvent, create('event'))
+router.get('/', getAll('event'))
+router.get('/:id', getID('event'))
+router.put('/:id', update('event'))
+router.delete('/:id', deleteType('event'))
 
-export default router;
+export default router

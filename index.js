@@ -20,7 +20,7 @@ const limit = rateLimit({
     max: 100,
     message: async (request, response) => {
         return 'You have exceeded the number of requests per minute: 100. Please try again later'
-    }
+    },
 })
 
 // This should be declared under const app = express();
