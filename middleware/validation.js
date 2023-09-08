@@ -157,10 +157,8 @@ const validatePostColosseum = (req, res, next) => {
         terrainType: Joi.string().min(3).max(50).required().messages({
             'string.base': 'Terrain Type should be a string',
             'string.empty': 'Terrain Type cannot be empty',
-            'string.min':
-                'Terrain Type should have a minimum length of {#limit}',
-            'string.max':
-                'Terrain Type should have a maximum length of {#limit}',
+            'string.min': 'Terrain Type should have a minimum length of {#limit}',
+            'string.max': 'Terrain Type should have a maximum length of {#limit}',
             'any.required': 'Terrain Type is required',
         }),
     })
@@ -176,21 +174,73 @@ const validatePostColosseum = (req, res, next) => {
     next()
 }
 
-const validatePostTeam = (req, res, next) => {
-    const teamSchema = Joi.object({
-        //insert checks
-    })
+// const validatePostTeam = (req, res, next) => {
+//     const teamSchema = Joi.object({
+//         name: Joi.string().min(4).max(50).
+//     })
 
-    const { error } = teamSchema.validate(req.body)
+//     const { error } = teamSchema.validate(req.body)
 
-    if (error) {
-        return res.status(400).json({
-            msg: error.details[0].message,
-        })
+//     if (error) {
+//         return res.status(400).json({
+//             msg: error.details[0].message,
+//         })
+//     }
+
+//     next()
+// }
+
+const validatePostTeam = (type, next) => {
+    return async (req, res) => {
+        try {
+            const teamSchema = Joi.object({
+                name: Joi.string().min(2).max(100).required().messages({
+                    'string.base': 'Name should be a string',
+                    'string.empty': 'Name cannot be empty',
+                    'string.min': 'Name must have a minimum length of {#limit}',
+                    'string.max': 'Name must have a maximum length of {#limit}',
+                    'any.required': 'Name is required'
+                }),
+                members: Joi.array()
+                .items(Joi.string().required(), Joi.string().required())
+                .min(2)
+                .max(8)
+                .required()
+                .messages({
+                    'string.base': 'Name should be a string',
+                    'string.empty': 'Name cannot be empty',
+                    'string.min': 'Name must have a minimum length of {#limit}',
+                    'string.max': 'Name must have a maximum length of {#limit}',
+                    'any.required': 'Name is required'
+                }),
+                eventName: Joi.string().min(2).max(100).required().messages({
+                    'string.base': 'Name should be a string',
+                    'string.empty': 'Name cannot be empty',
+                    'string.min': 'Name must have a minimum length of {#limit}',
+                    'string.max': 'Name must have a maximum length of {#limit}',
+                    'any.required': 'Name is required'
+                })
+            })
+
+            const { error, value } = resourceSchema.validate(data)
+
+            if (error) {
+                return res.status(400).json({
+                    msg: error.details[0].message,
+                })
+            }
+
+            next()
+
+        } catch (err) {
+            return res.status(500).json({
+                msg: err.message,
+            })
+        }
     }
-
-    next()
 }
+
+
 export {
     validatePostAnimal,
     validatePostParticipant,

@@ -10,7 +10,7 @@ import {
     getID,
     update,
     deleteType,
-} from '../controllers/operations.js'
+} from '../controllers/resources.js'
 
 import { validatePostEvent } from '../middleware/validation.js'
 

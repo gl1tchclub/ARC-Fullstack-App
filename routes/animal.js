@@ -4,7 +4,7 @@
  */
 import express from 'express'
 
-import { create, getID, update, deleteType } from '../controllers/operations.js'
+import { create, getID, update, deleteType } from '../controllers/resources.js'
 
 import { getAnimals } from '../controllers/animals.js'
 

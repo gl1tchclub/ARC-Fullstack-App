@@ -10,13 +10,13 @@ import {
     getID,
     update,
     deleteType,
-} from '../controllers/operations.js'
+} from '../controllers/resources.js'
 
-import { validatePostTeam } from '../middleware/validation.js'
+import { validatePostResource } from '../middleware/validation.js'
 
 const router = express.Router()
 
-router.post('/', validatePostTeam, create('team'))
+router.post('/', validatePostResource('team'), create('team'))
 router.get('/', getAll('team'))
 router.get('/:id', getID('team'))
 router.put('/:id', update('team'))

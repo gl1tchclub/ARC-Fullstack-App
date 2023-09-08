@@ -4,15 +4,15 @@
  */
 import express from 'express'
 
-import { create, getID, update, deleteType } from '../controllers/operations.js'
+import { create, getID, update, deleteType } from '../controllers/resources.js'
 
 import { getColosseums } from '../controllers/colosseums.js'
 
-import { validatePostColosseum } from '../middleware/validation.js'
+import { validatePostResource } from '../middleware/validation.js'
 
 const router = express.Router()
 
-router.post('/', validatePostColosseum, create('colosseum'))
+router.post('/', validatePostResource, create('colosseum'))
 router.get('/', getColosseums)
 router.get('/:id', getID('colosseum'))
 router.put('/:id', update('colosseum'))

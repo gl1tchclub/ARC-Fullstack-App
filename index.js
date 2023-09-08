@@ -18,15 +18,14 @@ const app = express()
 const limit = rateLimit({
     windowMs: 60 * 1000,
     max: 100,
-    message: async (request, response) => {
+    message: async (req, res) => {
         return 'You have exceeded the number of requests per minute: 100. Please try again later'
     },
 })
 
-// This should be declared under const app = express();
+
 app.use(express.urlencoded({ extended: false })) // To parse the incoming requests with urlencoded payloads. For example, form data
 
-// This should be declared under app.use(urlencoded({ extended: false }));
 app.use(express.json()) // To parse the incoming requests with JSON payloads. For example, REST API requests
 app.use(limit)
 
