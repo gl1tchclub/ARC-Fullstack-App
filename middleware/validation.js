@@ -192,11 +192,10 @@ const validatePostTeam = (req, res, next) => {
     next()
 }
 export {
-    validatePostInstitution,
     validatePostAnimal,
     validatePostParticipant,
     validatePostTeam,
     validatePostColosseum,
     validatePostEvent,
-    validatePostAward,
+    validatePostAward
 }
