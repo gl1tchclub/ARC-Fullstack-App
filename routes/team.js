@@ -12,11 +12,11 @@ import {
     deleteType,
 } from '../controllers/resources.js'
 
-import { validatePostResource } from '../middleware/validation.js'
+import { validatePostTeam } from '../middleware/validation.js'
 
 const router = express.Router()
 
-router.post('/', validatePostResource('team'), create('team'))
+router.post('/', validatePostTeam, create('team'))
 router.get('/', getAll('team'))
 router.get('/:id', getID('team'))
 router.put('/:id', update('team'))

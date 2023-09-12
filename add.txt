@@ -1,0 +1,142 @@
+DATABASE_URL = "postgres://id607001_mintep1_user:60knLoE9UAOKTab4Z9n7JTVClOi0ktsb@dpg-cj65286e546c7386hob0-a.oregon-postgres.render.com/id607001_mintep1"
+npm i
+npm install @prisma/client@4.16.2
+npm install prisma@4.16.2 --save-dev
+npm install joi
+npm install express-rate-limit
+npm run dev
+
+
+npx prisma studio
+npx prisma db seed
+
+
+
+                events: {
+                    create: [
+                        {
+                            //create events the same way
+                        }
+                    ]
+                }
+
+            {
+                "colosseumId": 3,
+                "colosseumName": "Immortal Hall",
+                "country": "America",
+                "city": "Maine",
+                "terrainType": "Arctic",
+                "createdAt": "2023-09-06T04:03:46.579Z",
+                "updatedAt": "2023-09-06T04:03:46.579Z",
+                "events": []
+            },
+            {
+                "colosseumId": 4,
+                "colosseumName": "Empire Hall",
+                "country": "America",
+                "city": "Texas",
+                "terrainType": "Desert",
+                "createdAt": "2023-09-06T04:04:48.606Z",
+                "updatedAt": "2023-09-06T04:04:48.606Z",
+                "events": []
+            },
+            {
+                "colosseumId": 5,
+                "colosseumName": "Undying Grounds",
+                "country": "America",
+                "city": "Florida",
+                "terrainType": "Caves",
+                "createdAt": "2023-09-06T04:05:16.276Z",
+                "updatedAt": "2023-09-06T04:05:16.276Z",
+                "events": []
+            },
+            {
+                "colosseumId": 6,
+                "colosseumName": "Hell's Gate",
+                "country": "America",
+                "city": "Wyoming",
+                "terrainType": "Volcanic",
+                "createdAt": "2023-09-06T04:07:34.198Z",
+                "updatedAt": "2023-09-06T04:07:34.198Z",
+                "events": []
+            },
+            {
+                "colosseumId": 7,
+                "colosseumName": "Beginner's Arena",
+                "country": "Ukraine",
+                "city": "Dzembronya",
+                "terrainType": "Grasslands",
+                "createdAt": "2023-09-06T04:18:37.819Z",
+                "updatedAt": "2023-09-06T04:18:37.819Z",
+                "events": []
+            },
+            {
+                "colosseumId": 8,
+                "colosseumName": "Elysium Stadium",
+                "country": "Madagascar",
+                "city": "Antsalova",
+                "terrainType": "Forest",
+                "createdAt": "2023-09-06T04:21:10.851Z",
+                "updatedAt": "2023-09-06T04:21:10.851Z",
+                "events": []
+            },
+            {
+                "colosseumId": 9,
+                "colosseumName": "Valhalla's Verge",
+                "country": "Scotland",
+                "city": "Edinburgh",
+                "terrainType": "Urban",
+                "createdAt": "2023-09-06T04:22:19.401Z",
+                "updatedAt": "2023-09-06T04:22:19.401Z",
+                "events": []
+            },
+            {
+                "colosseumId": 10,
+                "colosseumName": "Titan's Arena",
+                "country": "Greece",
+                "city": "Athens",
+                "terrainType": "Ruins",
+                "createdAt": "2023-09-06T04:23:24.946Z",
+                "updatedAt": "2023-09-06T04:23:24.946Z",
+                "events": []
+            },
+            {
+                "colosseumId": 11,
+                "colosseumName": "Seraphin",
+                "country": "Scotland",
+                "city": "St Andrews",
+                "terrainType": "Dreamscape",
+                "createdAt": "2023-09-06T04:24:27.691Z",
+                "updatedAt": "2023-09-06T04:24:27.691Z",
+                "events": []
+            },
+            {
+                "colosseumId": 12,
+                "colosseumName": "Arcane Amphitheater",
+                "country": "Australia",
+                "city": "Perth",
+                "terrainType": "Marine",
+                "createdAt": "2023-09-06T04:26:02.419Z",
+                "updatedAt": "2023-09-06T04:26:02.419Z",
+                "events": []
+            },
+            {
+                "colosseumId": 13,
+                "colosseumName": "Siren's Embrace",
+                "country": "America",
+                "city": "Mariana Islands",
+                "terrainType": "Marine",
+                createdAt: "2023-09-06T04:27:40.477Z",
+                updatedAt: "2023-09-06T04:27:40.477Z",
+                events: []
+            },
+            {
+                "colosseumId": 14,
+                "colosseumName": "AquaGladia",
+                "country": "Spain",
+                "city": "Atlantis",
+                "terrainType": "Marine",
+                "createdAt": "2023-09-06T04:29:06.128Z",
+                "updatedAt": "2023-09-06T04:29:06.128Z",
+                "events": []
+            }

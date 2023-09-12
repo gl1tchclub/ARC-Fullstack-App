@@ -10,7 +10,7 @@ datasource db {
 // TABLES
 model Colosseum {
   colosseumId   Int         @id @default(autoincrement())
-  colosseumName String      @unique
+  name          String      @unique
   country       String
   city          String
   terrainType   String
@@ -21,14 +21,14 @@ model Colosseum {
 
 model Event {
   eventId         Int         @id @default(autoincrement())
-  eventName       String  	  @unique
+  name            String  	  @unique
   location        String
   date            DateTime
   awards          Award[]
   teams           Team[]
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @default(now())
-  colosseum       Colosseum   @relation(fields: [location], references: [colosseumName], onDelete: Cascade)
+  colosseum       Colosseum   @relation(fields: [location], references: [name], onDelete: Cascade)
 }
 
 model Award {
@@ -49,12 +49,12 @@ model Team {
   country       String
   city          String          @unique
   numMembers    Int
-  events        Event?          @relation(fields: [eventName], references: [eventName], onDelete: Cascade)
+  events        Event?          @relation(fields: [eventName], references: [name], onDelete: Cascade)
 }
 
 model Participant {
   participantId   Int       @id @default(autoincrement())
-  alias           String    @unique
+  name            String    @unique
   memberOf        String? 
   animals         Animal[]
   numberOfAwards  Int

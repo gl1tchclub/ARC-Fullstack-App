@@ -44,9 +44,22 @@ const validatePostAnimal = (req, res, next) => {
     next()
 }
 
+const validatePostResource = (req, res, next) => {
+    const resourceSchema = Joi.object({
+        name: Joi.string().min(2).max(100).required().messages({
+            'string.base': 'Name should be a string',
+            'string.empty': 'Name cannot be empty',
+            'string.min': 'Name must have a minimum length of {#limit}',
+            'string.max': 'Name must have a maximum length of {#limit}',
+            'any.required': 'Name is required',
+        }),
+        
+    })
+}
+
 const validatePostParticipant = (req, res, next) => {
     const participantSchema = Joi.object({
-        //insert checks
+        alias: Joi.string().min(3).max(50).
     })
 
     const { error } = participantSchema.validate(req.body)
