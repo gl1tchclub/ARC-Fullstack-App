@@ -186,22 +186,6 @@ const validatePostColosseum = (req, res, next) => {
     next()
 }
 
-// const validatePostTeam = (req, res, next) => {
-//     const teamSchema = Joi.object({
-//         name: Joi.string().min(4).max(50).
-//     })
-
-//     const { error } = teamSchema.validate(req.body)
-
-//     if (error) {
-//         return res.status(400).json({
-//             msg: error.details[0].message,
-//         })
-//     }
-
-//     next()
-// }
-
 const validatePostTeam = (req, res, type, next) => {
     const teamSchema = Joi.object({
         name: Joi.string().min(2).max(100).required().messages({
@@ -225,7 +209,7 @@ const validatePostTeam = (req, res, type, next) => {
             'string.empty': 'Event Title cannot be empty',
             'string.min': 'Event Title must have a minimum length of {#limit}',
             'string.max': 'Event Title must have a maximum length of {#limit}',
-        })
+        }),
     })
     return async (req, res) => {
         try {
@@ -252,9 +236,10 @@ const validatePostTeam = (req, res, type, next) => {
 
 export {
     validatePostAnimal,
-    // validatePostParticipant,
+    //validatePostParticipant,
     validatePostTeam,
     validatePostColosseum,
     validatePostEvent,
-    validatePostAward
+    validatePostAward,
+    validatePostResource
 }

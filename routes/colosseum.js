@@ -15,7 +15,7 @@ const router = express.Router()
 router.post('/', validatePostColosseum, create('colosseum'))
 router.get('/', getColosseums)
 router.get('/:id', getID('colosseum'))
-router.put('/:id', update('colosseum'))
+router.put('/:id', validatePostColosseum, update('colosseum'))
 router.delete('/:id', deleteType('colosseum'))
 
 export default router

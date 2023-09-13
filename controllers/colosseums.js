@@ -3,7 +3,13 @@ const prisma = new PrismaClient()
 
 const getColosseums = async (req, res) => {
     try {
+        const sortBy = req.query.sortBy || "name";
+        const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+
         const query = {
+            orderBy: {
+                [sortBy]: sortOrder,
+            },
             include: {
                 events: true,
             },
@@ -25,8 +31,6 @@ const getColosseums = async (req, res) => {
                 },
             };
         }
-        console.log(query)
-
 
         //setting page number and page size from user for pagination
         const page = req.query.page ? parseInt(req.query.page) : null
@@ -40,6 +44,11 @@ const getColosseums = async (req, res) => {
             take: !pageSize ? 25 : pageSize, //if pageSize not defined, default is 25
             where: query,
         })
+
+        if (colosseums.length === 0) {
+            return res.status(200).json({ msg: "No colosseums found" })
+        }
+        
         return res.json({ data: colosseums })
     } catch (err) {
         return res.status(500).json({
