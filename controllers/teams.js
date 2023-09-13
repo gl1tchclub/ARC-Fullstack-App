@@ -15,16 +15,13 @@ const getTeams = async (req, res) => {
             },
         };
 
-        if (req.query.name || req.query.eventTitle || req.query.continent || req.query.country || req.query.city || req.query.numMembers) {
+        if (req.query.name || req.query.eventTitle || req.query.country || req.query.city || req.query.numMembers) {
             query.where = {
                 name: {
                     in: req.query.name || undefined,
                 },
                 eventTitle: {
                     in: req.query.eventTitle || undefined,
-                },
-                continent: {
-                    in: req.query.continent || undefined,
                 },
                 country: {
                     in: req.query.country || undefined,

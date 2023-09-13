@@ -21,7 +21,7 @@ model Colosseum {
 
 model Event {
   eventId         Int         @id @default(autoincrement())
-  name            String  	  @unique
+  eventTitle      String  	  @unique
   venue           String
   date            DateTime
   awards          Award[]
@@ -33,32 +33,31 @@ model Event {
 
 model Award {
   awardId     Int     @id @default(autoincrement())
-  name        String
+  awardTitle  String
   type        String   //i.e. cash, trophy, etc
   quantity    Int  //num times this can be given in an event i.e. honorary 3 times, gold twice, silver twice, etc...
-  eventId     Int
-  event       Event   @relation(fields: [eventId], references: [eventId], onDelete: Cascade)
+  eventTitle  String
+  event       Event   @relation(fields: [eventTitle], references: [eventTitle], onDelete: Cascade)
 }
 
 model Team {
   teamId        Int             @id @default(autoincrement())
-  name          String          @unique
+  teamName      String          @unique
   members       Participant[]
   eventTitle    String?
-  continent     String
   country       String
   city          String          @unique
   numMembers    Int
-  events        Event?          @relation(fields: [eventTitle], references: [name], onDelete: Cascade)
+  events        Event?          @relation(fields: [eventTitle], references: [eventTitle], onDelete: Cascade)
 }
 
 model Participant {
   participantId   Int       @id @default(autoincrement())
-  name            String    @unique
+  alias           String    @unique
   memberOf        String? 
   animals         Animal[]
   numberOfAwards  Int
-  team            Team?     @relation(fields: [memberOf], references: [name])
+  team            Team?     @relation(fields: [memberOf], references: [teamName])
 }
 
 model Animal {
@@ -68,7 +67,7 @@ model Animal {
   species   String
   rank      Rank
   ownerName String
-  owner     Participant     @relation(fields: [ownerName], references: [name], onDelete: Cascade) //cascade?
+  owner     Participant     @relation(fields: [ownerName], references: [alias], onDelete: Cascade) //cascade?
 }
 
 enum Rank {

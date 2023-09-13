@@ -55,12 +55,12 @@ const validatePostAnimal = (req, res, next) => {
 
 const validatePostParticipant = (req, res, next) => {
     const participantSchema = Joi.object({
-        name: Joi.string().min(2).max(50).required().messages({
-            'string.base': 'Event Name should be a string',
-            'string.empty': 'Event Name cannot be empty',
-            'string.min': 'Event Name should have a minimum length of {#limit}',
-            'string.max': 'Event Name should have a maximum length of {#limit}',
-            'any.required': 'Event Name is required',
+        alias: Joi.string().min(2).max(50).required().messages({
+            'string.base': 'Alias should be a string',
+            'string.empty': 'Alias cannot be empty',
+            'string.min': 'Alias should have a minimum length of {#limit}',
+            'string.max': 'Alias should have a maximum length of {#limit}',
+            'any.required': 'Alias is required',
         }),
         memberOf: Joi.string().min(2).max(100).required().messages({
             'string.base': 'MemberOf should be a string',
@@ -97,12 +97,12 @@ const validatePostParticipant = (req, res, next) => {
 
 const validatePostEvent = (req, res, next) => {
     const eventSchema = Joi.object({
-        name: Joi.string().min(5).max(50).required().messages({
-            'string.base': 'Event Name should be a string',
-            'string.empty': 'Event Name cannot be empty',
-            'string.min': 'Event Name should have a minimum length of {#limit}',
-            'string.max': 'Event Name should have a maximum length of {#limit}',
-            'any.required': 'Event Name is required',
+        eventTitle: Joi.string().min(5).max(100).required().messages({
+            'string.base': 'Event Title should be a string',
+            'string.empty': 'Event Title cannot be empty',
+            'string.min': 'Event Title should have a minimum length of {#limit}',
+            'string.max': 'Event Title should have a maximum length of {#limit}',
+            'any.required': 'Event Title is required',
         }),
         location: Joi.string().min(5).max(50).required().messages({
             'string.base': 'Location should be a string',
@@ -132,12 +132,12 @@ const validatePostEvent = (req, res, next) => {
 
 const validatePostAward = (req, res, next) => {
     const awardSchema = Joi.object({
-        name: Joi.string().min(4).max(20).required().messages({
-            'string.base': 'Award Name should be a string',
-            'string.empty': 'Award Name cannot be empty',
-            'string.min': 'Award Name should have a minimum length of {#limit}',
-            'string.max': 'Award Name should have a maximum length of {#limit}',
-            'any.required': 'Award Name is required',
+        awardTitle: Joi.string().min(4).max(20).required().messages({
+            'string.base': 'Award Title should be a string',
+            'string.empty': 'Award Title cannot be empty',
+            'string.min': 'Award Title should have a minimum length of {#limit}',
+            'string.max': 'Award Title should have a maximum length of {#limit}',
+            'any.required': 'Award Title is required',
         }),
         type: Joi.string().min(3).max(20).required().messages({
             'string.base': 'Type should be a string',
@@ -152,6 +152,13 @@ const validatePostAward = (req, res, next) => {
             'integer.min': 'Quantity should have a minimum length of {#limit}',
             'integer.max': 'Quantity should have a maximum length of {#limit}',
             'any.required': 'Quantity is required',
+        }),
+        eventName: Joi.string().min(5).max(100).required().messages({
+            'string.base': 'Event Title should be a string',
+            'string.empty': 'Event Title cannot be empty',
+            'string.min': 'Event Title should have a minimum length of {#limit}',
+            'string.max': 'Event Title should have a maximum length of {#limit}',
+            'any.required': 'Event Title is required',
         }),
     })
 
@@ -211,12 +218,12 @@ const validatePostColosseum = (req, res, next) => {
 
 const validatePostTeam = (req, res, type, next) => {
     const teamSchema = Joi.object({
-        name: Joi.string().min(2).max(100).required().messages({
-            'string.base': 'Name should be a string',
-            'string.empty': 'Name cannot be empty',
-            'string.min': 'Name must have a minimum length of {#limit}',
-            'string.max': 'Name must have a maximum length of {#limit}',
-            'any.required': 'Name is required'
+        teamName: Joi.string().min(2).max(100).required().messages({
+            'string.base': 'Team Name should be a string',
+            'string.empty': 'Team Name cannot be empty',
+            'string.min': 'Team Name must have a minimum length of {#limit}',
+            'string.max': 'Team Name must have a maximum length of {#limit}',
+            'any.required': 'Team Name is required'
         }),
         members: Joi.array.items(Joi.string().required(), Joi.string().required())
         .max(8)
@@ -232,6 +239,19 @@ const validatePostTeam = (req, res, type, next) => {
             'string.empty': 'Event Title cannot be empty',
             'string.min': 'Event Title must have a minimum length of {#limit}',
             'string.max': 'Event Title must have a maximum length of {#limit}',
+        }),
+        country: Joi.string().min(2).max(100).messages({
+            'string.base': 'Event Title should be a string',
+            'string.empty': 'Event Title cannot be empty',
+            'string.min': 'Event Title must have a minimum length of {#limit}',
+            'string.max': 'Event Title must have a maximum length of {#limit}',
+        }),
+        city: Joi.number().integer().min(1).max(10).required().messages({
+            'integer.base': 'Quantity must be a number',
+            'number.empty': 'Quantity cannot be empty',
+            'integer.min': 'Quantity should have a minimum length of {#limit}',
+            'integer.max': 'Quantity should have a maximum length of {#limit}',
+            'any.required': 'Quantity is required',
         }),
     })
     
@@ -249,7 +269,7 @@ const validatePostTeam = (req, res, type, next) => {
 
 export {
     validatePostAnimal,
-    //validatePostParticipant,
+    validatePostParticipant,
     validatePostTeam,
     validatePostColosseum,
     validatePostEvent,
