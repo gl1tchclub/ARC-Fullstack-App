@@ -12,11 +12,11 @@ import {
     deleteType,
 } from '../controllers/resources.js'
 
-import { validatePostParticipant } from '../middleware/validation.js'
+// import { validatePostParticipant } from '../middleware/validation.js'
 
 const router = express.Router()
 
-router.post('/', validatePostParticipant, create('participant'))
+router.post('/', create('participant'))
 router.get('/', getAll('participant'))
 router.get('/:id', getID('participant'))
 router.put('/:id', update('participant'))

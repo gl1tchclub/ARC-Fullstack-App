@@ -22,18 +22,18 @@ model Colosseum {
 model Event {
   eventId         Int         @id @default(autoincrement())
   name            String  	  @unique
-  location        String
+  venue           String
   date            DateTime
   awards          Award[]
   teams           Team[]
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @default(now())
-  colosseum       Colosseum   @relation(fields: [location], references: [name], onDelete: Cascade)
+  colosseum       Colosseum   @relation(fields: [venue], references: [name], onDelete: Cascade)
 }
 
 model Award {
   awardId     Int     @id @default(autoincrement())
-  awardName   String
+  name        String
   type        String   //i.e. cash, trophy, etc
   quantity    Int  //num times this can be given in an event i.e. honorary 3 times, gold twice, silver twice, etc...
   eventId     Int
@@ -44,12 +44,12 @@ model Team {
   teamId        Int             @id @default(autoincrement())
   name          String          @unique
   members       Participant[]
-  eventName     String?
+  eventTitle    String?
   continent     String
   country       String
   city          String          @unique
   numMembers    Int
-  events        Event?          @relation(fields: [eventName], references: [name], onDelete: Cascade)
+  events        Event?          @relation(fields: [eventTitle], references: [name], onDelete: Cascade)
 }
 
 model Participant {

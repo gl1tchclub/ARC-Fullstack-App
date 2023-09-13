@@ -4,10 +4,9 @@ const prisma = new PrismaClient();
 const main = async () => {
   try { 
     await prisma.colosseum.create({
-        data: {
+        data: [
             {
-                colosseumId: 1,
-                colosseumName: "Abyss of Agony",
+                name: "Abyss of Agony",
                 country: "Canada",
                 city: "Toronto",
                 terrainType: "Desert",
@@ -16,8 +15,7 @@ const main = async () => {
                 events: []
             },
             {
-                colosseumId: 2,
-                colosseumName: "Imperial Battlegrounds",
+                name: "Imperial Battlegrounds",
                 country: "England",
                 city: "London",
                 terrainType: "Grasslands",
@@ -25,7 +23,8 @@ const main = async () => {
                 updatedAt: "2023-09-06T03:59:11.115Z",
                 events: []
             }
-        }
+        ]
+
     });
 
     console.log("Database successfully seeded");
