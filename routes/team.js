@@ -2,24 +2,24 @@
  * @file Manages routes related to team operations
  * @author Elizabeth Minty
  */
-import express from 'express'
+import express from "express";
 
 import {
-    create,
-    getAll,
-    getID,
-    update,
-    deleteType,
-} from '../controllers/resources.js'
+  create,
+  getAll,
+  getID,
+  update,
+  deleteType,
+} from "../controllers/resources.js";
 
-import { validatePostTeam } from '../middleware/validation.js'
+import { validatePostTeam } from "../middleware/validation.js";
 
-const router = express.Router()
+const router = express.Router();
 
-router.post('/', validatePostTeam, create('team'))
-router.get('/', getAll('team'))
-router.get('/:id', getID('team'))
-router.put('/:id', update('team'))
-router.delete('/:id', deleteType('team'))
+router.post("/", validatePostTeam, create("team"));
+router.get("/", getAll("team"));
+router.get("/:id", getID("team"));
+router.put("/:id", validatePostTeam, update("team"));
+router.delete("/:id", deleteType("team"));
 
-export default router
+export default router;

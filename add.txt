@@ -11,6 +11,10 @@ npx prisma studio
 npx prisma db seed
 
 
+for readme, discuss use of this:
+npx prisma migrate reset --force
+npx prisma migrate dev
+
 
                 events: {
                     create: [

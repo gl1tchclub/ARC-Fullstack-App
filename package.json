@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx prisma generate && nodemon index.js",
-    "format": "npx prettier . --write",
-    "check": "npx prettier . --check",
+    "write": "npx prettier --write .",
+    "check": "npx prettier --check .",
     "mig": "npx prisma migrate dev",
     "reset": "npx prisma migrate reset",
     "studio": "npx prisma studio",
@@ -38,6 +38,7 @@
     "nodemon": "^3.0.1",
     "prettier": "^3.0.3",
     "prettier-plugin-prisma": "^5.0.0",
+    "pretty-quick": "^3.1.3",
     "prisma": "^4.16.2"
   }
 }

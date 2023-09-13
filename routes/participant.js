@@ -2,24 +2,24 @@
  * @file Manages routes related to participant operations
  * @author Elizabeth Minty
  */
-import express from 'express'
+import express from "express";
 
 import {
-    create,
-    getAll,
-    getID,
-    update,
-    deleteType,
-} from '../controllers/resources.js'
+  create,
+  getAll,
+  getID,
+  update,
+  deleteType,
+} from "../controllers/resources.js";
 
-// import { validatePostParticipant } from '../middleware/validation.js'
+import { validatePostParticipant } from "../middleware/validation.js";
 
-const router = express.Router()
+const router = express.Router();
 
-router.post('/', create('participant'))
-router.get('/', getAll('participant'))
-router.get('/:id', getID('participant'))
-router.put('/:id', update('participant'))
-router.delete('/:id', deleteType('participant'))
+router.post("/", validatePostParticipant, create("participant"));
+router.get("/", getAll("participant"));
+router.get("/:id", getID("participant"));
+router.put("/:id", validatePostParticipant, update("participant"));
+router.delete("/:id", deleteType("participant"));
 
-export default router
+export default router;
