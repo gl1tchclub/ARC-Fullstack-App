@@ -7,7 +7,7 @@ import Joi from 'joi'
 // ANIMAL
 const validatePostAnimal = (req, res, next) => {
     const animalSchema = Joi.object({
-        name: Joi.string().min(2).max(100).required().messages({
+        name: Joi.string().min(2).max(50).required().messages({
             'string.base': 'Name should be a string',
             'string.empty': 'Name cannot be empty',
             'string.min': 'Name must have a minimum length of {#limit}',
@@ -26,10 +26,19 @@ const validatePostAnimal = (req, res, next) => {
             'string.max': 'Species must have a maximum length of {#limit}',
             'any.required': 'Species is required',
         }),
-        rank: Joi.string().required().messages({
+        rank: Joi.string().min(4).max(9).required().messages({
             'string.base': 'Rank must be a string',
             'string.empty': 'Rank must not be empty',
+            'string.min': 'Species must have a minimum length of {#limit}',
+            'string.max': 'Species must have a maximum length of {#limit}',
             'any.required': 'Rank is required',
+        }),
+        ownerName: Joi.string().min(2).max(50).required().messages({
+            'string.base': 'Owner Name should be a string',
+            'string.empty': 'Owner Name cannot be empty',
+            'string.min': 'Owner Name must have a minimum length of {#limit}',
+            'string.max': 'Owner Name must have a maximum length of {#limit}',
+            'any.required': 'Owner Name is required',
         }),
     })
 
@@ -44,33 +53,47 @@ const validatePostAnimal = (req, res, next) => {
     next()
 }
 
-const validatePostResource = (req, res, next) => {
-    const resourceSchema = Joi.object({
-        name: Joi.string().min(2).max(100).required().messages({
-            'string.base': 'Name should be a string',
-            'string.empty': 'Name cannot be empty',
-            'string.min': 'Name must have a minimum length of {#limit}',
-            'string.max': 'Name must have a maximum length of {#limit}',
-            'any.required': 'Name is required',
-        })
+const validatePostParticipant = (req, res, next) => {
+    const participantSchema = Joi.object({
+        name: Joi.string().min(2).max(50).required().messages({
+            'string.base': 'Event Name should be a string',
+            'string.empty': 'Event Name cannot be empty',
+            'string.min': 'Event Name should have a minimum length of {#limit}',
+            'string.max': 'Event Name should have a maximum length of {#limit}',
+            'any.required': 'Event Name is required',
+        }),
+        memberOf: Joi.string().min(2).max(100).required().messages({
+            'string.base': 'MemberOf should be a string',
+            'string.empty': 'MemberOf cannot be empty',
+            'string.min': 'MemberOf must have a minimum length of {#limit}',
+            'string.max': 'MemberOf must have a maximum length of {#limit}',
+            'any.required': 'MemberOf is required'
+        }),
+        animals: Joi.array.items(Joi.string().required()).max(6).required().messages({
+            'string.base': 'Animals should be a string',
+            'string.empty': 'Animals cannot be empty',
+            'array.max': 'Animals must have a maximum length of {#limit}',
+            'array.items.required': 'At least one Animal is required'
+        }),
+        numberOfAwards: Joi.number().integer().min(0).required().messages({
+            'integer.base': 'Number of Awards must be a number',
+            'number.empty': 'Number of Awards cannot be empty',
+            'integer.min': 'Number of Awards should have a minimum length of {#limit}',
+            'integer.max': 'Number of Awards should have a maximum length of {#limit}',
+            'any.required': 'Number of Awards is required',
+        }),
     })
+
+    const { error } = participantSchema.validate(req.body)
+
+    if (error) {
+        return res.status(400).json({
+            msg: error.details[0].message,
+        })
+    }
+
+    next()
 }
-
-// const validatePostParticipant = (req, res, next) => {
-//     const participantSchema = Joi.object({
-//         alias: Joi.string().min(3).max(50).
-//     })
-
-//     const { error } = participantSchema.validate(req.body)
-
-//     if (error) {
-//         return res.status(400).json({
-//             msg: error.details[0].message,
-//         })
-//     }
-
-//     next()
-// }
 
 const validatePostEvent = (req, res, next) => {
     const eventSchema = Joi.object({
@@ -211,26 +234,16 @@ const validatePostTeam = (req, res, type, next) => {
             'string.max': 'Event Title must have a maximum length of {#limit}',
         }),
     })
-    return async (req, res) => {
-        try {
+    
+    const { error } = teamSchema.validate(req.body)
 
-
-            const { error, value } = resourceSchema.validate(data)
-
-            if (error) {
-                return res.status(400).json({
-                    msg: error.details[0].message,
-                })
-            }
-
-            next()
-
-        } catch (err) {
-            return res.status(500).json({
-                msg: err.message,
-            })
-        }
+    if (error) {
+        return res.status(400).json({
+            msg: error.details[0].message,
+        })
     }
+
+    next()
 }
 
 
@@ -240,6 +253,5 @@ export {
     validatePostTeam,
     validatePostColosseum,
     validatePostEvent,
-    validatePostAward,
-    validatePostResource
+    validatePostAward
 }

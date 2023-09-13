@@ -67,8 +67,8 @@ model Animal {
   taxonomy  Taxonomy
   species   String
   rank      Rank
-  ownerId   Int
-  owner     Participant     @relation(fields: [ownerId], references: [participantId], onDelete: Cascade) //cascade?
+  ownerName String
+  owner     Participant     @relation(fields: [ownerName], references: [name], onDelete: Cascade) //cascade?
 }
 
 enum Rank {
