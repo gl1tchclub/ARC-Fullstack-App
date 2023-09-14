@@ -30,7 +30,9 @@ npx prisma migrate dev
           terrainType: "Desert",
           createdAt: "2023-09-06T03:58:37.072Z",
           updatedAt: "2023-09-06T03:58:37.072Z",
-          events: [],
+          events: {
+	
+},
         },
         {
           name: "Imperial Battlegrounds",
