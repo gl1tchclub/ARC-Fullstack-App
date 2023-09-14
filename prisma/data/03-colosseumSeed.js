@@ -1,8 +1,10 @@
 const name = "colosseum"
 const data = [
     {
-        alias: "Joe Dane 5",
-        numberOfAwards: 2
+        name: "Abyss of Agony",
+        country: "Canada",
+        city: "Toronto",
+        terrainType: "Desert",
     }
 ]
 

@@ -8,7 +8,7 @@
     "dev": "npx prisma generate && nodemon index.js",
     "write": "npx prettier --write .",
     "check": "npx prettier --check .",
-    "mig": "npx prisma migrate dev",
+    "migrate": "npx prisma migrate dev",
     "reset": "npx prisma migrate reset --force",
     "studio": "npx prisma studio",
     "seed": "npx prisma db seed"

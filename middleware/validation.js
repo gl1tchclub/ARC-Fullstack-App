@@ -74,12 +74,11 @@ const validatePostParticipant = (req, res, next) => {
       "array.max": "Animals must have a maximum length of {#limit}",
       "array.items.required": "At least one Animal is required",
     }),
-    numberOfAwards: Joi.number().integer().min(0).required().messages({
-      "integer.base": "Number of Awards must be a number",
-      "number.empty": "Number of Awards cannot be empty",
-      "integer.min": "Number of Awards should have a minimum length of {#limit}",
-      "integer.max": "Number of Awards should have a maximum length of {#limit}",
-      "any.required": "Number of Awards is required",
+    age: Joi.number().integer().min(15).required().messages({
+      "integer.base": "Age must be a number",
+      "number.empty": "Age cannot be empty",
+      "integer.min": "Age must be minimum {#limit}",
+      "any.required": "Age is required",
     }),
   });
 

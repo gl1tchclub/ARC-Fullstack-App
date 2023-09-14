@@ -54,9 +54,9 @@ model Team {
 model Participant {
   participantId   Int       @id @default(autoincrement())
   alias           String    @unique
+  age             Int
   memberOf        String? 
   animals         Animal[]
-  numberOfAwards  Int
   team            Team?     @relation(fields: [memberOf], references: [teamName])
 }
 
