@@ -100,13 +100,13 @@ Both of these options will perform the same task.
 
 Once entered, the program will then ask the user to enter a name for the migration. Entering one is up to the user, however it is recommended to press enter instead.
 Sometimes, an error such as "cannot create a shadowbase" or "server disconnected" will show up. Just run the command again and it should work.
-DO NOT edit the schema or any code while migrating.
+> :warning: **Warning:** DO NOT edit the schema or any code while migrating.
 
 
 ## Resetting the DB
 
 It is important to reset the database before migrating as the new version of the database may conflict with any existing data.
-In order to ensure that your data is not entirely lost, add the dataset to the relevant seed file.  This will be added into the database after it has reset.
+In order to ensure that your data is not entirely lost, add the dataset to the relevant seed file. This will be added into the database after it has reset.
 
 If you do not wish to seed data after the reset (i.e. you require a 100% full reset), remove the following from the package.json file:
 ```json
