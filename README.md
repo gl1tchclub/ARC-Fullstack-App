@@ -9,21 +9,21 @@ To read further on usage and documentation of this API:
 
 ### Table Of Contents
 
-[Postman Documentation](https://github.com/otago-polytechnic-bit-courses/s2-23-project-mintep1-student#postman-documentation)
+> [Postman Documentation](https://github.com/otago-polytechnic-bit-courses/s2-23-project-mintep1-student#postman-documentation)
 
-[Entity Relationship Diagram](https://github.com/otago-polytechnic-bit-courses/s2-23-project-mintep1-student#entity-relationship-diagram)
+> [Entity Relationship Diagram](https://github.com/otago-polytechnic-bit-courses/s2-23-project-mintep1-student#entity-relationship-diagram)
 
-[Environment Setup](https://github.com/otago-polytechnic-bit-courses/s2-23-project-mintep1-student#environment-setup)
+> [Environment Setup](https://github.com/otago-polytechnic-bit-courses/s2-23-project-mintep1-student#environment-setup)
 
-[Running the API Locally](https://github.com/otago-polytechnic-bit-courses/s2-23-project-mintep1-student#running-the-rest-api-locally)
+> [Running the API Locally](https://github.com/otago-polytechnic-bit-courses/s2-23-project-mintep1-student#running-the-rest-api-locally)
 
-[Migrating the DB](https://github.com/otago-polytechnic-bit-courses/s2-23-project-mintep1-student#migration)
+> [Migrating the DB](https://github.com/otago-polytechnic-bit-courses/s2-23-project-mintep1-student#migration)
 
-[Resetting the DB](https://github.com/otago-polytechnic-bit-courses/s2-23-project-mintep1-student#resetting-the-db)
+> [Resetting the DB](https://github.com/otago-polytechnic-bit-courses/s2-23-project-mintep1-student#resetting-the-db)
 
-[Running Prisma Studio](https://github.com/otago-polytechnic-bit-courses/s2-23-project-mintep1-student#prisma-studio)
+> [Running Prisma Studio](https://github.com/otago-polytechnic-bit-courses/s2-23-project-mintep1-student#prisma-studio)
 
-[Code Formatting](https://github.com/otago-polytechnic-bit-courses/s2-23-project-mintep1-student#code-formatting-process)
+> [Code Formatting](https://github.com/otago-polytechnic-bit-courses/s2-23-project-mintep1-student#code-formatting-process)
 
 ## Postman Documentation
 – A URL to your published REST API documentation.
