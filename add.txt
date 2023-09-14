@@ -23,6 +23,25 @@ npx prisma migrate dev
                         }
                     ]
                 }
+{
+          name: "Abyss of Agony",
+          country: "Canada",
+          city: "Toronto",
+          terrainType: "Desert",
+          createdAt: "2023-09-06T03:58:37.072Z",
+          updatedAt: "2023-09-06T03:58:37.072Z",
+          events: [],
+        },
+        {
+          name: "Imperial Battlegrounds",
+          country: "England",
+          city: "London",
+          terrainType: "Grasslands",
+          createdAt: "2023-09-06T03:59:11.115Z",
+          updatedAt: "2023-09-06T03:59:11.115Z",
+          events: [eventData],
+        },
+      ],
 
             {
                 "colosseumId": 3,

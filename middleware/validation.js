@@ -62,14 +62,13 @@ const validatePostParticipant = (req, res, next) => {
       "string.max": "Alias should have a maximum length of {#limit}",
       "any.required": "Alias is required",
     }),
-    memberOf: Joi.string().min(2).max(100).required().messages({
+    memberOf: Joi.string().min(2).max(100).messages({
       "string.base": "MemberOf should be a string",
       "string.empty": "MemberOf cannot be empty",
       "string.min": "MemberOf must have a minimum length of {#limit}",
       "string.max": "MemberOf must have a maximum length of {#limit}",
-      "any.required": "MemberOf is required",
     }),
-    animals: Joi.array.items(Joi.string().required()).max(6).required().messages({
+    animals: Joi.array().items(Joi.string().required()).max(6).messages({
       "string.base": "Animals should be a string",
       "string.empty": "Animals cannot be empty",
       "array.max": "Animals must have a maximum length of {#limit}",

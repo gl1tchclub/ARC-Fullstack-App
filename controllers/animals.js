@@ -6,6 +6,10 @@ const getAnimals = async (req, res) => {
     const sortBy = req.query.sortBy || "name";
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
 
+    //setting page number and page size from user for pagination
+    const page = req.query.page ? parseInt(req.query.page) : null
+    const pageSize = req.query.pageSize ? parseInt(req.query.pageSize) : null
+
     const query = {
       orderBy: {
         [sortBy]: sortOrder,
@@ -13,7 +17,9 @@ const getAnimals = async (req, res) => {
       include: {
         owner: true,
       },
-    };
+      skip: pageSize * (page - 1),
+      take: !pageSize ? 25 : pageSize, //if pageSize not defined, default is 25
+    }
 
     if (
       req.query.name ||
@@ -41,19 +47,11 @@ const getAnimals = async (req, res) => {
       };
     }
 
-    //setting page number and page size from user for pagination
-    const page = req.query.page ? parseInt(req.query.page) : null;
-    const pageSize = req.query.pageSize ? parseInt(req.query.pageSize) : null;
-
     //display requested data according to the filter and pagesize
-    const animals = await prisma.animal.findMany({
-      skip: pageSize * (page - 1),
-      take: !pageSize ? 25 : pageSize, //if pageSize not defined, default is 25
-      where: query,
-    });
+    const animals = await prisma.animal.findMany(query)
 
     if (animals.length === 0) {
-      return res.status(200).json({ msg: "No animals found" });
+      return res.status(200).json({ msg: "No animals found" })
     }
 
     return res.json({ data: animals });

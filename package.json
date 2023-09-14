@@ -9,9 +9,12 @@
     "write": "npx prettier --write .",
     "check": "npx prettier --check .",
     "mig": "npx prisma migrate dev",
-    "reset": "npx prisma migrate reset",
+    "reset": "npx prisma migrate reset --force",
     "studio": "npx prisma studio",
     "seed": "npx prisma db seed"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
   },
   "engines": {
     "node": ">=16.13"

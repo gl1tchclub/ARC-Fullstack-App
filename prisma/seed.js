@@ -1,30 +1,22 @@
 import { PrismaClient } from "@prisma/client";
+
+const seeds = [
+  "./data/01-participantSeed.js",
+  "./data/02-animalSeed.js"
+]
 const prisma = new PrismaClient();
 
 const main = async () => {
   try {
-    await prisma.colosseum.create({
-      data: [
-        {
-          name: "Abyss of Agony",
-          country: "Canada",
-          city: "Toronto",
-          terrainType: "Desert",
-          createdAt: "2023-09-06T03:58:37.072Z",
-          updatedAt: "2023-09-06T03:58:37.072Z",
-          events: [],
-        },
-        {
-          name: "Imperial Battlegrounds",
-          country: "England",
-          city: "London",
-          terrainType: "Grasslands",
-          createdAt: "2023-09-06T03:59:11.115Z",
-          updatedAt: "2023-09-06T03:59:11.115Z",
-          events: [],
-        },
-      ],
-    });
+
+    for(let i =0; i< seeds.length;i++)
+    {
+      let { name,data } = await import(seeds[i]);
+      console.log(name);
+      await prisma[name].createMany({
+        data: data
+      });
+    }
 
     console.log("Database successfully seeded");
 
