@@ -29,12 +29,36 @@ To read further on usage and documentation of this API:
 
 ## Entity Relationship Diagram
 
-– An Entity Relationship Diagram (ERD) of your database.
+I have installed a Prisma ERD generator (link to the public GitHub for this code [Here](https://github.com/keonik/prisma-erd-generator) as a dev dependency in order to generate a perfect ERD for the schema.
+This can be generated any number of times.
 
-//ss and desc here
+![erd](https://github.com/otago-polytechnic-bit-courses/s2-23-project-mintep1-student/assets/132317396/2f667232-faa9-4589-9c9a-06c92f614e05)
+
+
+To generate a new ERD, run the following script:
+```bash
+npm run erd
+```
+This will generate an ERD.svg file in the prisma folder. To view the ERD in image format, open the ERD.svg file in your local file management system and open with a browser of your choice.
+
+However, if this doesn't work, you may need to install the generator again.
+
+You can install the Prisma ERD generator using the following command:
+```bash
+npm i -D prisma-erd-generator @mermaid-js/mermaid-cli
+```
+Once installed, you need to add the following code to the schema.prisma file:
+```prisma
+generator erd {
+  provider = "prisma-erd-generator"  
+}
+```
+Once saved, run the generator script again.
+If further issues are occurring here, there may be some conflicts with the use of mermaid.js. Consult the [issues tab of the erd extension GitHub here](https://github.com/keonik/prisma-erd-generator#issues)
+
 
 ## Environment Setup
-After cloning the repository, open the repo in an IDE (VSCode is recommended here).
+After cloning the repository, open the repo in an IDE ([VSCode](https://code.visualstudio.com/download) is recommended here).
 
 In a terminal, run the following commands
 ```bash
