@@ -2,20 +2,20 @@
  * @file Manages routes related to colosseum operations
  * @author Elizabeth Minty
  */
-import express from "express";
+import express from "express"
 
-import { create, getID, update, deleteType } from "../controllers/resources.js";
+import { create, getID, update, deleteType } from "../controllers/resources.js"
 
-import { getColosseums } from "../controllers/colosseums.js";
+import { getColosseums } from "../controllers/colosseums.js"
 
-import { validatePostColosseum } from "../middleware/validation.js";
+import { validatePostColosseum } from "../middleware/validation.js"
 
-const router = express.Router();
+const router = express.Router()
 
-router.post("/", validatePostColosseum, create("colosseum"));
-router.get("/", getColosseums);
-router.get("/:id", getID("colosseum"));
-router.put("/:id", validatePostColosseum, update("colosseum"));
-router.delete("/:id", deleteType("colosseum"));
+router.post("/", validatePostColosseum, create("colosseum"))
+router.get("/", getColosseums)
+router.get("/:id", getID("colosseum"))
+router.put("/:id", validatePostColosseum, update("colosseum"))
+router.delete("/:id", deleteType("colosseum"))
 
-export default router;
+export default router

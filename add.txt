@@ -7,6 +7,9 @@ npm install express-rate-limit
 npm run dev
 
 
+maybe run this (its a dev dependency):
+npm i -D prisma-erd-generator @mermaid-js/mermaid-cli
+
 npx prisma studio
 npx prisma db seed
 

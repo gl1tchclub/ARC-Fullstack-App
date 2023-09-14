@@ -11,9 +11,9 @@ const get = (req, res) => {
     "http://localhost:3000/api/animals",
     "http://localhost:3000/api/teams",
     "http://localhost:3000/api/awards",
-  ];
-  res.send(x);
-};
+  ]
+  res.send(x)
+}
 
 // Export the get function
-export { get };
+export { get }

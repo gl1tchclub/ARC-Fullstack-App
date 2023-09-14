@@ -2,7 +2,7 @@
  * @file validation functions for various data entities
  * @author Elizabeth Minty
  */
-import Joi from "joi";
+import Joi from "joi"
 
 // ANIMAL
 const validatePostAnimal = (req, res, next) => {
@@ -40,18 +40,18 @@ const validatePostAnimal = (req, res, next) => {
       "string.max": "Owner Name must have a maximum length of {#limit}",
       "any.required": "Owner Name is required",
     }),
-  });
+  })
 
-  const { error } = animalSchema.validate(req.body);
+  const { error } = animalSchema.validate(req.body)
 
   if (error) {
     return res.status(400).json({
       msg: error.details[0].message,
-    });
+    })
   }
 
-  next();
-};
+  next()
+}
 
 const validatePostParticipant = (req, res, next) => {
   const participantSchema = Joi.object({
@@ -80,18 +80,18 @@ const validatePostParticipant = (req, res, next) => {
       "integer.min": "Age must be minimum {#limit}",
       "any.required": "Age is required",
     }),
-  });
+  })
 
-  const { error } = participantSchema.validate(req.body);
+  const { error } = participantSchema.validate(req.body)
 
   if (error) {
     return res.status(400).json({
       msg: error.details[0].message,
-    });
+    })
   }
 
-  next();
-};
+  next()
+}
 
 const validatePostEvent = (req, res, next) => {
   const eventSchema = Joi.object({
@@ -136,18 +136,18 @@ const validatePostEvent = (req, res, next) => {
         "array.max": "Members must have a maximum length of {#limit}",
         "array.items.required": "At least two Members are required",
       }),
-  });
+  })
 
-  const { error } = eventSchema.validate(req.body);
+  const { error } = eventSchema.validate(req.body)
 
   if (error) {
     return res.status(400).json({
       msg: error.details[0].message,
-    });
+    })
   }
 
-  next();
-};
+  next()
+}
 
 const validatePostAward = (req, res, next) => {
   const awardSchema = Joi.object({
@@ -179,18 +179,18 @@ const validatePostAward = (req, res, next) => {
       "string.max": "Event Title should have a maximum length of {#limit}",
       "any.required": "Event Title is required",
     }),
-  });
+  })
 
-  const { error } = awardSchema.validate(req.body);
+  const { error } = awardSchema.validate(req.body)
 
   if (error) {
     return res.status(400).json({
       msg: error.details[0].message,
-    });
+    })
   }
 
-  next();
-};
+  next()
+}
 
 const validatePostColosseum = (req, res, next) => {
   const colosseumSchema = Joi.object({
@@ -227,18 +227,18 @@ const validatePostColosseum = (req, res, next) => {
       "string.empty": "Event cannot be empty",
       "array.max": "Events must have a maximum length of {#limit}",
     }),
-  });
+  })
 
-  const { error } = colosseumSchema.validate(req.body);
+  const { error } = colosseumSchema.validate(req.body)
 
   if (error) {
     return res.status(400).json({
       msg: error.details[0].message,
-    });
+    })
   }
 
-  next();
-};
+  next()
+}
 
 const validatePostTeam = (req, res, type, next) => {
   const teamSchema = Joi.object({
@@ -286,18 +286,18 @@ const validatePostTeam = (req, res, type, next) => {
       "integer.max": "Number of Members should have a maximum length of {#limit}",
       "any.required": "Number of Members is required",
     }),
-  });
+  })
 
-  const { error } = teamSchema.validate(req.body);
+  const { error } = teamSchema.validate(req.body)
 
   if (error) {
     return res.status(400).json({
       msg: error.details[0].message,
-    });
+    })
   }
 
-  next();
-};
+  next()
+}
 
 export {
   validatePostAnimal,
@@ -306,4 +306,4 @@ export {
   validatePostColosseum,
   validatePostEvent,
   validatePostAward,
-};
+}

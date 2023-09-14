@@ -1,10 +1,10 @@
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import { PrismaClient } from "@prisma/client"
+const prisma = new PrismaClient()
 
 const getTeams = async (req, res) => {
   try {
-    const sortBy = req.query.sortBy || "name";
-    const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+    const sortBy = req.query.sortBy || "name"
+    const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc"
 
     const query = {
       orderBy: {
@@ -13,7 +13,7 @@ const getTeams = async (req, res) => {
       include: {
         members: true,
       },
-    };
+    }
 
     if (
       req.query.name ||
@@ -38,30 +38,30 @@ const getTeams = async (req, res) => {
         numMembers: {
           in: req.query.numMembers || undefined,
         },
-      };
+      }
     }
 
     //setting page number and page size from user for pagination
-    const page = req.query.page ? parseInt(req.query.page) : null;
-    const pageSize = req.query.pageSize ? parseInt(req.query.pageSize) : null;
+    const page = req.query.page ? parseInt(req.query.page) : null
+    const pageSize = req.query.pageSize ? parseInt(req.query.pageSize) : null
 
     //display requested data according to the filter and pagesize
     const teams = await prisma.team.findMany({
       skip: pageSize * (page - 1),
       take: !pageSize ? 25 : pageSize, //if pageSize not defined, default is 25
       where: query,
-    });
+    })
 
     if (teams.length === 0) {
-      return res.status(200).json({ msg: "No teams found" });
+      return res.status(200).json({ msg: "No teams found" })
     }
 
-    return res.json({ data: teams });
+    return res.json({ data: teams })
   } catch (err) {
     return res.status(500).json({
       msg: err.message,
-    });
+    })
   }
-};
+}
 
-export { getTeams };
+export { getTeams }

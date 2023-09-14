@@ -11,7 +11,8 @@
     "migrate": "npx prisma migrate dev",
     "reset": "npx prisma migrate reset --force",
     "studio": "npx prisma studio",
-    "seed": "npx prisma db seed"
+    "seed": "npx prisma db seed",
+    "erd": "npx prisma generate"
   },
   "prisma": {
     "seed": "node prisma/seed.js"
@@ -38,10 +39,12 @@
     "joi": "^17.10.1"
   },
   "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^10.4.0",
     "nodemon": "^3.0.1",
     "prettier": "^3.0.3",
     "prettier-plugin-prisma": "^5.0.0",
     "pretty-quick": "^3.1.3",
-    "prisma": "^4.16.2"
+    "prisma": "^4.16.2",
+    "prisma-erd-generator": "^1.11.1"
   }
 }

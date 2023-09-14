@@ -1,10 +1,10 @@
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import { PrismaClient } from "@prisma/client"
+const prisma = new PrismaClient()
 
 const getAnimals = async (req, res) => {
   try {
-    const sortBy = req.query.sortBy || "name";
-    const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+    const sortBy = req.query.sortBy || "name"
+    const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc"
 
     //setting page number and page size from user for pagination
     const page = req.query.page ? parseInt(req.query.page) : null
@@ -44,7 +44,7 @@ const getAnimals = async (req, res) => {
         ownerId: {
           in: req.query.ownerId || undefined,
         },
-      };
+      }
     }
 
     //display requested data according to the filter and pagesize
@@ -54,12 +54,12 @@ const getAnimals = async (req, res) => {
       return res.status(200).json({ msg: "No animals found" })
     }
 
-    return res.json({ data: animals });
+    return res.json({ data: animals })
   } catch (err) {
     return res.status(500).json({
       msg: err.message,
-    });
+    })
   }
-};
+}
 
-export { getAnimals };
+export { getAnimals }
