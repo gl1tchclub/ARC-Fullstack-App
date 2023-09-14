@@ -70,7 +70,6 @@ npm install @prisma/client@4.16.2
 npm install prisma@4.16.2 --save-dev
 npm install joi
 npm install express-rate-limit
-npm
 ```
 These commands will install the necessary extensions and applications for running the API.
 If you are working in VSCode or an IDE that has this function, ensure autosave is on while working.
@@ -79,7 +78,6 @@ Additionally, it is also recommended to install the prisma extension found on VS
 ## Running the REST API locally
 
 In the terminal, run the following command to run the API
-
 ```bash
 npm run dev
 ```
