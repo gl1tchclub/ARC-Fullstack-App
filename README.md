@@ -1,4 +1,7 @@
 # Underground Animal 'Sports' Championship - ARC API
+Welcome to the README for the official ARC (Animal Radiance Championship) REST API
+
+<img src="https://github.com/otago-polytechnic-bit-courses/s2-23-project-mintep1-student/assets/132317396/26162f31-f91d-43d2-98db-d41da3d975b9" width="200" height="200">
 
 To run the ARC REST API as a web service on Render: https://id607001-mintep1-project.onrender.com/
 
