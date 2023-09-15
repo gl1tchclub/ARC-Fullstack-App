@@ -81,7 +81,7 @@ In the terminal, run the following command to run the API
 ```bash
 npm run dev
 ```
-And paste this link in your browser of choice: **localhost:3000/api/**
+And paste this link in your browser of choice: **localhost:3000/**
 
 ## Migration
 
