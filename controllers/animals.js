@@ -6,10 +6,6 @@ const getAnimals = async (req, res) => {
     const sortBy = req.query.sortBy || "name"
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc"
 
-    //setting page number and page size from user for pagination
-    const page = req.query.page ? parseInt(req.query.page) : null
-    const pageSize = req.query.pageSize ? parseInt(req.query.pageSize) : null
-
     const query = {
       orderBy: {
         [sortBy]: sortOrder,

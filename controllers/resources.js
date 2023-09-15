@@ -26,23 +26,55 @@ const create = (type) => {
   }
 }
 
-const getAll = (type) => {
-  return async (req, res) => {
+// Get All objects that match any given filters, sorted according to the user
+const getAll = async (req, res, type, include) => {
     try {
-      const types = await prisma[type].findMany()
+      const typeModel = await prisma[type].findMany()
 
-      if (types.length === 0) {
+      //checks if the given model exists
+      if (!typeModel) {
+        return res.status(404).json({ msg: `Route for ${typeModel} does not exist`})
+      }
+      
+      //change orderBy and this const somehow -- use what already have?
+      const { filters, orderBy } = req.query
+      const match = {}
+
+      if (filters) {
+        const filterType = json.parse(filters)
+
+        for (const key in filterType) {
+          if (filterType.hasOwnProperty(key)) {
+            match[key] = filterType[key]
+          }
+        }
+      }
+
+      //
+      const sortBy = req.query.sortBy || "name"
+      const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc"
+      const query = {
+        orderBy: {
+          [sortBy]: sortOrder,
+        }, 
+        include: include,
+        skip: pageSize * (page - 1),
+        take: !pageSize ? 25 : pageSize, //if pageSize not defined, default is 25
+      }
+      const objects = await typeModel.findMany(query)
+
+      //may not need this anymore
+      if (typeModel.length === 0) {
         return res.status(404).json({ msg: `No ${type} found` })
       }
 
-      return res.json({ data: types })
+      return res.json({ data: objects })
     } catch (err) {
       return res.status(500).json({
         msg: err.message,
       })
     }
   }
-}
 
 const getID = (type) => {
   return async (req, res) => {
