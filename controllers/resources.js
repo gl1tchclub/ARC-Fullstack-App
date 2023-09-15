@@ -41,7 +41,7 @@ const getAll = async (req, res, type, include) => {
       }
       
       //Extract query parameters like filters and orderBy.
-      const { filters, orderBy } = req.query
+      const filters = req.query
       const match = {}
 
       //If filters exist, parse and apply them to the 'match' object.

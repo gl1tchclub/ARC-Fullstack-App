@@ -4,18 +4,18 @@
  */
 import express from "express"
 
-import { create, getID, update, deleteType } from "../controllers/resources.js"
+// import { create, getID, update, deleteType } from "../controllers/resources.js"
 
-import { getAnimals } from "../controllers/animals.js"
+import * as animalControls from "../controllers/animals.js"
 
 import { validatePostAnimal } from "../middleware/validation.js"
 
 const router = express.Router()
 
-router.post("/", validatePostAnimal, create("animal"))
-router.get("/", getAnimals)
-router.get("/:id", getID("animal"))
-router.put("/:id", validatePostAnimal, update("animal"))
-router.delete("/:id", deleteType("animal"))
+router.post("/", validatePostAnimal, animalControls.createAnimals)
+router.get("/", animalControls.getAllAnimals)
+router.get("/:id", animalControls.getAnimalID)
+router.put("/:id", validatePostAnimal, animalControls.updateAnimal)
+router.delete("/:id", animalControls.deleteAnimal)
 
 export default router
