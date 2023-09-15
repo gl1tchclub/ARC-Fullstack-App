@@ -3,7 +3,6 @@
  * @author Elizabeth Minty
  */
 import express from "express"
-//import * as animalControls from "../controllers/animals.js"
 import * as resources from "../controllers/resources.js"
 import { validatePostAnimal } from "../middleware/validation.js"
 

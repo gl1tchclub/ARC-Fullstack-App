@@ -3,7 +3,6 @@
  * @author Elizabeth Minty
  */
 import express from "express"
-import * as participantControls from "../controllers/participants.js"
 import * as resources from "../controllers/resources.js"
 import { validatePostParticipant } from "../middleware/validation.js"
 
