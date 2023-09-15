@@ -117,16 +117,12 @@ const validatePostEvent = (req, res, next) => {
       "date.greater": "Date must be greater than {#limit}",
       "any.required": "Date is required",
     }),
-    awards: Joi.array()
-      .items(Joi.string().required())
-      .min(1)
-      .max(10)
-      .messages({
-        "string.base": "Members should be a string",
-        "string.empty": "Members cannot be empty",
-        "array.max": "Members must have a maximum length of {#limit}",
-        "array.items.required": "At least two Members are required",
-      }),
+    awards: Joi.array().items(Joi.string().required()).min(1).max(10).messages({
+      "string.base": "Members should be a string",
+      "string.empty": "Members cannot be empty",
+      "array.max": "Members must have a maximum length of {#limit}",
+      "array.items.required": "At least two Members are required",
+    }),
     teams: Joi.array()
       .items(Joi.string().required(), Joi.string().required())
       .max(8)
