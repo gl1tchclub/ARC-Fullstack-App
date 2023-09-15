@@ -26,9 +26,7 @@ To read further on usage and documentation of this API:
 > [Code Formatting](https://github.com/otago-polytechnic-bit-courses/s2-23-project-mintep1-student#code-formatting-process)
 
 ## Postman Documentation
-– A URL to your published REST API documentation.
-
-//link here
+Click [here](https://documenter.getpostman.com/view/28760893/2s9YC5yYQ1) to view the full documentation on Postman!
 
 ## Entity Relationship Diagram
 
@@ -37,14 +35,15 @@ This can be generated any number of times.
 
 ![erd](https://github.com/otago-polytechnic-bit-courses/s2-23-project-mintep1-student/assets/132317396/2f667232-faa9-4589-9c9a-06c92f614e05)
 
-
+To generate a new ERD, paste the following into the schema.prisma file:
+```prisma
 generator erd {
   provider = "prisma-erd-generator"  
   includeRelationFromFields = true
   disabled = true
 }
-
-To generate a new ERD, run the following script:
+```
+Then, run the following script:
 ```bash
 npm run erd
 ```
@@ -56,13 +55,8 @@ You can install the Prisma ERD generator using the following command:
 ```bash
 npm i -D prisma-erd-generator @mermaid-js/mermaid-cli
 ```
-Once installed, you need to add the following code to the schema.prisma file:
-```prisma
-generator erd {
-  provider = "prisma-erd-generator"  
-}
-```
-Once saved, run the generator script again.
+Once installed, run the same script again.
+
 If further issues are occurring here, there may be some conflicts with the use of mermaid.js. Consult the [issues tab of the erd extension GitHub here](https://github.com/keonik/prisma-erd-generator#issues)
 
 
@@ -81,7 +75,26 @@ These commands will install the necessary extensions and applications for runnin
 If you are working in VSCode or an IDE that has this function, ensure autosave is on while working.
 Additionally, it is also recommended to install the prisma extension found on VSCode for readability.
 
+Next, create a .env file, copy the code in the .env.example file and paste it in the .env file. Then, paste in the link to the database inside the double quotes. 
+> :bulb: **Tip** Ensure you have autosave on.
+
+Then, run the following script:
+```bash
+npm run db-reset
+npm run migrate
+```
+OR the following command:
+```bash
+npx prisma db reset
+npx prisma migrate dev
+```
+Do not enter a name for the migration unless you want to. Just press enter.
+
+If any errors pop up such as something along the lines of "cannot create a shadowbase" or "server connection error" then simply run the script again.
+
 ## Running the REST API locally
+
+Firstly, 
 
 In the terminal, run the following command to run the API
 ```bash
@@ -110,15 +123,18 @@ Sometimes, an error such as "cannot create a shadowbase" or "server disconnected
 ## Resetting the DB
 
 It is important to reset the database before migrating as the new version of the database may conflict with any existing data.
-In order to ensure that your data is not entirely lost, add the dataset to the relevant seed file. This will be added into the database after it has reset.
 
-If you do not wish to seed data after the reset (i.e. you require a 100% full reset), remove the following from the package.json file:
-```json
-"prisma": {
-  "seed": "node prisma/seed.js"
-}
+
+To entirely reset the database, run the following script:
+```bash
+npm run db-reset
 ```
-Now, to reset the database, run the following script in the terminal:
+OR the following command:
+```bash
+npx prisma db reset
+```
+
+To reset any saved data, run the following script in the terminal:
 ```bash
 npm run reset
 ```
