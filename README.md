@@ -37,14 +37,15 @@ This can be generated any number of times.
 
 ![erd](https://github.com/otago-polytechnic-bit-courses/s2-23-project-mintep1-student/assets/132317396/2f667232-faa9-4589-9c9a-06c92f614e05)
 
-
+To generate a new ERD, paste the following into the schema.prisma file:
+```prisma
 generator erd {
   provider = "prisma-erd-generator"  
   includeRelationFromFields = true
   disabled = true
 }
-
-To generate a new ERD, run the following script:
+```
+Then, run the following script:
 ```bash
 npm run erd
 ```
@@ -56,13 +57,8 @@ You can install the Prisma ERD generator using the following command:
 ```bash
 npm i -D prisma-erd-generator @mermaid-js/mermaid-cli
 ```
-Once installed, you need to add the following code to the schema.prisma file:
-```prisma
-generator erd {
-  provider = "prisma-erd-generator"  
-}
-```
-Once saved, run the generator script again.
+Once installed, run the same script again.
+
 If further issues are occurring here, there may be some conflicts with the use of mermaid.js. Consult the [issues tab of the erd extension GitHub here](https://github.com/keonik/prisma-erd-generator#issues)
 
 
@@ -76,10 +72,17 @@ npm install @prisma/client@4.16.2
 npm install prisma@4.16.2 --save-dev
 npm install joi
 npm install express-rate-limit
+npm run migrate
 ```
 These commands will install the necessary extensions and applications for running the API.
 If you are working in VSCode or an IDE that has this function, ensure autosave is on while working.
 Additionally, it is also recommended to install the prisma extension found on VSCode for readability.
+
+If any errors pop up such as something along the lines of "cannot create a shadowbase" or "server connection error" then simply run the script again:
+```bash
+npm run migrate
+```
+This should work.
 
 ## Running the REST API locally
 
@@ -110,15 +113,18 @@ Sometimes, an error such as "cannot create a shadowbase" or "server disconnected
 ## Resetting the DB
 
 It is important to reset the database before migrating as the new version of the database may conflict with any existing data.
-In order to ensure that your data is not entirely lost, add the dataset to the relevant seed file. This will be added into the database after it has reset.
 
-If you do not wish to seed data after the reset (i.e. you require a 100% full reset), remove the following from the package.json file:
-```json
-"prisma": {
-  "seed": "node prisma/seed.js"
-}
+
+To entirely reset the database, run the following script:
+```bash
+npm run db-reset
 ```
-Now, to reset the database, run the following script in the terminal:
+OR the following command:
+```bash
+npx prisma db reset
+```
+
+To reset any saved data, run the following script in the terminal:
 ```bash
 npm run reset
 ```
