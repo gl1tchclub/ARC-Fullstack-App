@@ -3,9 +3,7 @@
  * @author Elizabeth Minty
  */
 import express from "express"
-
 import * as awardControls from "../controllers/awards.js"
-
 import { validatePostAward } from "../middleware/validation.js"
 
 const router = express.Router()

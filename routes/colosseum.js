@@ -3,9 +3,7 @@
  * @author Elizabeth Minty
  */
 import express from "express"
-
 import * as colosseumControls from "../controllers/colosseums.js"
-
 import { validatePostColosseum } from "../middleware/validation.js"
 
 const router = express.Router()
