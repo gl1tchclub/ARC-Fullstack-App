@@ -23,7 +23,7 @@ model Event {
   id              Int         @id @default(autoincrement())
   eventTitle      String  	  @unique
   venue           String
-  date            DateTime
+  date            DateTime    @unique
   awards          Award[]
   teams           Team[]
   createdAt       DateTime    @default(now())

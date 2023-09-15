@@ -102,12 +102,12 @@ const validatePostEvent = (req, res, next) => {
       "string.max": "Event Title should have a maximum length of {#limit}",
       "any.required": "Event Title is required",
     }),
-    location: Joi.string().min(5).max(50).required().messages({
-      "string.base": "Location should be a string",
-      "string.empty": "Location cannot be empty",
-      "string.min": "Location should have a minimum length of {#limit}",
-      "string.max": "Location should have a maximum length of {#limit}",
-      "any.required": "Location is required",
+    venue: Joi.string().min(5).max(50).required().messages({
+      "string.base": "Venue should be a string",
+      "string.empty": "Venue cannot be empty",
+      "string.min": "Venue should have a minimum length of {#limit}",
+      "string.max": "Venue should have a maximum length of {#limit}",
+      "any.required": "Venue is required",
     }),
     date: Joi.date().greater("1-1-1990").required().messages({
       "date.base": "Date should not be empty",
@@ -115,21 +115,19 @@ const validatePostEvent = (req, res, next) => {
       "date.greater": "Date must be greater than {#limit}",
       "any.required": "Date is required",
     }),
-    awards: Joi.array
+    awards: Joi.array()
       .items(Joi.string().required())
       .min(1)
       .max(10)
-      .required()
       .messages({
         "string.base": "Members should be a string",
         "string.empty": "Members cannot be empty",
         "array.max": "Members must have a maximum length of {#limit}",
         "array.items.required": "At least two Members are required",
       }),
-    teams: Joi.array
+    teams: Joi.array()
       .items(Joi.string().required(), Joi.string().required())
       .max(8)
-      .required()
       .messages({
         "string.base": "Members should be a string",
         "string.empty": "Members cannot be empty",
@@ -172,7 +170,7 @@ const validatePostAward = (req, res, next) => {
       "integer.max": "Quantity should have a maximum length of {#limit}",
       "any.required": "Quantity is required",
     }),
-    eventName: Joi.string().min(5).max(100).required().messages({
+    eventTitle: Joi.string().min(5).max(100).required().messages({
       "string.base": "Event Title should be a string",
       "string.empty": "Event Title cannot be empty",
       "string.min": "Event Title should have a minimum length of {#limit}",
