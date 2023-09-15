@@ -82,10 +82,12 @@ Next, create a .env file, copy the code in the .env.example file and paste it in
 
 Then, run the following script:
 ```bash
+npm run db-reset
 npm run migrate
 ```
 OR the following command:
 ```bash
+npx prisma db reset
 npx prisma migrate dev
 ```
 Do not enter a name for the migration unless you want to. Just press enter.
