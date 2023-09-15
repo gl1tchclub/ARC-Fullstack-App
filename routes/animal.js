@@ -3,11 +3,7 @@
  * @author Elizabeth Minty
  */
 import express from "express"
-
-// import { create, getID, update, deleteType } from "../controllers/resources.js"
-
 import * as animalControls from "../controllers/animals.js"
-
 import { validatePostAnimal } from "../middleware/validation.js"
 
 const router = express.Router()

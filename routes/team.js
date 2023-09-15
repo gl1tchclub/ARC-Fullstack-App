@@ -3,23 +3,15 @@
  * @author Elizabeth Minty
  */
 import express from "express"
-
-import {
-  create,
-  getAll,
-  getID,
-  update,
-  deleteType,
-} from "../controllers/resources.js"
-
+import * as teamControls from "../controllers/teams.js"
 import { validatePostTeam } from "../middleware/validation.js"
 
 const router = express.Router()
 
-router.post("/", validatePostTeam, create("team"))
-router.get("/", getAll("team"))
-router.get("/:id", getID("team"))
-router.put("/:id", validatePostTeam, update("team"))
-router.delete("/:id", deleteType("team"))
+router.post("/", validatePostTeam, teamControls.createTeams)
+router.get("/", teamControls.getAllTeams)
+router.get("/:id", teamControls.getTeamID)
+router.put("/:id", validatePostTeam, teamControls.updateTeam)
+router.delete("/:id", teamControls.deleteTeam)
 
 export default router

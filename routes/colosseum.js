@@ -4,18 +4,16 @@
  */
 import express from "express"
 
-import { create, getID, update, deleteType } from "../controllers/resources.js"
-
-import { getColosseums } from "../controllers/colosseums.js"
+import * as colosseumControls from "../controllers/colosseums.js"
 
 import { validatePostColosseum } from "../middleware/validation.js"
 
 const router = express.Router()
 
-router.post("/", validatePostColosseum, create("colosseum"))
-router.get("/", getColosseums)
-router.get("/:id", getID("colosseum"))
-router.put("/:id", validatePostColosseum, update("colosseum"))
-router.delete("/:id", deleteType("colosseum"))
+router.post("/", validatePostColosseum, colosseumControls.createColosseums)
+router.get("/", colosseumControls.getAllColosseums)
+router.get("/:id", colosseumControls.getColosseumID)
+router.put("/:id", validatePostColosseum, colosseumControls.updateColosseum)
+router.delete("/:id", colosseumControls.deleteColosseum)
 
 export default router

@@ -3,23 +3,15 @@
  * @author Elizabeth Minty
  */
 import express from "express"
-
-import {
-  create,
-  getAll,
-  getID,
-  update,
-  deleteType,
-} from "../controllers/resources.js"
-
+import * as eventControls from "../controllers/events.js"
 import { validatePostEvent } from "../middleware/validation.js"
 
 const router = express.Router()
 
-router.post("/", validatePostEvent, create("event"))
-router.get("/", getAll("event"))
-router.get("/:id", getID("event"))
-router.put("/:id", validatePostEvent, update("event"))
-router.delete("/:id", deleteType("event"))
+router.post("/", validatePostEvent, eventControls.createEvents)
+router.get("/", eventControls.getAllEvents)
+router.get("/:id", eventControls.getEventID)
+router.put("/:id", validatePostEvent, eventControls.updateEvent)
+router.delete("/:id", eventControls.deleteEvent)
 
 export default router

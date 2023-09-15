@@ -32,39 +32,44 @@ const create = (type) => {
 //Get All objects that match any given filters, sorted according to the user
 const getAll = async (req, res, type, include) => {
     try {
+      
+      const page = parseInt(req.query.page) || 1
+      const pageSize = parseInt(req.query.pageSize) || 25
+
       //Retrieve data from the specified type using Prisma.
       const typeModel = await prisma[type].findMany()
 
       //Check if the given model exists; if not, return a 404 error.
       if (!typeModel) {
-        return res.status(404).json({ msg: `Route for ${typeModel} does not exist`})
+        return res.status(404).json({ msg: `Endpoint for ${typeModel} does not exist`})
       }
       
-      //Extract query parameters like filters and orderBy.
-      const filters = req.query
-      const match = {}
-
-      //If filters exist, parse and apply them to the 'match' object.
-      if (filters) {
-        const filterType = json.parse(filters)
-
-        for (const key in filterType) {
-          if (filterType.hasOwnProperty(key)) {
-            match[key] = filterType[key]
-          }
-        }
-      }
+      //Extract query parameters like filters
+      const filters = req.query.filters ? JSON.parse(req.query.filters) : {}
 
       //Define sorting parameters and a query object.
       const sortBy = req.query.sortBy || "name"
       const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc"
+
+      //If filters exist, parse and apply them to the 'match' object.
+      // if (filters) {
+      //   const filterType = JSON.parse(filters)
+
+      //   for (const key in filterType) {
+      //     if (filterType.hasOwnProperty(key)) {
+      //       match[key] = filterType[key]
+      //     }
+      //   }
+      // }
+
       const query = {
+        where: filters,
         orderBy: {
           [sortBy]: sortOrder,
         }, 
         include: include,
         skip: pageSize * (page - 1),
-        take: !pageSize ? 25 : pageSize, //if pageSize not defined, default is 25
+        take: pageSize,
       }
 
       //Retrieve objects from the typeModel based on the query.

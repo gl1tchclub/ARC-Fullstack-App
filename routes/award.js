@@ -4,22 +4,16 @@
  */
 import express from "express"
 
-import {
-  create,
-  getAll,
-  getID,
-  update,
-  deleteType,
-} from "../controllers/resources.js"
+import * as awardControls from "../controllers/awards.js"
 
 import { validatePostAward } from "../middleware/validation.js"
 
 const router = express.Router()
 
-router.post("/", validatePostAward, create("award"))
-router.get("/", getAll("award"))
-router.get("/:id", getID("award"))
-router.put("/:id", validatePostAward, update("award"))
-router.delete("/:id", deleteType("award"))
+router.post("/", validatePostAward, awardControls.createAwards)
+router.get("/", awardControls.getAllAwards)
+router.get("/:id", awardControls.getAwardID)
+router.put("/:id", validatePostAward, awardControls.updateAward)
+router.delete("/:id", awardControls.deleteAward)
 
 export default router
