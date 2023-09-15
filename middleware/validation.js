@@ -222,7 +222,7 @@ const validatePostColosseum = (req, res, next) => {
       "string.max": "Terrain Type should have a maximum length of {#limit}",
       "any.required": "Terrain Type is required",
     }),
-    events: Joi.array.items(Joi.string()).messages({
+    events: Joi.array().items(Joi.string()).messages({
       "string.base": "Event should be a string",
       "string.empty": "Event cannot be empty",
       "array.max": "Events must have a maximum length of {#limit}",

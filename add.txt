@@ -19,6 +19,18 @@ npx prisma migrate reset --force
 npx prisma migrate dev
 
 
+      //If filters exist, parse and apply them to the 'match' object.
+      // if (filters) {
+      //   const filterType = JSON.parse(filters)
+
+      //   for (const key in filterType) {
+      //     if (filterType.hasOwnProperty(key)) {
+      //       match[key] = filterType[key]
+      //     }
+      //   }
+      // }
+
+
                 events: {
                     create: [
                         {

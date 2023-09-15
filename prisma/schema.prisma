@@ -2,12 +2,6 @@ generator client {
   provider = "prisma-client-js"
 }
 
-generator erd {
-  provider = "prisma-erd-generator"  
-  includeRelationFromFields = true
-  disabled = true
-}
-
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -15,7 +9,7 @@ datasource db {
 
 // TABLES
 model Colosseum {
-  colosseumId   Int         @id @default(autoincrement())
+  id            Int         @id @default(autoincrement())
   name          String      @unique
   country       String
   city          String
@@ -26,7 +20,7 @@ model Colosseum {
 }
 
 model Event {
-  eventId         Int         @id @default(autoincrement())
+  id              Int         @id @default(autoincrement())
   eventTitle      String  	  @unique
   venue           String
   date            DateTime
@@ -38,7 +32,7 @@ model Event {
 }
 
 model Award {
-  awardId     Int     @id @default(autoincrement())
+  id          Int     @id @default(autoincrement())
   awardTitle  String
   type        String   //i.e. cash, trophy, etc
   quantity    Int  //num times this can be given in an event i.e. honorary 3 times, gold twice, silver twice, etc...
@@ -47,7 +41,7 @@ model Award {
 }
 
 model Team {
-  teamId        Int             @id @default(autoincrement())
+  id            Int             @id @default(autoincrement())
   teamName      String          @unique
   members       Participant[]
   eventTitle    String?
@@ -58,7 +52,7 @@ model Team {
 }
 
 model Participant {
-  participantId   Int       @id @default(autoincrement())
+  id              Int       @id @default(autoincrement())
   alias           String    @unique
   age             Int
   memberOf        String? 
@@ -67,7 +61,7 @@ model Participant {
 }
 
 model Animal {
-  animalId  Int             @id @default(autoincrement())
+  id        Int             @id @default(autoincrement())
   name      String          @unique
   taxonomy  Taxonomy
   species   String

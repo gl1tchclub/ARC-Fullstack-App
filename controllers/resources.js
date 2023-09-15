@@ -6,8 +6,7 @@ import { PrismaClient } from "@prisma/client"
 const prisma = new PrismaClient()
 
 //Create objects of any given type (parameter)
-const create = (type) => {
-  return async (req, res) => {
+const create = async (req, res, type) => {
     try {
       //Attempt to create a new object of given type with the data provided in the req body.
       await prisma[type].create({
@@ -15,18 +14,17 @@ const create = (type) => {
       })
 
       //Retrieve all objects of the given type from the database after creation.
-      const newType = await prisma[type].findMany()
+      const newObj = await prisma[type].findMany()
 
       return res.status(201).json({
         msg: `${type} successfully created`,
-        data: newType,
+        data: newObj,
       })
     } catch (err) {
       return res.status(500).json({
         msg: err.message,
       })
     }
-  }
 }
 
 //Get All objects that match any given filters, sorted according to the user
@@ -37,7 +35,7 @@ const getAll = async (req, res, type, include) => {
       const pageSize = parseInt(req.query.pageSize) || 25
 
       //Retrieve data from the specified type using Prisma.
-      const typeModel = await prisma[type].findMany()
+      const typeModel = prisma[type];
 
       //Check if the given model exists; if not, return a 404 error.
       if (!typeModel) {
@@ -48,19 +46,8 @@ const getAll = async (req, res, type, include) => {
       const filters = req.query.filters ? JSON.parse(req.query.filters) : {}
 
       //Define sorting parameters and a query object.
-      const sortBy = req.query.sortBy || "name"
+      const sortBy = req.query.sortBy || "id"
       const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc"
-
-      //If filters exist, parse and apply them to the 'match' object.
-      // if (filters) {
-      //   const filterType = JSON.parse(filters)
-
-      //   for (const key in filterType) {
-      //     if (filterType.hasOwnProperty(key)) {
-      //       match[key] = filterType[key]
-      //     }
-      //   }
-      // }
 
       const query = {
         where: filters,
@@ -90,35 +77,31 @@ const getAll = async (req, res, type, include) => {
   }
 
 //Function getID that takes type (representing a model)
-const getID = (type) => {
-  return async (req, res) => {
-    try {
-      //Attempt to find a unique object of the given type based on the ID
-      const typeId = await prisma[type].findUnique({
-        where: { id: Number(req.params.id) },
-      })
+const getID = async (req, res, type) => {
+  try {
+    //Attempt to find a unique object of the given type based on the colosseumId
+    const typeId = await prisma[type].findUnique({
+      where: { id: Number(req.params.id) }, // Use colosseumId instead of id
+    })
 
-      //Check if the object with the specified ID exists; if not, return a 404 error.
-      if (!typeId) {
-        res.status(404).json({
-          msg: `${type} with ID ${res.params.id} does not exist`,
-        })
-      }
-
-      //Return a JSON response containing the retrieved data
-      return res.json({ data: typeId })
-    } catch (err) {
-      return res.status(500).json({
-        msg: err.message,
+    //Check if the object with the specified ID exists; if not, return a 404 error.
+    if (!typeId) {
+      return res.status(404).json({
+        msg: `${type} with ID ${req.params.id} does not exist`,
       })
     }
+
+    //Return a JSON response containing the retrieved data
+    return res.json({ data: typeId })
+  } catch (err) {
+    return res.status(500).json({
+      msg: err.message,
+    })
   }
 }
 
 //Function update takes a given type and updates the object of that type by its ID
-const update = (type) => {
-  //Return an asynchronous request handler function.
-  return async (req, res) => {
+const update = async (req, res, type) => {
     try {
       //Attempt to find the object of the given type based on the ID from the request.
       let updatedType = await prisma[type].findUnique({
@@ -148,13 +131,10 @@ const update = (type) => {
         msg: err.message,
       })
     }
-  }
 }
 
 //Function deleteType takes a given type and deletes the object of that type by its ID
-const deleteType = (type) => {
-  //Return an async request handler function.
-  return async (req, res) => {
+const deleteType = async (req, res, type) => {
     try {
       //Attempt to find the object of the given type based on the ID.
       const deleteType = await prisma[type].findUnique({
@@ -182,7 +162,6 @@ const deleteType = (type) => {
         msg: err.message,
       })
     }
-  }
 }
 
 export { create, getAll, getID, update, deleteType }

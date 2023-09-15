@@ -7,7 +7,6 @@ const main = async () => {
   try {
     for (let i = 0; i < seeds.length; i++) {
       let { name, data } = await import(seeds[i])
-      console.log(name)
       await prisma[name].createMany({
         data: data,
       })
