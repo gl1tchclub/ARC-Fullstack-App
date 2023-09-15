@@ -8,7 +8,7 @@ import express from "express"
 // Create an Express router
 const router = express.Router()
 
-// Create a GET route
+// Create a GET route that displays all possible routes
 router.get("/", (req, res) => {
     let x = [
       "http://localhost:3000/api/colosseums",
