@@ -72,19 +72,29 @@ npm install @prisma/client@4.16.2
 npm install prisma@4.16.2 --save-dev
 npm install joi
 npm install express-rate-limit
-npm run migrate
 ```
 These commands will install the necessary extensions and applications for running the API.
 If you are working in VSCode or an IDE that has this function, ensure autosave is on while working.
 Additionally, it is also recommended to install the prisma extension found on VSCode for readability.
 
-If any errors pop up such as something along the lines of "cannot create a shadowbase" or "server connection error" then simply run the script again:
+Next, create a .env file, copy the code in the .env.example file and paste it in the .env file. Then, paste in the link to the database inside the double quotes. 
+> :bulb: **Tip** Ensure you have autosave on.
+
+Then, run the following script:
 ```bash
 npm run migrate
 ```
-This should work.
+OR the following command:
+```bash
+npx prisma migrate dev
+```
+Do not enter a name for the migration unless you want to. Just press enter.
+
+If any errors pop up such as something along the lines of "cannot create a shadowbase" or "server connection error" then simply run the script again.
 
 ## Running the REST API locally
+
+Firstly, 
 
 In the terminal, run the following command to run the API
 ```bash
