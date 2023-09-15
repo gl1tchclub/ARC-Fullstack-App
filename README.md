@@ -38,6 +38,12 @@ This can be generated any number of times.
 ![erd](https://github.com/otago-polytechnic-bit-courses/s2-23-project-mintep1-student/assets/132317396/2f667232-faa9-4589-9c9a-06c92f614e05)
 
 
+generator erd {
+  provider = "prisma-erd-generator"  
+  includeRelationFromFields = true
+  disabled = true
+}
+
 To generate a new ERD, run the following script:
 ```bash
 npm run erd
