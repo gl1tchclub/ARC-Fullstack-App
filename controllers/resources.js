@@ -44,16 +44,14 @@ const getAll = async (req, res, type, include) => {
       
       //Extract query parameters like filters
       const filters = req.query.filters ? JSON.parse(req.query.filters) : {}
-
-      //Define sorting parameters and a query object.
-      const sortBy = req.query.sortBy || "id"
-      const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc"
+      const orderBy = req.query.orderBy
+      // //Define sorting parameters and a query object.
+      // const sortBy = req.query.sortBy || "id"
+      // const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc"
 
       const query = {
         where: filters,
-        orderBy: {
-          [sortBy]: sortOrder,
-        }, 
+        orderBy: orderBy ? JSON.parse(orderBy) : undefined,
         include: include,
         skip: pageSize * (page - 1),
         take: pageSize,
