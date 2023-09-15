@@ -26,9 +26,7 @@ To read further on usage and documentation of this API:
 > [Code Formatting](https://github.com/otago-polytechnic-bit-courses/s2-23-project-mintep1-student#code-formatting-process)
 
 ## Postman Documentation
-– A URL to your published REST API documentation.
-
-//link here
+Click [here](https://documenter.getpostman.com/view/28760893/2s9YC5yYQ1) to view the full documentation on Postman!
 
 ## Entity Relationship Diagram
 
