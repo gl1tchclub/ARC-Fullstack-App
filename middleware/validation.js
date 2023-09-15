@@ -4,7 +4,7 @@
  */
 import Joi from "joi"
 
-// ANIMAL
+// Validates animal fields and constraints
 const validatePostAnimal = (req, res, next) => {
   const animalSchema = Joi.object({
     name: Joi.string().min(2).max(50).required().messages({
@@ -53,6 +53,7 @@ const validatePostAnimal = (req, res, next) => {
   next()
 }
 
+// Validates participant fields and constraints
 const validatePostParticipant = (req, res, next) => {
   const participantSchema = Joi.object({
     alias: Joi.string().min(2).max(50).required().messages({
@@ -93,6 +94,7 @@ const validatePostParticipant = (req, res, next) => {
   next()
 }
 
+// Validates event fields and constraints
 const validatePostEvent = (req, res, next) => {
   const eventSchema = Joi.object({
     eventTitle: Joi.string().min(5).max(100).required().messages({
@@ -147,6 +149,7 @@ const validatePostEvent = (req, res, next) => {
   next()
 }
 
+// Validates award fields and constraints
 const validatePostAward = (req, res, next) => {
   const awardSchema = Joi.object({
     awardTitle: Joi.string().min(4).max(20).required().messages({
@@ -190,6 +193,7 @@ const validatePostAward = (req, res, next) => {
   next()
 }
 
+// Validates colosseum fields and constraints
 const validatePostColosseum = (req, res, next) => {
   const colosseumSchema = Joi.object({
     name: Joi.string().min(5).max(50).required().messages({
@@ -238,6 +242,7 @@ const validatePostColosseum = (req, res, next) => {
   next()
 }
 
+// Validates team fields and constraints
 const validatePostTeam = (req, res, type, next) => {
   const teamSchema = Joi.object({
     teamName: Joi.string().min(2).max(100).required().messages({

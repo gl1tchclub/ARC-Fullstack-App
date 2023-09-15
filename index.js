@@ -23,12 +23,15 @@ const limit = rateLimit({
   },
 })
 
-app.use(express.urlencoded({ extended: false })) // To parse the incoming requests with urlencoded payloads. For example, form data
+// To parse the incoming requests with urlencoded payloads. For example, form data
+app.use(express.urlencoded({ extended: false })) 
 
-app.use(express.json()) // To parse the incoming requests with JSON payloads. For example, REST API requests
+// To parse the incoming requests with JSON payloads. For example, REST API requests
+app.use(express.json()) 
 app.use(limit)
 
-// Use the routes module
+// This code sets up middleware to route incoming requests to different parts of the application.
+// It directs requests to specific routes or endpoints for various functionalities.
 app.use("/", indexRoutes)
 app.use("/api/animals", animalRoutes)
 app.use("/api/participants", participantRoutes)
