@@ -12,33 +12,39 @@ const Props = (props) => {
 };
 
 const ChuckNorris = () => {
-        //make variables that can be used and set from state (destructuring props)
-        const [norris, setNorris] = useState([]);
-        //get req
-        const getNorris = async () => {
-            try {
-                //fetch
-                const res = await axios.get(
-                  "https://api.chucknorris.io/jokes/random."
-                );
-                setNorris(res.data);
-            } catch (err) {
-                console.log(err);
-            }
-        };
-    
-        //use the function i suppose. Re-render whatever in array if data changes
-        useEffect(() => {
-            getNorris();
-        }, [norris]);
+    //make variables that can be used and set from state (destructuring props)
+    const [norris, setNorris] = useState({});
+    const [dataFetched, setDataFetched] = useState(false);
 
-        return (
-            <div>
-                <img src={norris.icon_url} alt="Chuck Norris"/>
-                <p>{norris.value}</p>
-            </div>
+    //get req
+    const getNorris = async () => {
+    try {
+        //fetch
+        const res = await axios.get(
+            "https://api.chucknorris.io/jokes/random"
         );
-}
+        setNorris(res.data);
+        setDataFetched(true);
+        // console.log("Icon url:", norris.icon_url);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+    
+    //use the function i suppose. Re-render whatever in array if data changes
+    useEffect(() => {
+        if (!dataFetched) {
+            getNorris();
+        }
+    }, [dataFetched]);
 
+    return (
+        <div>
+            {/* conditional to check that image and text display when icon exists */}
+            {norris.icon_url && <img src={norris.icon_url} alt="Chuck Norris"/>}
+            <p>{norris.value}</p>
+        </div>
+    );
+}
 
 export {ChuckNorris, Props};
