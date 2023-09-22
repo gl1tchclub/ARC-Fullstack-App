@@ -5,7 +5,7 @@
 import Welcome from "./components/Welcome"; // Importing the Welcome function component
 import Counter from "./components/Counter";
 import Post from "./components/Post";
-import GetProps from "./components/Prop";
+import { Props, ChuckNorris } from "./components/Prop";
 
 const App = () => {
   return (
@@ -13,7 +13,8 @@ const App = () => {
       <h1>Hello, World!</h1>
       <Welcome /> {/* Self-closing tag. <Welcome></Welcome> are equivalent */}
       <Welcome firstName="johnhn" />
-      <GetProps firstName="John" lastName="Lennon" bandName="The Beatles"/>
+      <Props firstName="John" lastName="Lennon" bandName="The Beatles"/>
+      <ChuckNorris />
       <Counter />
       <Post />
     </>
