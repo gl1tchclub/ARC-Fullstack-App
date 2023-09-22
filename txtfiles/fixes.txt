@@ -1,6 +1,0 @@
-Finish validations
-Add filtering file to middleware - if possible
-	- pagination goes here in filtering as well
-Add more comments!!
-
-Add seeds for each table (refer to lecture note - create inside data)
