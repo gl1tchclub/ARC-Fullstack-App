@@ -1,3 +1,7 @@
+/**
+ * @file Seeds data for the participant table
+ * @author Elizabeth Minty
+ */
 const name = "participant"
 const data = [
   { alias: "Iver Ashpole", age: 19 },

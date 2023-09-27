@@ -1,3 +1,7 @@
+/**
+ * @file Seeds data for the animal table
+ * @author Elizabeth Minty
+ */
 const name = "animal"
 const data = [
   {

@@ -1,3 +1,7 @@
+/**
+ * @file Tests each table's CRUD using seeded data
+ * @author Elizabeth Minty
+ */
 import chai from "chai";
 import chaiHttp from "chai-http";
 import { describe, it } from "mocha";

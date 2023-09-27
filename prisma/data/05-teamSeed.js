@@ -1,3 +1,7 @@
+/**
+ * @file Seeds data for the team table
+ * @author Elizabeth Minty
+ */
 const name = "team"
 const data = [
   {

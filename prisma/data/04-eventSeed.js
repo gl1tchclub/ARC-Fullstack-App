@@ -1,3 +1,7 @@
+/**
+ * @file Seeds data for the event table
+ * @author Elizabeth Minty
+ */
 import { PrismaClient } from "@prisma/client"
 const prisma = new PrismaClient()
 const name = "event"

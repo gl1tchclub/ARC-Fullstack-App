@@ -1,3 +1,7 @@
+/**
+ * @file Seeds data for the colosseum table
+ * @author Elizabeth Minty
+ */
 const name = "colosseum"
 const data = [
   {
