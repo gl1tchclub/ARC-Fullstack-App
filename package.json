@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run reset && npx mocha --timeout 10000 --exit",
     "dev": "npx prisma generate && nodemon index.js",
     "write": "npx prettier --write .",
     "check": "npx prettier --check .",
@@ -38,6 +38,9 @@
   },
   "devDependencies": {
     "@mermaid-js/mermaid-cli": "^10.4.0",
+    "chai": "^4.3.8",
+    "chai-http": "^4.4.0",
+    "mocha": "^10.2.0",
     "nodemon": "^3.0.1",
     "prettier": "^3.0.3",
     "prettier-plugin-prisma": "^5.0.0",

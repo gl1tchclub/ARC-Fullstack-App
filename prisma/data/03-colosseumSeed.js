@@ -19,7 +19,7 @@ const data = [
     terrainType: "Desert",
   },
   {
-    name: "Colossal Clash Arena",
+    name: "Death's Embrace",
     country: "China",
     city: "Shuikou",
     terrainType: "Desert",
@@ -37,7 +37,7 @@ const data = [
     terrainType: "Coral reef",
   },
   {
-    name: "Colossal Clash Arena",
+    name: "God's Arena",
     country: "Chile",
     city: "Vicuña",
     terrainType: "Arctic tundra",
@@ -85,7 +85,7 @@ const data = [
     terrainType: "Arctic tundra",
   },
   {
-    name: "Arctic Warfare",
+    name: "Arctic DeathBattle",
     country: "Czech Republic",
     city: "Velká Bystřice",
     terrainType: "Grassland",
