@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npm run reset && npx mocha --timeout 10000 --exit",
+    "test": "npx mocha --timeout 10000 --exit",
     "dev": "npx prisma generate && nodemon index.js",
     "write": "npx prettier --write .",
     "check": "npx prettier --check .",
@@ -13,7 +13,8 @@
     "db-reset": "npx prisma db reset --force",
     "studio": "npx prisma studio",
     "seed": "npx prisma db seed",
-    "erd": "npx prisma generate"
+    "erd": "npx prisma generate",
+    "start": "npm i && npm install joi && npm install express-rate-limit"
   },
   "engines": {
     "node": ">=16.13"
@@ -34,7 +35,7 @@
     "@prisma/client": "^4.16.2",
     "express": "^4.18.2",
     "express-rate-limit": "^6.11.2",
-    "joi": "^17.10.1"
+    "joi": "^17.10.2"
   },
   "devDependencies": {
     "@mermaid-js/mermaid-cli": "^10.4.0",
