@@ -18,25 +18,83 @@ const participant = {
 
 describe("ARC API - Participants", () => {
 
+  describe("Index Routes /", () => {
+    it("should display all existing routes", (done) => {
+      chai.request(app)
+      .get("/")
+      .end((err, res) => {
+        console.log(res.body);
+        chai.expect(res.status).to.be.equal(200);
+        chai.expect(res.body).to.be.a("array");
+        done();
+      });
+    });
+  });
+
+  //test POST route
+  describe("POST /api/participants", () => {
+    it("should create a participant", (done) => {
+      chai.request(app)
+      .post("/api/participants")
+      .send(participant)
+      .end((err,res) => {
+        console.log(res.body)
+        chai.expect(res.status).to.be.equal(201);
+        chai.expect(res.body).to.be.a("object");
+        chai.expect(res.body.msg).to.be.equal("participant successfully created");
+        done();
+      });
+    });
+  });
+
   //test GET route
-  describe("GET /api/participants", async() => {
-    it("It should GET all the participants", (done) => {
+  describe("GET /api/participants", () => {
+    it("should GET all the participants", (done) => {
       chai.request(app)
         .get("/api/participants")
         .end((err, res) => {
-          res.should.have.status(200);
-          res.body.should.be.a('array');
-          res.body.length.should.be.eq(1);
+          console.log(res.body);
+          chai.expect(res.status).to.be.equal(200);
+          chai.expect(res.body).to.be.a("object");
+          chai.expect(res.body.data).to.be.a("array");
+          done();
+        });
+    });
+
+    it("should NOT GET all the participants", (done) => {
+      chai.request(app)
+        .get("/api/participant")
+        .end((err, res) => {
+          chai.expect(res.status).to.be.equal(404);
+          done();
+        })
+    });
+  });
+
+  //Test GET BY ID route
+  describe("GET /api/participants", () => {
+    it("should GET the participant by ID", (done) => {
+      chai.request(app)
+        .get("/api/participants/1")
+        .end((err, res) => {
+          console.log(res.body);
+          chai.expect(res.status).to.be.equal(200);
+          chai.expect(res.body).to.be.a("object");
+          chai.expect(res.body.data).to.be.a("object");
+          done();
+        });
+    });
+
+    it("should NOT GET the participant by ID", (done) => {
+      chai.request(app)
+        .get("/api/participant/1")
+        .end((req, res) => {
+          console.log(res.body);
+          chai.expect(res.status).to.be.equal(404);
           done();
         });
     });
   });
-
-  //test GETID route
-
-
-  //test POST route
-
 
   //test PUT route
 

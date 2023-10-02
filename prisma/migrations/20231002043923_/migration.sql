@@ -6,7 +6,7 @@ CREATE TYPE "Taxonomy" AS ENUM ('MAMMAL', 'FISH', 'AMPHIBIAN', 'REPTILE', 'BIRD'
 
 -- CreateTable
 CREATE TABLE "Colosseum" (
-    "colosseumId" SERIAL NOT NULL,
+    "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "country" TEXT NOT NULL,
     "city" TEXT NOT NULL,
@@ -14,64 +14,64 @@ CREATE TABLE "Colosseum" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "Colosseum_pkey" PRIMARY KEY ("colosseumId")
+    CONSTRAINT "Colosseum_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "Event" (
-    "eventId" SERIAL NOT NULL,
+    "id" SERIAL NOT NULL,
     "eventTitle" TEXT NOT NULL,
     "venue" TEXT NOT NULL,
     "date" TIMESTAMP(3) NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
-    CONSTRAINT "Event_pkey" PRIMARY KEY ("eventId")
+    CONSTRAINT "Event_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "Award" (
-    "awardId" SERIAL NOT NULL,
+    "id" SERIAL NOT NULL,
     "awardTitle" TEXT NOT NULL,
     "type" TEXT NOT NULL,
     "quantity" INTEGER NOT NULL,
     "eventTitle" TEXT NOT NULL,
 
-    CONSTRAINT "Award_pkey" PRIMARY KEY ("awardId")
+    CONSTRAINT "Award_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "Team" (
-    "teamId" SERIAL NOT NULL,
+    "id" SERIAL NOT NULL,
     "teamName" TEXT NOT NULL,
     "eventTitle" TEXT,
     "country" TEXT NOT NULL,
     "city" TEXT NOT NULL,
     "numMembers" INTEGER NOT NULL,
 
-    CONSTRAINT "Team_pkey" PRIMARY KEY ("teamId")
+    CONSTRAINT "Team_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "Participant" (
-    "participantId" SERIAL NOT NULL,
+    "id" SERIAL NOT NULL,
     "alias" TEXT NOT NULL,
     "age" INTEGER NOT NULL,
     "memberOf" TEXT,
 
-    CONSTRAINT "Participant_pkey" PRIMARY KEY ("participantId")
+    CONSTRAINT "Participant_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "Animal" (
-    "animalId" SERIAL NOT NULL,
+    "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "taxonomy" "Taxonomy" NOT NULL,
     "species" TEXT NOT NULL,
     "rank" "Rank" NOT NULL,
     "ownerName" TEXT NOT NULL,
 
-    CONSTRAINT "Animal_pkey" PRIMARY KEY ("animalId")
+    CONSTRAINT "Animal_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex

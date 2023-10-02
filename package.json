@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx mocha --timeout 10000 --exit",
+    "test": "npx prisma migrate reset --force && npx mocha --timeout 10000 --exit",
     "dev": "npx prisma generate && nodemon index.js",
     "write": "npx prettier --write .",
     "check": "npx prettier --check .",
