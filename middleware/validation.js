@@ -81,7 +81,7 @@ const validatePostParticipant = (req, res, next) => {
       "integer.min": "Age must be minimum {#limit}",
       "any.required": "Age is required",
     }),
-  })
+  });
 
   const { error } = participantSchema.validate(req.body)
 

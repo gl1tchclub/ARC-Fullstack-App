@@ -16,6 +16,10 @@ const participant = {
     age: 19,
 };
 
+const notParticipant = {
+  alias: "Test Name",
+  age: 10,
+};
 
 describe("ARC API", () => {
 

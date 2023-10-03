@@ -1,5 +1,5 @@
 /**
- * @file Tests the index CRUD - GET
+ * @file Tests the index GET
  * @author Elizabeth Minty
  */
 import chai from "chai";

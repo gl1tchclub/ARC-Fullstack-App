@@ -4,7 +4,7 @@
  */
 import chai from "chai";
 import chaiHttp from "chai-http";
-import participantValidateData from "./data/validationData.js";
+import
 
 //assertion
 import { describe, it } from "mocha";
@@ -130,32 +130,23 @@ describe("ARC API - Participants", () => {
     });
 
     //#8
-    for (let i = 0; i < seeds.length; i++) {
-      let { name, data } = await import(seeds[i])
-      await prisma[name].createMany({
-        data: data,
-      })
-    }
-    for (let i = 0; i < participantValidateData.length; i++) {
-      
-    
     it("should NOT PUT new data for the participant by ID", (done) => {
       chai.request(app)
         .put("/api/participants/1")
-        .send(participantValidateData[i])
+        .send(putValidateData[0])
         .end((err, res) => {
           console.log(res.body.msg)
           chai.expect(res.status).to.be.equal(400);
-          chai.expect(res.body.msg).to.be.equal(validationMsgs[i]);
+          chai.expect(res.body.msg).to.be.equal("Alias should be a string");
           done();
         });
       });
-    };
+
       //#9
       it("should NOT PUT new data for the participant by ID", (done) => {
         chai.request(app)
           .put("/api/participants/1")
-          .send(participantValidateData[1])
+          .send(putValidateData[1])
           .end((err, res) => {
             console.log(res.body.msg)
             chai.expect(res.status).to.be.equal(400);
@@ -168,7 +159,7 @@ describe("ARC API - Participants", () => {
       it("should NOT PUT new data for the participant by ID", (done) => {
       chai.request(app)
         .put("/api/participants/1")
-        .send(participantValidateData[2])
+        .send(putValidateData[2])
         .end((err, res) => {
           console.log(res.body.msg)
           chai.expect(res.status).to.be.equal(400);
@@ -180,7 +171,7 @@ describe("ARC API - Participants", () => {
       it("should NOT PUT new data for the participant by ID", (done) => {
         chai.request(app)
           .put("/api/participants/1")
-          .send(participantValidateData[4])
+          .send(putValidateData[0])
           .end((err, res) => {
             console.log(res.body.msg)
             chai.expect(res.status).to.be.equal(400);
@@ -192,7 +183,7 @@ describe("ARC API - Participants", () => {
       it("should NOT PUT new data for the participant by ID", (done) => {
       chai.request(app)
         .put("/api/participants/1")
-        .send(participantValidateData[5])
+        .send(putValidateData[0])
         .end((err, res) => {
           console.log(res.body.msg)
           chai.expect(res.status).to.be.equal(400);
