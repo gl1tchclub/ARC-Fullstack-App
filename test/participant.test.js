@@ -17,8 +17,26 @@ const participant = {
 };
 
 const notParticipant = {
-  alias:"Test Name",
+  alias: "Test Name",
   age: 10,
+};
+
+const newData = {
+  alias: "Iverlia Ashpole",
+  age: 20,
+};
+
+const putValidateData = [
+  {
+    alias: 1,
+  },
+  {
+    alias: 
+  }
+]
+
+const putValidateAgeData = {
+  age: 1,
 };
 
 describe("ARC API - Participants", () => {
@@ -76,7 +94,7 @@ describe("ARC API - Participants", () => {
   });
 
   //Test GET BY ID route
-  describe("GET /api/participants", () => {
+  describe("GET /api/participants/:id", () => {
     it("should GET the participant by ID", (done) => {
       chai.request(app)
         .get("/api/participants/1")
@@ -103,9 +121,35 @@ describe("ARC API - Participants", () => {
     });
   });
 
-
   //test PUT route
-  describe
+  describe("PUT /api/participants/:id", () => {
+    it("should PUT new data for the participant by ID", (done) => {
+      chai.request(app)
+        .put("/api/participants/1")
+        .send(newData)
+        .end((err, res) => {
+          console.log(res.body)
+          chai.expect(res.status).to.be.equal(200);
+          chai.expect(res.body).to.be.a("object");
+          chai.expect(res.body.data).to.have.property('alias', "Iverlia Ashpole");
+          chai.expect(res.body.data).to.have.property('age', 20);
+          chai.expect(res.body.msg).to.be.equal("participant with the id: 1 successfully updated");
+          done();
+        });
+    });
+
+    it("should NOT PUT new data for the participant by ID", (done) => {
+      chai.request(app)
+        .put("/api/participants/1")
+        .send(badData)
+        .end((err, res) => {
+          console.log(res.body.msg)
+          chai.expect(res.status).to.be.equal(400);
+          chai.expect(res.body.msg).to.be.equal("Alias should be a string");
+          done();
+        });
+      });
+  });
 
   //test DELETE route
 
