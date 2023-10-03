@@ -1,5 +1,5 @@
 /**
- * @file Tests each table's CRUD using seeded data
+ * @file Tests participant CRUD using seeded data
  * @author Elizabeth Minty
  */
 import chai from "chai";
@@ -16,20 +16,12 @@ const participant = {
     age: 19,
 };
 
-describe("ARC API - Participants", () => {
+const notParticipant = {
+  alias:"Test Name",
+  age: 10,
+};
 
-  describe("Index Routes /", () => {
-    it("should display all existing routes", (done) => {
-      chai.request(app)
-      .get("/")
-      .end((err, res) => {
-        console.log(res.body);
-        chai.expect(res.status).to.be.equal(200);
-        chai.expect(res.body).to.be.a("array");
-        done();
-      });
-    });
-  });
+describe("ARC API - Participants", () => {
 
   //test POST route
   describe("POST /api/participants", () => {
@@ -37,11 +29,23 @@ describe("ARC API - Participants", () => {
       chai.request(app)
       .post("/api/participants")
       .send(participant)
-      .end((err,res) => {
+      .end((err, res) => {
         console.log(res.body)
         chai.expect(res.status).to.be.equal(201);
         chai.expect(res.body).to.be.a("object");
         chai.expect(res.body.msg).to.be.equal("participant successfully created");
+        done();
+      });
+    });
+
+    it("should NOT create a participant", (done) => {
+      chai.request(app)
+      .post("/api/participants")
+      .send(notParticipant)
+      .end((err, res) => {
+        console.log(res.body)
+        chai.expect(res.status).to.be.equal(400)
+        chai.expect(res.body.msg).to.be.equal("\"age\" must be greater than or equal to 15");
         done();
       });
     });
@@ -81,23 +85,27 @@ describe("ARC API - Participants", () => {
           chai.expect(res.status).to.be.equal(200);
           chai.expect(res.body).to.be.a("object");
           chai.expect(res.body.data).to.be.a("object");
+          chai.expect(res.body.data).to.have.property('alias', "Iver Ashpole")
           done();
         });
     });
 
     it("should NOT GET the participant by ID", (done) => {
       chai.request(app)
-        .get("/api/participant/1")
-        .end((req, res) => {
-          console.log(res.body);
+        .get("/api/participants/500")
+        .end((err, res) => {
+          console.log(res.status);
+          console.log(res.body.msg);
           chai.expect(res.status).to.be.equal(404);
+          chai.expect(res.body.msg).to.be.equal("participant with ID 500 does not exist");
           done();
         });
     });
   });
 
-  //test PUT route
 
+  //test PUT route
+  describe
 
   //test DELETE route
 
@@ -106,7 +114,7 @@ describe("ARC API - Participants", () => {
   //     await chai.request(app)
   //     .post("/api/participants")
   //     .send(participant)
-  //     .end((res) => {
+  //     .end((err, res) => {
   //       // console.log(res.body) //for testing
 
   //       chai.expect(res.status).to.be.equal(201);
