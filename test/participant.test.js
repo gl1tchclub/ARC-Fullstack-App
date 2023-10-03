@@ -4,6 +4,7 @@
  */
 import chai from "chai";
 import chaiHttp from "chai-http";
+import participantValidateData from "./data/validationData.js";
 
 //assertion
 import { describe, it } from "mocha";
@@ -26,22 +27,9 @@ const newData = {
   age: 20,
 };
 
-const putValidateData = [
-  {
-    alias: 1,
-  },
-  {
-    alias: 
-  }
-]
-
-const putValidateAgeData = {
-  age: 1,
-};
-
 describe("ARC API - Participants", () => {
 
-  //test POST route
+  //test POST route #1
   describe("POST /api/participants", () => {
     it("should create a participant", (done) => {
       chai.request(app)
@@ -56,6 +44,7 @@ describe("ARC API - Participants", () => {
       });
     });
 
+    //#2
     it("should NOT create a participant", (done) => {
       chai.request(app)
       .post("/api/participants")
@@ -69,7 +58,7 @@ describe("ARC API - Participants", () => {
     });
   });
 
-  //test GET route
+  //test GET route #3
   describe("GET /api/participants", () => {
     it("should GET all the participants", (done) => {
       chai.request(app)
@@ -83,6 +72,7 @@ describe("ARC API - Participants", () => {
         });
     });
 
+    //#4
     it("should NOT GET all the participants", (done) => {
       chai.request(app)
         .get("/api/participant")
@@ -93,7 +83,7 @@ describe("ARC API - Participants", () => {
     });
   });
 
-  //Test GET BY ID route
+  //Test GET BY ID route #5
   describe("GET /api/participants/:id", () => {
     it("should GET the participant by ID", (done) => {
       chai.request(app)
@@ -108,6 +98,7 @@ describe("ARC API - Participants", () => {
         });
     });
 
+    //#6
     it("should NOT GET the participant by ID", (done) => {
       chai.request(app)
         .get("/api/participants/500")
@@ -121,7 +112,7 @@ describe("ARC API - Participants", () => {
     });
   });
 
-  //test PUT route
+  //test PUT route #7
   describe("PUT /api/participants/:id", () => {
     it("should PUT new data for the participant by ID", (done) => {
       chai.request(app)
@@ -138,10 +129,178 @@ describe("ARC API - Participants", () => {
         });
     });
 
+    //#8
+    for (let i = 0; i < seeds.length; i++) {
+      let { name, data } = await import(seeds[i])
+      await prisma[name].createMany({
+        data: data,
+      })
+    }
+    for (let i = 0; i < participantValidateData.length; i++) {
+      
+    
     it("should NOT PUT new data for the participant by ID", (done) => {
       chai.request(app)
         .put("/api/participants/1")
-        .send(badData)
+        .send(participantValidateData[i])
+        .end((err, res) => {
+          console.log(res.body.msg)
+          chai.expect(res.status).to.be.equal(400);
+          chai.expect(res.body.msg).to.be.equal(validationMsgs[i]);
+          done();
+        });
+      });
+    };
+      //#9
+      it("should NOT PUT new data for the participant by ID", (done) => {
+        chai.request(app)
+          .put("/api/participants/1")
+          .send(participantValidateData[1])
+          .end((err, res) => {
+            console.log(res.body.msg)
+            chai.expect(res.status).to.be.equal(400);
+            chai.expect(res.body.msg).to.be.equal("Alias cannot be empty");
+            done();
+          });
+        });
+      
+      //#10
+      it("should NOT PUT new data for the participant by ID", (done) => {
+      chai.request(app)
+        .put("/api/participants/1")
+        .send(participantValidateData[2])
+        .end((err, res) => {
+          console.log(res.body.msg)
+          chai.expect(res.status).to.be.equal(400);
+          chai.expect(res.body.msg).to.be.equal("Alias should be a string");
+          done();
+        });
+      });
+
+      it("should NOT PUT new data for the participant by ID", (done) => {
+        chai.request(app)
+          .put("/api/participants/1")
+          .send(participantValidateData[4])
+          .end((err, res) => {
+            console.log(res.body.msg)
+            chai.expect(res.status).to.be.equal(400);
+            chai.expect(res.body.msg).to.be.equal("Alias should be a string");
+            done();
+          });
+        });
+
+      it("should NOT PUT new data for the participant by ID", (done) => {
+      chai.request(app)
+        .put("/api/participants/1")
+        .send(participantValidateData[5])
+        .end((err, res) => {
+          console.log(res.body.msg)
+          chai.expect(res.status).to.be.equal(400);
+          chai.expect(res.body.msg).to.be.equal("Alias should be a string");
+          done();
+        });
+      });
+
+      it("should NOT PUT new data for the participant by ID", (done) => {
+      chai.request(app)
+        .put("/api/participants/1")
+        .send(putValidateData[0])
+        .end((err, res) => {
+          console.log(res.body.msg)
+          chai.expect(res.status).to.be.equal(400);
+          chai.expect(res.body.msg).to.be.equal("Alias should be a string");
+          done();
+        });
+      });
+
+      it("should NOT PUT new data for the participant by ID", (done) => {
+        chai.request(app)
+          .put("/api/participants/1")
+          .send(putValidateData[0])
+          .end((err, res) => {
+            console.log(res.body.msg)
+            chai.expect(res.status).to.be.equal(400);
+            chai.expect(res.body.msg).to.be.equal("Alias should be a string");
+            done();
+          });
+        });
+
+      it("should NOT PUT new data for the participant by ID", (done) => {
+      chai.request(app)
+        .put("/api/participants/1")
+        .send(putValidateData[0])
+        .end((err, res) => {
+          console.log(res.body.msg)
+          chai.expect(res.status).to.be.equal(400);
+          chai.expect(res.body.msg).to.be.equal("Alias should be a string");
+          done();
+        });
+      });
+
+      it("should NOT PUT new data for the participant by ID", (done) => {
+        chai.request(app)
+          .put("/api/participants/1")
+          .send(putValidateData[0])
+          .end((err, res) => {
+            console.log(res.body.msg)
+            chai.expect(res.status).to.be.equal(400);
+            chai.expect(res.body.msg).to.be.equal("Alias should be a string");
+            done();
+          });
+        });
+
+      it("should NOT PUT new data for the participant by ID", (done) => {
+      chai.request(app)
+        .put("/api/participants/1")
+        .send(putValidateData[0])
+        .end((err, res) => {
+          console.log(res.body.msg)
+          chai.expect(res.status).to.be.equal(400);
+          chai.expect(res.body.msg).to.be.equal("Alias should be a string");
+          done();
+        });
+      });
+
+      it("should NOT PUT new data for the participant by ID", (done) => {
+        chai.request(app)
+          .put("/api/participants/1")
+          .send(putValidateData[0])
+          .end((err, res) => {
+            console.log(res.body.msg)
+            chai.expect(res.status).to.be.equal(400);
+            chai.expect(res.body.msg).to.be.equal("Alias should be a string");
+            done();
+          });
+        });
+
+      it("should NOT PUT new data for the participant by ID", (done) => {
+      chai.request(app)
+        .put("/api/participants/1")
+        .send(putValidateData[0])
+        .end((err, res) => {
+          console.log(res.body.msg)
+          chai.expect(res.status).to.be.equal(400);
+          chai.expect(res.body.msg).to.be.equal("Alias should be a string");
+          done();
+        });
+      });
+
+      it("should NOT PUT new data for the participant by ID", (done) => {
+        chai.request(app)
+          .put("/api/participants/1")
+          .send(putValidateData[0])
+          .end((err, res) => {
+            console.log(res.body.msg)
+            chai.expect(res.status).to.be.equal(400);
+            chai.expect(res.body.msg).to.be.equal("Alias should be a string");
+            done();
+          });
+        });
+
+      it("should NOT PUT new data for the participant by ID", (done) => {
+      chai.request(app)
+        .put("/api/participants/1")
+        .send(putValidateData[0])
         .end((err, res) => {
           console.log(res.body.msg)
           chai.expect(res.status).to.be.equal(400);
