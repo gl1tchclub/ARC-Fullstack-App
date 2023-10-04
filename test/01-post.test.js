@@ -50,15 +50,31 @@ const validData = [
   },
 ];
 
-const participant = {
-    alias: "Iver Ashpole",
-    age: 19,
-};
-
-const notParticipant = {
-  alias: "Test Name",
-  age: 10,
-};
+const invalidData = [
+  {
+    alias: "Invalid person",
+    age: 10,
+  },
+  {
+    name: "invalid animal",
+    taxonomy: "MAMMAL",
+    species: "dog",
+    rank: "INVALID",
+    ownerName: "Iver Ashpole"
+  },
+  {
+    
+  },
+  {
+    
+  },
+  {
+    
+  },
+  {
+    
+  },
+];
 
 describe("POST /api", () => {
 
@@ -92,7 +108,7 @@ describe("POST /api", () => {
     it("should create an animal", (done) => {
       chai.request(app)
       .post("/api/animals")
-      .send(validData[4])
+      .send(validData[1])
       .end((err, res) => {
         console.log(res.body)
         chai.expect(res.status).to.be.equal(201);
