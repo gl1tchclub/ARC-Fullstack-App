@@ -124,13 +124,13 @@ const validatePostEvent = (req, res, next) => {
       "array.items.required": "At least two Members are required",
     }),
     teams: Joi.array()
-      .items(Joi.string().required(), Joi.string().required())
+      .items(Joi.string().required())
       .max(8)
       .messages({
-        "string.base": "Members should be a string",
-        "string.empty": "Members cannot be empty",
-        "array.max": "Members must have a maximum length of {#limit}",
-        "array.items.required": "At least two Members are required",
+        "string.base": "Teams should be a string",
+        "string.empty": "Teams cannot be empty",
+        "array.max": "Events must have a maximum number of {#limit}",
+        "array.items.required": "At least one Team is required",
       }),
   })
 
@@ -249,14 +249,14 @@ const validatePostTeam = (req, res, type, next) => {
       "any.required": "Team Name is required",
     }),
     members: Joi.array
-      .items(Joi.string().required(), Joi.string().required())
+      .items(Joi.string().required())
       .max(8)
       .required()
       .messages({
         "string.base": "Members should be a string",
         "string.empty": "Members cannot be empty",
         "array.max": "Members must have a maximum length of {#limit}",
-        "array.items.required": "At least two Members are required",
+        "array.items.required": "At least one Member is required",
       }),
     eventTitle: Joi.string().min(2).max(100).messages({
       "string.base": "Event Title should be a string",
@@ -278,14 +278,13 @@ const validatePostTeam = (req, res, type, next) => {
       "string.max": "City must have a maximum length of {#limit}",
       "any.required": "City is required",
     }),
-    numMembers: Joi.number().integer().min(2).max(8).required().messages({
+    numMembers: Joi.number().integer().max(8).required().messages({
       "integer.base": "Number of Members must be a number",
       "number.empty": "Number of Members cannot be empty",
-      "integer.min": "Number of Members should have a minimum length of {#limit}",
       "integer.max": "Number of Members should have a maximum length of {#limit}",
       "any.required": "Number of Members is required",
     }),
-  })
+  });
 
   const { error } = teamSchema.validate(req.body)
 
