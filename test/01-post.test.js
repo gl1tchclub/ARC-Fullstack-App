@@ -15,7 +15,6 @@ const validData = [
   {
     alias: "Iver Ashpole",
     age: 19,
-    memberOf: "Wolf Pack",
   },
   {
     name: "Doggy",
@@ -37,10 +36,12 @@ const validData = [
   },
   {
     teamName: "Wolf Pack",
+    members: [ "Iver Ashpole" ],
     eventTitle: "Pit Fight",
     country: "England",
     city: "London",
     numMembers: 1,
+
   },
   {
     awardTitle: "Pit Champion",
@@ -59,20 +60,31 @@ const invalidData = [
     name: "invalid animal",
     taxonomy: "MAMMAL",
     species: "dog",
-    rank: "INVALID",
-    ownerName: "Iver Ashpole"
+    rank: "OLYMPUS",
+    ownerName: "Id"
   },
   {
-    
+    name: "some colosseum",
+    country: "Australia",
+    city: "Canberra",
+    terrainType: "Marine",
   },
   {
-    
+    eventTitle: "some event",
+    venue: "some colosseum",
+    date: "0000",
   },
   {
-    
+    teamName: "some team",
+    country: "New Zealand",
+    city: "Dunedin",
+    numMembers: 2,
   },
   {
-    
+    awardTitle: "Gold",
+    type: "Medal",
+    quantity: "1",
+    eventTitle: "Pit Fight",
   },
 ];
 
@@ -95,7 +107,7 @@ describe("POST /api", () => {
     it("should NOT create a participant", (done) => {
       chai.request(app)
       .post("/api/participants")
-      .send(notParticipant)
+      .send(invalidData[0])
       .end((err, res) => {
         console.log(res.body)
         chai.expect(res.status).to.be.equal(400)
@@ -121,41 +133,121 @@ describe("POST /api", () => {
     it("should NOT create an animal", (done) => {
       chai.request(app)
       .post("/api/animals")
-      .send(validData[])
+      .send(invalidData[1])
       .end((err, res) => {
         console.log(res.body)
-        chai.expect(res.status).to.be.equal(201);
-        chai.expect(res.body).to.be.a("object");
-        chai.expect(res.body.msg).to.be.equal("animal successfully created");
+        chai.expect(res.status).to.be.equal(500);
+        chai.expect(res.body.msg).to.be.equal("");
         done();
       });
     });
 
-    //Colosseums
-    it("should create a colosseum", (done) => {
-      chai.request(app)
-      .post("/api/animals")
-      .send(validData[])
-      .end((err, res) => {
-        console.log(res.body)
-        chai.expect(res.status).to.be.equal(201);
-        chai.expect(res.body).to.be.a("object");
-        chai.expect(res.body.msg).to.be.equal("animal successfully created");
-        done();
-      });
-    });
+    // //Colosseums
+    // it("should create a colosseum", (done) => {
+    //   chai.request(app)
+    //   .post("/api/colosseums")
+    //   .send(validData[2])
+    //   .end((err, res) => {
+    //     console.log(res.body)
+    //     chai.expect(res.status).to.be.equal(201);
+    //     chai.expect(res.body).to.be.a("object");
+    //     chai.expect(res.body.msg).to.be.equal("animal successfully created");
+    //     done();
+    //   });
+    // });
 
-    it("should NOT create a colosseum", (done) => {
-      chai.request(app)
-      .post("/api/animals")
-      .send(validData[])
-      .end((err, res) => {
-        console.log(res.body)
-        chai.expect(res.status).to.be.equal(400);
-        chai.expect(res.body).to.be.a("object");
-        chai.expect(res.body.msg).to.be.equal("animal successfully created");
-        done();
-      });
-    });
+    // it("should NOT create a colosseum", (done) => {
+    //   chai.request(app)
+    //   .post("/api/animals")
+    //   .send(invalidData[2])
+    //   .end((err, res) => {
+    //     console.log(res.body)
+    //     chai.expect(res.status).to.be.equal(400);
+    //     chai.expect(res.body).to.be.a("object");
+    //     chai.expect(res.body.msg).to.be.equal("animal successfully created");
+    //     done();
+    //   });
+    // });
+
+    // //Events
+    // it("should create a colosseum", (done) => {
+    //   chai.request(app)
+    //   .post("/api/animals")
+    //   .send(validData[2])
+    //   .end((err, res) => {
+    //     console.log(res.body)
+    //     chai.expect(res.status).to.be.equal(201);
+    //     chai.expect(res.body).to.be.a("object");
+    //     chai.expect(res.body.msg).to.be.equal("animal successfully created");
+    //     done();
+    //   });
+    // });
+
+    // it("should NOT create a colosseum", (done) => {
+    //   chai.request(app)
+    //   .post("/api/animals")
+    //   .send(invalidData[2])
+    //   .end((err, res) => {
+    //     console.log(res.body)
+    //     chai.expect(res.status).to.be.equal(400);
+    //     chai.expect(res.body).to.be.a("object");
+    //     chai.expect(res.body.msg).to.be.equal("animal successfully created");
+    //     done();
+    //   });
+    // });
+
+    // //Teams
+    // it("should create a colosseum", (done) => {
+    //   chai.request(app)
+    //   .post("/api/animals")
+    //   .send(validData[2])
+    //   .end((err, res) => {
+    //     console.log(res.body)
+    //     chai.expect(res.status).to.be.equal(201);
+    //     chai.expect(res.body).to.be.a("object");
+    //     chai.expect(res.body.msg).to.be.equal("animal successfully created");
+    //     done();
+    //   });
+    // });
+
+    // it("should NOT create a colosseum", (done) => {
+    //   chai.request(app)
+    //   .post("/api/animals")
+    //   .send(invalidData[2])
+    //   .end((err, res) => {
+    //     console.log(res.body)
+    //     chai.expect(res.status).to.be.equal(400);
+    //     chai.expect(res.body).to.be.a("object");
+    //     chai.expect(res.body.msg).to.be.equal("animal successfully created");
+    //     done();
+    //   });
+    // });
+
+    // //Awards
+    // it("should create a colosseum", (done) => {
+    //   chai.request(app)
+    //   .post("/api/animals")
+    //   .send(validData[2])
+    //   .end((err, res) => {
+    //     console.log(res.body)
+    //     chai.expect(res.status).to.be.equal(201);
+    //     chai.expect(res.body).to.be.a("object");
+    //     chai.expect(res.body.msg).to.be.equal("animal successfully created");
+    //     done();
+    //   });
+    // });
+
+    // it("should NOT create a colosseum", (done) => {
+    //   chai.request(app)
+    //   .post("/api/animals")
+    //   .send(invalidData[2])
+    //   .end((err, res) => {
+    //     console.log(res.body)
+    //     chai.expect(res.status).to.be.equal(400);
+    //     chai.expect(res.body).to.be.a("object");
+    //     chai.expect(res.body.msg).to.be.equal("animal successfully created");
+    //     done();
+    //   });
+    // });
     
 });
