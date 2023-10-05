@@ -278,9 +278,11 @@ const validatePostTeam = (req, res, type, next) => {
       "string.max": "City must have a maximum length of {#limit}",
       "any.required": "City is required",
     }),
-    numMembers: Joi.number().integer().max(8).required().messages({
-      "integer.base": "Number of Members must be a number",
-      "number.empty": "Number of Members cannot be empty",
+    numMembers: Joi.number().integer().min(1).max(8).required().messages({
+      "number.base": "Number of Members must be an number",
+      "number.integer": "Number of Members must be a valid integer",
+      "integer.min": "Number of Members should have a minimum length of {#limit}",
+      "any.empty": "Number of Members cannot be empty",
       "integer.max": "Number of Members should have a maximum length of {#limit}",
       "any.required": "Number of Members is required",
     }),
