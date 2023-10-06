@@ -8,7 +8,7 @@ import { validatePostColosseum } from "../middleware/validation.js"
 
 const router = express.Router()
 
-// Define API routes for managing 'colosseum' resources
+
 // POST route for creating a new 'colosseum' resource
 router.post("/", validatePostColosseum, (req, res) =>
   resources.create(req, res, "colosseum")

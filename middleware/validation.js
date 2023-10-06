@@ -76,7 +76,7 @@ const validatePostParticipant = (req, res, next) => {
       "array.items.required": "At least one Animal is required",
     }),
     age: Joi.number().integer().min(15).required().messages({
-      "integer.base": "Age must be a number",
+      "number.base": "Age must be a number",
       "number.empty": "Age cannot be empty",
       "integer.min": "Age must be minimum {#limit}",
       "any.required": "Age is required",
@@ -162,11 +162,11 @@ const validatePostAward = (req, res, next) => {
       "string.max": "Type should have a maximum length of {#limit}",
       "any.required": "Type is required",
     }),
-    quantity: Joi.number().integer().min(1).max(10).required().messages({
-      "integer.base": "Quantity must be a number",
+    quantity: Joi.number().integer().min(1).max(10).convert({ convert: false }).required().messages({
+      "number.base": "Quantity must be a number",
       "number.empty": "Quantity cannot be empty",
-      "integer.min": "Quantity should have a minimum length of {#limit}",
-      "integer.max": "Quantity should have a maximum length of {#limit}",
+      "number.min": "Quantity should have a minimum length of {#limit}",
+      "number.max": "Quantity should have a maximum length of {#limit}",
       "any.required": "Quantity is required",
     }),
     eventTitle: Joi.string().min(5).max(100).required().messages({
@@ -239,7 +239,7 @@ const validatePostColosseum = (req, res, next) => {
 }
 
 // Validates team fields and constraints
-const validatePostTeam = (req, res, type, next) => {
+const validatePostTeam = (req, res, next) => {
   const teamSchema = Joi.object({
     teamName: Joi.string().min(2).max(100).required().messages({
       "string.base": "Team Name should be a string",
@@ -248,16 +248,6 @@ const validatePostTeam = (req, res, type, next) => {
       "string.max": "Team Name must have a maximum length of {#limit}",
       "any.required": "Team Name is required",
     }),
-    members: Joi.array
-      .items(Joi.string().required())
-      .max(8)
-      .required()
-      .messages({
-        "string.base": "Members should be a string",
-        "string.empty": "Members cannot be empty",
-        "array.max": "Members must have a maximum length of {#limit}",
-        "array.items.required": "At least one Member is required",
-      }),
     eventTitle: Joi.string().min(2).max(100).messages({
       "string.base": "Event Title should be a string",
       "string.empty": "Event Title cannot be empty",
@@ -278,15 +268,14 @@ const validatePostTeam = (req, res, type, next) => {
       "string.max": "City must have a maximum length of {#limit}",
       "any.required": "City is required",
     }),
-    numMembers: Joi.number().integer().min(1).max(8).required().messages({
+    numMembers: Joi.number().min(0).max(8).required().messages({
       "number.base": "Number of Members must be an number",
-      "number.integer": "Number of Members must be a valid integer",
-      "integer.min": "Number of Members should have a minimum length of {#limit}",
+      "number.min": "Number of Members must be at least {#limit}",
       "any.empty": "Number of Members cannot be empty",
-      "integer.max": "Number of Members should have a maximum length of {#limit}",
+      "number.max": "Number of Members must be less than {#limit}",
       "any.required": "Number of Members is required",
     }),
-  });
+  })
 
   const { error } = teamSchema.validate(req.body)
 

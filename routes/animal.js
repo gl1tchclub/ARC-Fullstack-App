@@ -8,7 +8,7 @@ import { validatePostAnimal } from "../middleware/validation.js"
 
 const router = express.Router()
 
-// Define API routes for managing 'animal' resources
+
 // POST route for creating a new 'animal' resource
 router.post("/", validatePostAnimal, (req, res) =>
   resources.create(req, res, "animal")

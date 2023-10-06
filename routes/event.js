@@ -8,7 +8,7 @@ import { validatePostEvent } from "../middleware/validation.js"
 
 const router = express.Router()
 
-// Define API routes for managing 'event' resources
+
 // POST route for creating a new 'event' resource
 router.post("/", validatePostEvent, (req, res) =>
   resources.create(req, res, "event")
