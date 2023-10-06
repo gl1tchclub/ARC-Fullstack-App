@@ -107,8 +107,8 @@ describe("POST /api", () => {
       .post("/api/participants")
       .send(invalidData[0])
       .end((err, res) => {
-        console.log(res.body)
-        chai.expect(res.status).to.be.equal(400)
+        console.log(res.body);
+        chai.expect(res.status).to.be.equal(400);
         chai.expect(res.body.msg).to.be.equal("\"age\" must be greater than or equal to 15");
         done();
       });
@@ -172,7 +172,7 @@ describe("POST /api", () => {
       .post("/api/events")
       .send(validData[3])
       .end((err, res) => {
-        console.log(res.body)
+        console.log(res.body);
         chai.expect(res.status).to.be.equal(201);
         chai.expect(res.body).to.be.a("object");
         chai.expect(res.body.msg).to.be.equal("event successfully created");
@@ -185,7 +185,7 @@ describe("POST /api", () => {
       .post("/api/events")
       .send(invalidData[3])
       .end((err, res) => {
-        console.log(res.body)
+        console.log(res.body);
         chai.expect(res.status).to.be.equal(400);
         chai.expect(res.body.msg).to.be.equal("Date must be greater than 1989-12-31T11:00:00.000Z");
         done();
@@ -198,7 +198,7 @@ describe("POST /api", () => {
       .post("/api/teams")
       .send(validData[4])
       .end((err, res) => {
-        console.log(res.body)
+        console.log(res.body);
         chai.expect(res.status).to.be.equal(201);
         chai.expect(res.body).to.be.a("object");
         chai.expect(res.body.msg).to.be.equal("team successfully created");
@@ -211,7 +211,7 @@ describe("POST /api", () => {
       .post("/api/teams")
       .send(invalidData[4])
       .end((err, res) => {
-        console.log(res.body)
+        console.log(res.body);
         chai.expect(res.status).to.be.equal(400);
         chai.expect(res.body.msg).to.be.equal("Number of Members must be at least 0");
         done();
@@ -224,7 +224,7 @@ describe("POST /api", () => {
       .post("/api/awards")
       .send(validData[5])
       .end((err, res) => {
-        console.log(res.body)
+        console.log(res.body);
         chai.expect(res.status).to.be.equal(201);
         chai.expect(res.body).to.be.a("object");
         chai.expect(res.body.msg).to.be.equal("award successfully created");
@@ -237,11 +237,10 @@ describe("POST /api", () => {
       .post("/api/awards")
       .send(invalidData[5])
       .end((err, res) => {
-        console.log(res.body)
-        chai.expect(res.status).to.be.equal(500);
-        chai.expect(res.body.msg).to.be.equal("");
+        console.log(res.body);
+        chai.expect(res.status).to.be.equal(400);
+        chai.expect(res.body.msg).to.be.equal("Quantity must be a number");
         done();
       });
     });
-    
 });

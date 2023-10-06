@@ -148,28 +148,28 @@ const validatePostEvent = (req, res, next) => {
 // Validates award fields and constraints
 const validatePostAward = (req, res, next) => {
   const awardSchema = Joi.object({
-    awardTitle: Joi.string().min(4).max(20).required().messages({
+    awardTitle: Joi.string().min(2).max(20).required().messages({
       "string.base": "Award Title should be a string",
       "string.empty": "Award Title cannot be empty",
       "string.min": "Award Title should have a minimum length of {#limit}",
       "string.max": "Award Title should have a maximum length of {#limit}",
       "any.required": "Award Title is required",
     }),
-    type: Joi.string().min(3).max(20).required().messages({
+    type: Joi.string().min(2).max(20).required().messages({
       "string.base": "Type should be a string",
       "string.empty": "Type cannot be empty",
       "string.min": "Type should have a minimum length of {#limit}",
       "string.max": "Type should have a maximum length of {#limit}",
       "any.required": "Type is required",
     }),
-    quantity: Joi.number().integer().min(1).max(10).convert({ convert: false }).required().messages({
+    quantity: Joi.number().integer().options({convert: false}).min(1).max(10).required().messages({
       "number.base": "Quantity must be a number",
       "number.empty": "Quantity cannot be empty",
       "number.min": "Quantity should have a minimum length of {#limit}",
       "number.max": "Quantity should have a maximum length of {#limit}",
       "any.required": "Quantity is required",
     }),
-    eventTitle: Joi.string().min(5).max(100).required().messages({
+    eventTitle: Joi.string().min(2).max(100).required().messages({
       "string.base": "Event Title should be a string",
       "string.empty": "Event Title cannot be empty",
       "string.min": "Event Title should have a minimum length of {#limit}",
@@ -270,8 +270,8 @@ const validatePostTeam = (req, res, next) => {
     }),
     numMembers: Joi.number().min(0).max(8).required().messages({
       "number.base": "Number of Members must be an number",
+      "number.empty": "Number of Members cannot be empty",
       "number.min": "Number of Members must be at least {#limit}",
-      "any.empty": "Number of Members cannot be empty",
       "number.max": "Number of Members must be less than {#limit}",
       "any.required": "Number of Members is required",
     }),
