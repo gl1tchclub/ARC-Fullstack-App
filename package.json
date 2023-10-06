@@ -16,6 +16,9 @@
     "erd": "npx prisma generate",
     "start": "npm i && npm install joi && npm install express-rate-limit"
   },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
   "engines": {
     "node": ">=16.13"
   },
