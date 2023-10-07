@@ -11,15 +11,15 @@ import app from "../index.js";
 
 chai.use(chaiHttp);
 
-const sortBy = "eventTitle";
-const sortOrder = "desc";
+let sortBy = "age";
+let sortOrder = "desc";
 
 describe("GET /api/", () => {
 
     //Participants
     it("should GET all the participants", (done) => {
       chai.request(app)
-        .get("/api/participants")
+        .get(`/api/participants?filters={\"age\":\"40\"}&sortBy=${sortBy}&sortOrder=${sortOrder}`)
         .end((err, res) => {
           console.log(res.body);
           chai.expect(res.status).to.be.equal(200);
@@ -40,7 +40,7 @@ describe("GET /api/", () => {
     });
 
     //Animals
-    it("should GET all the animals", (done) => {
+    it("should GET all the animals where taxonomy is mammal, pagesize 4, page 2", (done) => {
       chai.request(app)
         .get("/api/animals?filters={\"taxonomy\":\"MAMMAL\"}&pageSize=4&page=2")
         .end((err, res) => {
@@ -86,6 +86,7 @@ describe("GET /api/", () => {
     });
 
     //Events
+    sortBy = "eventTitle";
     it("should GET all the events", (done) => {
       chai.request(app)
         .get(`/api/events?sortBy=${sortBy}&sortOrder=${sortOrder}`)
@@ -131,26 +132,26 @@ describe("GET /api/", () => {
         });
     });
 
-//     //Awards
-//     it("should GET all the participants", (done) => {
-//       chai.request(app)
-//         .get("/api/participants")
-//         .end((err, res) => {
-//           console.log(res.body);
-//           chai.expect(res.status).to.be.equal(200);
-//           chai.expect(res.body).to.be.a("object");
-//           chai.expect(res.body.data).to.be.a("array");
-//           done();
-//         });
-//     });
+    //Awards
+    it("should GET all the awards", (done) => {
+      chai.request(app)
+        .get("/api/awards")
+        .end((err, res) => {
+          console.log(res.body);
+          chai.expect(res.status).to.be.equal(200);
+          chai.expect(res.body).to.be.a("object");
+          chai.expect(res.body.data).to.be.a("array");
+          done();
+        });
+    });
     
-//     //invalid route
-//     it("should NOT GET all the participants", (done) => {
-//       chai.request(app)
-//         .get("/api/participant")
-//         .end((err, res) => {
-//           chai.expect(res.status).to.be.equal(404);
-//           done();
-//         });
-//     });
+    //invalid route
+    it("should NOT GET all the awards", (done) => {
+      chai.request(app)
+        .get("/api/award")
+        .end((err, res) => {
+          chai.expect(res.status).to.be.equal(404);
+          done();
+        });
+    });
 });
