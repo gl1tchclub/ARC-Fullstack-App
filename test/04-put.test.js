@@ -34,8 +34,7 @@
 //     });
 
 // for (let i = 0; i < participantValidateData.length; i++) {
-      
-    
+
 //     it("should NOT PUT new data for the participant by ID", (done) => {
 //       chai.request(app)
 //         .put("/api/participants/1")

@@ -8,7 +8,6 @@ import { validatePostAward } from "../middleware/validation.js"
 
 const router = express.Router()
 
-
 // POST route for creating a new 'award' resource
 router.post("/", validatePostAward, (req, res) =>
   resources.create(req, res, "award")

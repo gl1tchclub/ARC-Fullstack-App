@@ -8,7 +8,6 @@ import { validatePostAnimal } from "../middleware/validation.js"
 
 const router = express.Router()
 
-
 // POST route for creating a new 'animal' resource
 router.post("/", validatePostAnimal, (req, res) =>
   resources.create(req, res, "animal")
@@ -21,7 +20,9 @@ router.get("/", (req, res) => resources.getAll(req, res, "animal"))
 router.get("/:id", (req, res) => resources.getID(req, res, "animal"))
 
 // PUT route for updating a 'animal' resource by ID
-router.put("/:id", validatePostAnimal, (req, res) => resources.update(req, res, "animal"))
+router.put("/:id", validatePostAnimal, (req, res) =>
+  resources.update(req, res, "animal")
+)
 
 // DELETE route for deleting a 'animal' resource by ID
 router.delete("/:id", (req, res) => resources.deleteType(req, res, "animal"))

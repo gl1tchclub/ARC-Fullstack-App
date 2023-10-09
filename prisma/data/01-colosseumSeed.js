@@ -172,6 +172,6 @@ const data = [
     city: "Penang",
     terrainType: "Arctic tundra",
   },
-];
+]
 
-export { name, data };
+export { name, data }

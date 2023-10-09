@@ -1,6 +1,13 @@
 import { PrismaClient } from "@prisma/client"
 
-const seeds = ["./data/01-participantSeed.js", "./data/02-animalSeed.js", "./data/03-colosseumSeed.js"]
+const seeds = [
+  "./data/01-colosseumSeed.js",
+  "./data/02-eventSeed.js",
+  // "./data/03-awardSeed.js",
+  "./data/04-teamSeed.js",
+  "./data/05-participantSeed.js",
+  "./data/06-animalSeed.js",
+]
 const prisma = new PrismaClient()
 
 const main = async () => {

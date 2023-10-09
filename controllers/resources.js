@@ -44,7 +44,7 @@ const getAll = async (req, res, type, include) => {
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc"
 
     const query = {
-      where: filters, 
+      where: filters,
       orderBy: {
         [sortBy]: sortOrder,
       },
@@ -61,13 +61,12 @@ const getAll = async (req, res, type, include) => {
       return res.status(404).json({ msg: `No ${type}s found` })
     }
 
-    console.log(objects.length);
+    console.log(objects.length)
 
     //Return a JSON response containing the retrieved data.
-    return res.status(200)
-    .json({ 
+    return res.status(200).json({
       msg: `${type}s successfully fetched`,
-      data: objects, 
+      data: objects,
     })
   } catch (err) {
     return res.status(500).json({

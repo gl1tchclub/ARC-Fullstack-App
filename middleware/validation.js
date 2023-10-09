@@ -81,7 +81,7 @@ const validatePostParticipant = (req, res, next) => {
       "integer.min": "Age must be minimum {#limit}",
       "any.required": "Age is required",
     }),
-  });
+  })
 
   const { error } = participantSchema.validate(req.body)
 
@@ -123,15 +123,12 @@ const validatePostEvent = (req, res, next) => {
       "array.max": "Members must have a maximum length of {#limit}",
       "array.items.required": "At least two Members are required",
     }),
-    teams: Joi.array()
-      .items(Joi.string().required())
-      .max(8)
-      .messages({
-        "string.base": "Teams should be a string",
-        "string.empty": "Teams cannot be empty",
-        "array.max": "Events must have a maximum number of {#limit}",
-        "array.items.required": "At least one Team is required",
-      }),
+    teams: Joi.array().items(Joi.string().required()).max(8).messages({
+      "string.base": "Teams should be a string",
+      "string.empty": "Teams cannot be empty",
+      "array.max": "Events must have a maximum number of {#limit}",
+      "array.items.required": "At least one Team is required",
+    }),
   })
 
   const { error } = eventSchema.validate(req.body)
@@ -162,13 +159,19 @@ const validatePostAward = (req, res, next) => {
       "string.max": "Type should have a maximum length of {#limit}",
       "any.required": "Type is required",
     }),
-    quantity: Joi.number().integer().options({convert: false}).min(1).max(10).required().messages({
-      "number.base": "Quantity must be a number",
-      "number.empty": "Quantity cannot be empty",
-      "number.min": "Quantity should have a minimum length of {#limit}",
-      "number.max": "Quantity should have a maximum length of {#limit}",
-      "any.required": "Quantity is required",
-    }),
+    quantity: Joi.number()
+      .integer()
+      .options({ convert: false })
+      .min(1)
+      .max(10)
+      .required()
+      .messages({
+        "number.base": "Quantity must be a number",
+        "number.empty": "Quantity cannot be empty",
+        "number.min": "Quantity should have a minimum length of {#limit}",
+        "number.max": "Quantity should have a maximum length of {#limit}",
+        "any.required": "Quantity is required",
+      }),
     eventTitle: Joi.string().min(2).max(100).required().messages({
       "string.base": "Event Title should be a string",
       "string.empty": "Event Title cannot be empty",

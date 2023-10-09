@@ -4,7 +4,7 @@
  */
 const name = "participant"
 const data = [
-  { alias: "Iver Ashpole", age: 19 },
+  { alias: "Iver Ashpole", age: 19, memberOf: "" },
   { alias: "Melina De Biasi", age: 51 },
   { alias: "Sansone Wandrich", age: 40 },
   { alias: "Cliff Stroud", age: 38 },

@@ -42,14 +42,16 @@ app.use("/api/awards", awardRoutes)
 
 // Sets 404 error message if request contains an invalid route and sends to next middleware function in the stack
 app.use((req, res, next) => {
-  next(res.status(404).json({
-    msg: "404 route not found",
-  }))
+  next(
+    res.status(404).json({
+      msg: "404 route not found",
+    })
+  )
 })
 
-// Displays a written error message depending on the error found 
+// Displays a written error message depending on the error found
 app.use((err, req, res, next) => {
-  res.status(err.status || 500);
+  res.status(err.status || 500)
   res.send(err.message)
 })
 

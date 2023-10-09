@@ -88,58 +88,6 @@
 
 // describe("POST /api", () => {
 
-//     //Participants
-//     it("should create a participant", (done) => {
-//       chai.request(app)
-//       .post("/api/participants")
-//       .send(validData[0])
-//       .end((err, res) => {
-//         console.log(res.body)
-//         chai.expect(res.status).to.be.equal(201);
-//         chai.expect(res.body).to.be.a("object");
-//         chai.expect(res.body.msg).to.be.equal("participant successfully created");
-//         done();
-//       });
-//     });
-
-//     it("should NOT create a participant", (done) => {
-//       chai.request(app)
-//       .post("/api/participants")
-//       .send(invalidData[0])
-//       .end((err, res) => {
-//         console.log(res.body);
-//         chai.expect(res.status).to.be.equal(400);
-//         chai.expect(res.body.msg).to.be.equal("\"age\" must be greater than or equal to 15");
-//         done();
-//       });
-//     });
-
-//     //Animals
-//     it("should create an animal", (done) => {
-//       chai.request(app)
-//       .post("/api/animals")
-//       .send(validData[1])
-//       .end((err, res) => {
-//         console.log(res.body)
-//         chai.expect(res.status).to.be.equal(201);
-//         chai.expect(res.body).to.be.a("object");
-//         chai.expect(res.body.msg).to.be.equal("animal successfully created");
-//         done();
-//       });
-//     });
-
-//     it("should NOT create an animal", (done) => {
-//       chai.request(app)
-//       .post("/api/animals")
-//       .send(invalidData[1])
-//       .end((err, res) => {
-//         console.log(res.body)
-//         chai.expect(res.status).to.be.equal(400);
-//         chai.expect(res.body.msg).to.be.equal("Species must have a minimum length of 3");
-//         done();
-//       });
-//     });
-
 //     //Colosseums
 //     it("should create a colosseum", (done) => {
 //       chai.request(app)
@@ -192,6 +140,32 @@
 //       });
 //     });
 
+//     //Awards
+//     it("should create an award", (done) => {
+//       chai.request(app)
+//       .post("/api/awards")
+//       .send(validData[5])
+//       .end((err, res) => {
+//         console.log(res.body);
+//         chai.expect(res.status).to.be.equal(201);
+//         chai.expect(res.body).to.be.a("object");
+//         chai.expect(res.body.msg).to.be.equal("award successfully created");
+//         done();
+//       });
+//     });
+
+//     it("should NOT create an award", (done) => {
+//       chai.request(app)
+//       .post("/api/awards")
+//       .send(invalidData[5])
+//       .end((err, res) => {
+//         console.log(res.body);
+//         chai.expect(res.status).to.be.equal(400);
+//         chai.expect(res.body.msg).to.be.equal("Quantity must be a number");
+//         done();
+//       });
+//     });
+
 //     //Teams
 //     it("should create a team", (done) => {
 //       chai.request(app)
@@ -218,28 +192,54 @@
 //       });
 //     });
 
-//     //Awards
-//     it("should create an award", (done) => {
+//     //Participants
+//     it("should create a participant", (done) => {
 //       chai.request(app)
-//       .post("/api/awards")
-//       .send(validData[5])
+//       .post("/api/participants")
+//       .send(validData[0])
 //       .end((err, res) => {
-//         console.log(res.body);
+//         console.log(res.body)
 //         chai.expect(res.status).to.be.equal(201);
 //         chai.expect(res.body).to.be.a("object");
-//         chai.expect(res.body.msg).to.be.equal("award successfully created");
+//         chai.expect(res.body.msg).to.be.equal("participant successfully created");
 //         done();
 //       });
 //     });
 
-//     it("should NOT create an award", (done) => {
+//     it("should NOT create a participant", (done) => {
 //       chai.request(app)
-//       .post("/api/awards")
-//       .send(invalidData[5])
+//       .post("/api/participants")
+//       .send(invalidData[0])
 //       .end((err, res) => {
 //         console.log(res.body);
 //         chai.expect(res.status).to.be.equal(400);
-//         chai.expect(res.body.msg).to.be.equal("Quantity must be a number");
+//         chai.expect(res.body.msg).to.be.equal("\"age\" must be greater than or equal to 15");
+//         done();
+//       });
+//     });
+
+//     //Animals
+//     it("should create an animal", (done) => {
+//       chai.request(app)
+//       .post("/api/animals")
+//       .send(validData[1])
+//       .end((err, res) => {
+//         console.log(res.body)
+//         chai.expect(res.status).to.be.equal(201);
+//         chai.expect(res.body).to.be.a("object");
+//         chai.expect(res.body.msg).to.be.equal("animal successfully created");
+//         done();
+//       });
+//     });
+
+//     it("should NOT create an animal", (done) => {
+//       chai.request(app)
+//       .post("/api/animals")
+//       .send(invalidData[1])
+//       .end((err, res) => {
+//         console.log(res.body)
+//         chai.expect(res.status).to.be.equal(400);
+//         chai.expect(res.body.msg).to.be.equal("Species must have a minimum length of 3");
 //         done();
 //       });
 //     });

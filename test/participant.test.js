@@ -154,7 +154,7 @@
 //             done();
 //           });
 //         });
-      
+
 //       //#10
 //       it("should NOT PUT new data for the participant by ID", (done) => {
 //       chai.request(app)
@@ -303,7 +303,6 @@
 
 //   //test DELETE route
 
-
 //   // it("should create participant", async(done) => {
 //   //     await chai.request(app)
 //   //     .post("/api/participants")
@@ -368,7 +367,7 @@
 // //       });
 // //   });
 
-// //   it("should delete participant by id", (done) => { 
+// //   it("should delete participant by id", (done) => {
 // //     chai
 // //       .request(app)
 // //       .delete("/api/participants/1")

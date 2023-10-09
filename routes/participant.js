@@ -8,7 +8,6 @@ import { validatePostParticipant } from "../middleware/validation.js"
 
 const router = express.Router()
 
-
 // POST route for creating a new 'participant' resource
 router.post("/", validatePostParticipant, (req, res) =>
   resources.create(req, res, "participant")

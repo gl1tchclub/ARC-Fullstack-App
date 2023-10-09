@@ -10,4 +10,6 @@ const data = [
   },
 ]
 
+members: []
+
 export { name, data }

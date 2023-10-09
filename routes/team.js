@@ -8,11 +8,8 @@ import { validatePostTeam } from "../middleware/validation.js"
 
 const router = express.Router()
 
-
 // POST route for creating a new 'team' resource
-router.post("/", validatePostTeam, (req, res) => 
-  resources.create(req, res, "team")
-)
+router.post("/", validatePostTeam, (req, res) => resources.create(req, res, "team"))
 
 // GET route for retrieving all 'team' resources
 router.get("/", (req, res) => resources.getAll(req, res, "team"))
