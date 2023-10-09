@@ -38,8 +38,8 @@ const getAll = async (req, res, type, include) => {
 
     //Extract query parameters like filters
     const filters = req.query.filters ? JSON.parse(req.query.filters) : {}
-    // const orderBy = req.query.orderBy ? JSON.parse(req.query.orderBy) : "asc"
-    // //Define sorting parameters and a query object.
+
+    //Define sorting parameters and a query object.
     const sortBy = req.query.sortBy || "id"
     const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc"
 
@@ -57,9 +57,11 @@ const getAll = async (req, res, type, include) => {
     const objects = await typeModel.findMany(query)
 
     //If no objects are found, return a 404 error.
-    if (objects.length === 0 || !req.query) {
+    if (objects.length === 0) {
       return res.status(404).json({ msg: `No ${type}s found` })
     }
+
+    console.log(objects.length);
 
     //Return a JSON response containing the retrieved data.
     return res.status(200)

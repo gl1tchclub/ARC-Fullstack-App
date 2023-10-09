@@ -46,7 +46,7 @@ describe("GET /api/", () => {
       chai.request(app)
         .get("/api/animals?filters={\"taxonomy\":\"MAMMAL\"}&pageSize=4&page=2")
         .end((err, res) => {
-          console.log(res.body);
+          console.log(res.body.msg);
           chai.expect(res.status).to.be.equal(200);
           chai.expect(res.body.msg).to.be.equal("animals successfully fetched");
           chai.expect(res.body).to.be.a("object");
@@ -65,52 +65,54 @@ describe("GET /api/", () => {
         });
     });
 
-    // //Colosseums
-    // it("should GET all the colosseums", (done) => {
-    //   chai.request(app)
-    //     .get("/api/colosseums?filters={\"country\":\"China\"}&pageSize=3")
-    //     .end((err, res) => {
-    //       console.log(res.body + res.body.msg);
-    //       chai.expect(res.status).to.be.equal(200);
-    //       chai.expect(res.body).to.be.a("object");
-    //       chai.expect(res.body.data).to.be.a("array");
-    //       done();
-    //     });
-    // });
+    //Colosseums
+    it("should GET all the colosseums in China on page 2 where page size is 2", (done) => {
+      chai.request(app)
+        .get("/api/colosseums?filters={\"country\":\"China\"}&pageSize=2&page=2")
+        .end((err, res) => {
+          console.log(res.body.data);
+          chai.expect(res.status).to.be.equal(200);
+          chai.expect(res.body).to.be.a("object");
+          chai.expect(res.body.msg).to.be.equal("colosseums successfully fetched");
+          chai.expect(res.body.data).to.be.a("array");
+          done();
+        });
+    });
     
-    // it("should NOT GET all the colosseums", (done) => {
-    //   chai.request(app)
-    //     .get("/ap/colosseums?filters={\"name\":\"Imperial Battlegrounds\"}")
-    //     .end((err, res) => {
-    //       console.log(res.status);
-    //       chai.expect(res.status).to.be.equal(404);
-    //       done();
-    //     });
-    // });
+    it("should NOT GET all the colosseums", (done) => {
+      chai.request(app)
+        .get("/api/colosseums?filters={\"name\":\"Tibabjffdjkjh\"}")
+        .end((err, res) => {
+          console.log(res.body.msg);
+          chai.expect(res.status).to.be.equal(404);
+          chai.expect(res.body.msg).to.be.equal("No colosseums found");
+          done();
+        });
+    });
 
-    // //Events
-    // // sortBy = "eventTitle";
-    // it("should GET all the events", (done) => {
-    //   chai.request(app)
-    //     .get(`/api/events?sortBy=${sortBy}&sortOrder=${sortOrder}`)
-    //     .end((err, res) => {
-    //       console.log(res.body);
-    //       chai.expect(res.status).to.be.equal(200);
-    //       chai.expect(res.body).to.be.a("object");
-    //       chai.expect(res.body.data).to.be.a("array");
-    //       done();
-    //     });
-    // });
+    //Events
+    // sortBy = "eventTitle";
+    it("should GET all the events", (done) => {
+      chai.request(app)
+        .get(`/api/events?sortBy=${sortBy}&sortOrder=${sortOrder}`)
+        .end((err, res) => {
+          console.log(res.body);
+          chai.expect(res.status).to.be.equal(200);
+          chai.expect(res.body).to.be.a("object");
+          chai.expect(res.body.data).to.be.a("array");
+          done();
+        });
+    });
 
-    // it("should NOT GET all the events", (done) => {
-    //   chai.request(app)
-    //     .get("/api/event")
-    //     .end((err, res) => {
-    //       console.log(res.status);
-    //       chai.expect(res.status).to.be.equal(404);
-    //       done();
-    //     });
-    // });
+    it("should NOT GET all the events", (done) => {
+      chai.request(app)
+        .get("/api/event")
+        .end((err, res) => {
+          console.log(res.status);
+          chai.expect(res.status).to.be.equal(404);
+          done();
+        });
+    });
 
     // //Teams
     // it("should GET all the teams", (done) => {
