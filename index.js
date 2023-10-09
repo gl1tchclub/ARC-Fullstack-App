@@ -39,8 +39,13 @@ app.use("/api/events", eventRoutes)
 app.use("/api/teams", teamRoutes)
 app.use("/api/colosseums", colosseumRoutes)
 app.use("/api/awards", awardRoutes)
+app.use((req, res, next) => {
+  res.status(404).json({
+    msg: "404 route not found",
+  })
+})
 
-// Start the server on port 3000
+// Initialize the server on port 3000
 app.listen(3000, () => {
   console.log("Server is listening on port 3000.")
 })

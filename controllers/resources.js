@@ -36,13 +36,6 @@ const getAll = async (req, res, type, include) => {
     //Retrieve data from the specified type using Prisma.
     const typeModel = prisma[type]
 
-    //Check if the given model exists; if not, return a 404 error.
-    if (!typeModel) {
-      return res
-        .status(404)
-        .json({ msg: `Endpoint for ${typeModel} does not exist` })
-    }
-
     //Extract query parameters like filters
     const filters = req.query.filters ? JSON.parse(req.query.filters) : {}
     // const orderBy = req.query.orderBy ? JSON.parse(req.query.orderBy) : "asc"
@@ -64,12 +57,16 @@ const getAll = async (req, res, type, include) => {
     const objects = await typeModel.findMany(query)
 
     //If no objects are found, return a 404 error.
-    if (typeModel.length === 0) {
-      return res.status(404).json({ msg: `No ${type} found` })
+    if (objects.length === 0 || !req.query) {
+      return res.status(404).json({ msg: `No ${type}s found` })
     }
 
     //Return a JSON response containing the retrieved data.
-    return res.json({ data: objects })
+    return res.status(200)
+    .json({ 
+      msg: `${type}s successfully fetched`,
+      data: objects, 
+    })
   } catch (err) {
     return res.status(500).json({
       msg: err.message,
