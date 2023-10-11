@@ -16,18 +16,6 @@ const ChuckNorris = () => {
   const [norris, setNorris] = useState({});
   const [dataFetched, setDataFetched] = useState(false);
 
-  function myUseState (defaultValue) {
-    let value = defaultValue;
-    const setValue = (newValue) => {value = newValue};
-
-    return [value, setValue]
-  }
-
-const [firstName, setFirstName] = myUseState("harry");
-
-
-  
-
   //get req
   const getNorris = async () => {
     try {
@@ -45,7 +33,6 @@ const [firstName, setFirstName] = myUseState("harry");
   useEffect(() => {
     if (!dataFetched) {
       getNorris();
-      someName = "Johnny"
     }
   }, [dataFetched]);
 
@@ -56,7 +43,6 @@ const [firstName, setFirstName] = myUseState("harry");
           {/* conditional to check that image and text display when icon exists */}
           {norris.icon_url && <img src={norris.icon_url} alt="Chuck Norris" />}
           <p>{norris.value}</p>
-          <p>{someName}</p>
         </div>
       )}
     </>
