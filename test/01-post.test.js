@@ -15,6 +15,7 @@
 //   {
 //     alias: "Igalia Glysfold",
 //     age: 19,
+//     memberOf: "Crimson Claw Guild",
 //   },
 //   {
 //     name: "Doggy",
@@ -35,7 +36,7 @@
 //     date: "2027-12-12T14:00:00Z",
 //   },
 //   {
-//     teamName: "Wolf Pack",
+//     teamName: "Claw Fighters",
 //     eventTitle: "Pit Fight",
 //     country: "England",
 //     city: "London",

@@ -221,6 +221,62 @@ const data = [
     rank: "TARTAROS",
     ownerName: "Sansone Wandrich",
   },
-]
+  {
+    name: "Night Terror",
+    taxonomy: "BIRD",
+    species: "Falcon",
+    rank: "EMPIRE",
+    ownerName: "Maybelle Melding",
+  },
+  {
+    name: "Sylvari",
+    taxonomy: "BIRD",
+    species: "Griffon",
+    rank: "OLYMPUS",
+    ownerName: "Hope Feldin",
+  },
+  {
+    name: "Canifex",
+    taxonomy: "MAMMAL",
+    species: "Nine-tail Fox",
+    rank: "IMMORTAL",
+    ownerName: "Hope Feldin",
+  },
+  {
+    name: "Pandari",
+    taxonomy: "MAMMAL",
+    species: "Panda",
+    rank: "UNDYING",
+    ownerName: "Gina Rohan",
+  },
+  {
+    name: "Equinox",
+    taxonomy: "MAMMAL",
+    species: "Pegasus",
+    rank: "IMMORTAL",
+    ownerName: "Gina Rohan",
+  },
+  {
+    name: "Drakon",
+    taxonomy: "REPTILE",
+    species: "Dragon",
+    rank: "OLYMPUS",
+    ownerName: "Tiana White",
+  },
+  {
+    name: "Aviana",
+    taxonomy: "REPTILE",
+    species: "Basilisk",
+    rank: "OLYMPUS",
+    ownerName: "Tiana White",
+  },
+  {
+    name: "Terrascale",
+    taxonomy: "REPTILE",
+    species: "Cockatrice",
+    rank: "UNDYING",
+    ownerName: "Giacopo Rohan",
+  },
+];
 
 export { data, name }

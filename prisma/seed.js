@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client"
 const seeds = [
   "./data/01-colosseumSeed.js",
   "./data/02-eventSeed.js",
-  // "./data/03-awardSeed.js",
+  "./data/03-awardSeed.js",
   "./data/04-teamSeed.js",
   "./data/05-participantSeed.js",
   "./data/06-animalSeed.js",

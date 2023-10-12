@@ -5,6 +5,7 @@
 import express from "express"
 import * as resources from "../controllers/resources.js"
 import { validatePostEvent } from "../middleware/validation.js"
+import { validatePutEvent } from "../middleware/putValidation.js"
 
 const router = express.Router()
 
@@ -20,7 +21,7 @@ router.get("/", (req, res) => resources.getAll(req, res, "event"))
 router.get("/:id", (req, res) => resources.getID(req, res, "event"))
 
 // PUT route for updating a 'event' resource by ID
-router.put("/:id", validatePostEvent, (req, res) =>
+router.put("/:id", validatePutEvent, (req, res) =>
   resources.update(req, res, "event")
 )
 
