@@ -146,30 +146,32 @@ describe("GET /api/", () => {
       .end((err, res) => {
         console.log(res.status)
         chai.expect(res.status).to.be.equal(404)
+        chai.expect(res.body.msg).to.be.equal("404 route not found")
         done()
       })
   })
 
-  // //Awards
-  // it("should GET all the awards", (done) => {
-  //   chai.request(app)
-  //     .get("/api/awards")
-  //     .end((err, res) => {
-  //       console.log(res.body);
-  //       chai.expect(res.status).to.be.equal(200);
-  //       chai.expect(res.body).to.be.a("object");
-  //       chai.expect(res.body.data).to.be.a("array");
-  //       done();
-  //     });
-  // });
+  //Awards
+  it("should GET all the awards", (done) => {
+    chai.request(app)
+      .get("/api/awards")
+      .end((err, res) => {
+        console.log(res.body);
+        chai.expect(res.status).to.be.equal(200);
+        chai.expect(res.body).to.be.a("object");
+        chai.expect(res.body.data).to.be.a("array");
+        done();
+      });
+  });
 
-  // //invalid route
-  // it("should NOT GET all the awards", (done) => {
-  //   chai.request(app)
-  //     .get("/api/award")
-  //     .end((err, res) => {
-  //       chai.expect(res.status).to.be.equal(404);
-  //       done();
-  //     });
-  // });
+  //invalid route
+  it("should NOT GET all the awards", (done) => {
+    chai.request(app)
+      .get("/api/award")
+      .end((err, res) => {
+        chai.expect(res.status).to.be.equal(404);
+        chai.expect(res.body.msg).to.be.equal("404 route not found")
+        done();
+      });
+  });
 })
