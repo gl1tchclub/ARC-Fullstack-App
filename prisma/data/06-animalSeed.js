@@ -277,6 +277,6 @@ const data = [
     rank: "UNDYING",
     ownerName: "Giacopo Rohan",
   },
-];
+]
 
 export { data, name }

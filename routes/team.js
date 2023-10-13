@@ -19,9 +19,7 @@ router.get("/", (req, res) => resources.getAll(req, res, "team"))
 router.get("/:id", (req, res) => resources.getID(req, res, "team"))
 
 // PUT route for updating a 'team' resource by ID
-router.put("/:id", validatePutTeam, (req, res) =>
-  resources.update(req, res, "team")
-)
+router.put("/:id", validatePutTeam, (req, res) => resources.update(req, res, "team"))
 
 // DELETE route for deleting a 'team' resource by ID
 router.delete("/:id", (req, res) => resources.deleteType(req, res, "team"))

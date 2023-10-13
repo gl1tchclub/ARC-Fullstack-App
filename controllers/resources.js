@@ -91,7 +91,10 @@ const getID = async (req, res, type) => {
     }
 
     //Return a JSON response containing the retrieved data
-    return res.json({ data: typeId })
+    return res.json({
+      msg: `${type} with ID ${req.params.id} successfully fetched`,
+      data: typeId,
+    })
   } catch (err) {
     return res.status(500).json({
       msg: err.message,

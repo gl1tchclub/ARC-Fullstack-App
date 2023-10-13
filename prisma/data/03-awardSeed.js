@@ -9,13 +9,13 @@ const data = [
     type: "Trophy",
     quantity: 1,
     eventTitle: "Tartaros Promos",
-  }, 
+  },
   {
     awardTitle: "Silver",
     type: "Medal",
     quantity: 1,
     eventTitle: "Tartaros Promos",
-  }, 
+  },
   {
     awardTitle: "Bronze",
     type: "Certificate",
@@ -38,19 +38,19 @@ const data = [
     awardTitle: "Arctic Dominance",
     type: "Arctic Trophy",
     quantity: 1,
-    eventTitle: "Arctic Finals"
-  }, 
+    eventTitle: "Arctic Finals",
+  },
   {
     awardTitle: "Silver",
     type: "Medal",
     quantity: 2,
-    eventTitle: "Arctic Finals"
-  }, 
+    eventTitle: "Arctic Finals",
+  },
   {
     awardTitle: "Bronze",
     type: "Medal",
     quantity: 2,
-    eventTitle: "Arctic Finals"
+    eventTitle: "Arctic Finals",
   },
   {
     awardTitle: "Empire Promotion",

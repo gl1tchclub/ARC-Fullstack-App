@@ -67,6 +67,6 @@ const data = [
     city: "Taipei",
     numMembers: 2,
   },
-];
+]
 
 export { name, data }

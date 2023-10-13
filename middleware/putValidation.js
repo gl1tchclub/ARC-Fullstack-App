@@ -149,7 +149,7 @@ const validatePutAward = (req, res, next) => {
       .options({ convert: false })
       .min(1)
       .max(10)
-      
+
       .messages({
         "number.base": "Quantity must be a number",
         "number.empty": "Quantity cannot be empty",

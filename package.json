@@ -13,8 +13,7 @@
     "db-reset": "npx prisma db reset --force",
     "studio": "npx prisma studio",
     "seed": "npx prisma db seed",
-    "erd": "npx prisma generate",
-    "start": "npm i && npm install joi && npm install express-rate-limit"
+    "erd": "npx prisma generate"
   },
   "prisma": {
     "seed": "node prisma/seed.js"
