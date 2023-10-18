@@ -59,7 +59,7 @@
 //       })
 //   })
 
-//   it("should NOT GET all animals and paginate them", (done) => {
+//   it("should NOT GET all animals", (done) => {
 //     chai
 //       .request(app)
 //       .get("/api/animal")
