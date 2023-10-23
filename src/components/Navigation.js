@@ -26,7 +26,7 @@ const Navigation = () => {
       <Collapse isOpen={isOpen} navbar>
         <Nav className="ms-auto" navbar>
           <NavItem>
-          <NavLink href="/join">Join</NavLink>
+          <NavLink href="/colosseums">Join</NavLink>
           </NavItem>
         </Nav>
       </Collapse>
