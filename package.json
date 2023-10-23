@@ -41,6 +41,7 @@
     "@mermaid-js/mermaid-cli": "^10.4.0",
     "chai": "^4.3.8",
     "chai-http": "^4.4.0",
+    "cors": "^2.8.5",
     "express-rate-limit": "^7.1.1",
     "joi": "^17.11.0",
     "mocha": "^10.2.0",

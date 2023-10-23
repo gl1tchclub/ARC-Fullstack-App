@@ -10,6 +10,7 @@ import eventRoutes from "./routes/event.js"
 import teamRoutes from "./routes/team.js"
 import colosseumRoutes from "./routes/colosseum.js"
 import awardRoutes from "./routes/award.js"
+import cors from "cors"
 
 // Create an Express application
 const app = express()
@@ -32,6 +33,7 @@ app.use(limit)
 
 // This code sets up middleware to route incoming requests to different parts of the application.
 // It directs requests to specific routes or endpoints for various functionalities.
+app.use(cors())
 app.use("/", indexRoutes)
 app.use("/api/animals", animalRoutes)
 app.use("/api/participants", participantRoutes)
