@@ -3,8 +3,9 @@
 /* const prop1 = ({}) */
 
 import Navigation from "./components/Navigation";
+import cors from "cors"; 
 
-const App = () => {
+const app = () => {
   return (
     <>
       <Navigation />
@@ -12,4 +13,6 @@ const App = () => {
   );
 };
 
-export default App;
+app.use(cors());
+
+export default app;
