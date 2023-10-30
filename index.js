@@ -1,6 +1,7 @@
 // Import the Express module
 import express from "express"
 import rateLimit from "express-rate-limit"
+import cors from "cors"
 
 // Import the index routes module
 import indexRoutes from "./routes/index.js"
@@ -39,6 +40,7 @@ app.use("/api/events", eventRoutes)
 app.use("/api/teams", teamRoutes)
 app.use("/api/colosseums", colosseumRoutes)
 app.use("/api/awards", awardRoutes)
+app.use(cors())
 
 // Start the server on port 3000
 app.listen(3000, () => {
