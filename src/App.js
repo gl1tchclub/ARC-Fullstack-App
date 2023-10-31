@@ -3,7 +3,6 @@
 /* const prop1 = ({}) */
 
 import Navigation from "./components/Navigation";
-import cors from "cors"; 
 
 const app = () => {
   return (
@@ -12,7 +11,5 @@ const app = () => {
     </>
   );
 };
-
-app.use(cors());
 
 export default app;

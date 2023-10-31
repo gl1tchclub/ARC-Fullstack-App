@@ -11,7 +11,7 @@ import {
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import ColosseumsTable from "../tables/ColosseumsTable.js";
+import ColosseumsTable from "./tables/ColosseumsTable";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,7 +26,7 @@ const Navigation = () => {
       <Collapse isOpen={isOpen} navbar>
         <Nav className="ms-auto" navbar>
           <NavItem>
-          <NavLink href="/colosseums">Join</NavLink>
+          <NavLink href="/colosseums">Colosseums</NavLink>
           </NavItem>
         </Nav>
       </Collapse>

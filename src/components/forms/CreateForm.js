@@ -2,16 +2,17 @@ import axios from "axios";
 import { useState } from "react";
 import { Alert, Button, Form, FormGroup, Input } from "reactstrap";
 import { Navigate } from "react-router-dom";
+const BASE_URL = ""
 
-const CreateForm = (props) => {
-    const BASE_URL = ""
-
-    const [fields, setFields] = useState({
-        name: '',
-        country: '',
-        city: '',
-        terrainType: ''
-    })
+const CreateForm = () => {
+    try {
+        const [fields, setFields] = useState({
+            name: '',
+            country: '',
+            city: '',
+            terrainType: ''
+        })
+    }
 
     const [isError, setIsError] = useState(false)
 
