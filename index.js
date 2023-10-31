@@ -29,6 +29,7 @@ app.use(express.urlencoded({ extended: false }))
 
 // To parse the incoming requests with JSON payloads. For example, REST API requests
 app.use(express.json())
+app.use(cors())
 app.use(limit)
 
 // This code sets up middleware to route incoming requests to different parts of the application.
@@ -46,9 +47,6 @@ app.use("/api/awards", awardRoutes)
 //   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 //   next();
 // })
-app.use(cors({
-  origin: "https://id607001-mintep1-project.onrender.com/"
-}))
 
 // Start the server on port 3000
 app.listen(3000, () => {
