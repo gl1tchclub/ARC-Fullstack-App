@@ -40,14 +40,14 @@ app.use("/api/events", eventRoutes)
 app.use("/api/teams", teamRoutes)
 app.use("/api/colosseums", colosseumRoutes)
 app.use("/api/awards", awardRoutes)
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000/");
-  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  next();
-})
+// app.use((req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000/");
+//   res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+//   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+//   next();
+// })
 app.use(cors({
-  origin: "http://localhost:3000/"
+  origin: "https://id607001-mintep1-project.onrender.com/"
 }))
 
 // Start the server on port 3000
