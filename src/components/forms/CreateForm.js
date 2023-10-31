@@ -12,8 +12,7 @@ const CreateForm = () => {
             city: '',
             terrainType: ''
         })
-    }
-
+    
     const [isError, setIsError] = useState(false)
 
     const handleChange = (e) => {
@@ -45,7 +44,7 @@ const CreateForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         createColosseum();
-    };
+    }
 
     return (
         <>
@@ -56,12 +55,54 @@ const CreateForm = () => {
                   type="text"
                   name="name"
                   placeholder="Name"
-                  value={field.name}
-                  onChange={(e) => setField(e.target.value)} //detects element value change
+                  value={fields.name}
+                  onChange={(e) => handleChange} 
                   required
                 />
             </FormGroup>
+            <FormGroup>
+                <Input
+                  type="text"
+                  name="country"
+                  placeholder="Country"
+                  value={fields.country}
+                  onChange={(e) => handleChange} 
+                  required
+                />
+            </FormGroup>
+            <FormGroup>
+                <Input
+                  type="text"
+                  name="city"
+                  placeholder="City"
+                  value={fields.city}
+                  onChange={(e) => handleChange} 
+                  required
+                />
+            </FormGroup>
+            <FormGroup>
+                <Input
+                  type="text"
+                  name="terrainType"
+                  placeholder="Terrain Type"
+                  value={fields.terrainType}
+                  onChange={(e) => handleChange}
+                  required
+                />
+            </FormGroup>
+            {isError ? (
+              <Alert color="danger">
+                Something went wrong. Please try again.
+              </Alert>
+            ) : null}
+            <Button type="submit">Create</Button>
           </Form>
         </>
     )
+    } catch (e) {
+        console.log(error)
+        setIsError(true)
+    }
 }
+
+export default CreateForm;

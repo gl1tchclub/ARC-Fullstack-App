@@ -8,7 +8,6 @@ const ColosseumsTable = () => {
     "Content-Type": "application/json",
   }
   const [data, setData] = useState([])
-  console.log(data)
 
   useEffect(() => {
     const getColosseumsData = async () => {
@@ -25,7 +24,7 @@ const ColosseumsTable = () => {
   const displayColosseumsData = (
     data.map((d) => {
       return (
-        <tr key={d._id}>
+        <tr key={d.id}>
           <td>{d.name}</td>
           <td>{d.country}</td>
           <td>{d.city}</td>

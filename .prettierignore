@@ -1,0 +1,12 @@
+# Ignore artifacts:
+build
+coverage
+App.test.js
+App.css
+README.md
+index.html
+package-lock.json
+package.json
+manifest.json
+reportWebVitals.js
+setupTests.js
