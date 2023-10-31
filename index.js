@@ -40,7 +40,9 @@ app.use("/api/events", eventRoutes)
 app.use("/api/teams", teamRoutes)
 app.use("/api/colosseums", colosseumRoutes)
 app.use("/api/awards", awardRoutes)
-app.use(cors())
+app.use(cors({
+  origin: "http://http://localhost:3000/"
+}))
 
 // Start the server on port 3000
 app.listen(3000, () => {
