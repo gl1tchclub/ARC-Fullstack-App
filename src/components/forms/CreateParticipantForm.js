@@ -44,8 +44,8 @@ const CreateParticipantForm = (props) => {
         if (isError === false) {
           setTimeout(() => {
               setIsError(true)
+              setShowBanner(false)
             }, 3000);
-          setShowBanner(false)
           setIsError(false)
         }
      }
