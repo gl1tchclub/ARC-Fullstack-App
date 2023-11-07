@@ -16,7 +16,9 @@ import EventsTable from "./tables/EventsTable";
 import ParticipantsTable from "./tables/ParticipantsTable";
 import AnimalsTable from "./tables/AnimalsTable";
 import CreateColosseumForm from "./forms/CreateColosseumForm";
-
+import CreateEventForm from "./forms/CreateEventForm";
+import CreateAnimalForm from "./forms/CreateAnimalForm";
+import CreateParticipantForm from "./forms/CreateParticipantForm";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,7 +39,7 @@ const Navigation = () => {
             <NavLink href="/events">Events</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="/participants">Participant</NavLink>
+            <NavLink href="/participants">Participants</NavLink>
           </NavItem>
           <NavItem>
             <NavLink href="/animals">Animals</NavLink>
@@ -51,16 +53,16 @@ const Navigation = () => {
         <ColosseumsTable />
       </>} />
       <Route path="/events" element={<>
-        <CreateColosseumForm />
-        <ColosseumsTable />
+        {/* <CreateEventForm /> */}
+        <EventsTable />
       </>} />
       <Route path="/participants" element={<>
-        <CreateColosseumForm />
-        <ColosseumsTable />
+        <CreateParticipantForm />
+        <ParticipantsTable />
       </>} />
       <Route path="/animals" element={<>
-        <CreateColosseumForm />
-        <ColosseumsTable />
+        <CreateAnimalForm />
+        <AnimalsTable />
       </>} />
     </Routes>
   </Router>

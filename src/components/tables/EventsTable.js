@@ -4,22 +4,19 @@ import { Table } from "reactstrap";
 
 const EventsTable = () => {
   const BASE_URL = "https://id607001-mintep1-project.onrender.com/"
-  const headers = {
-    "Content-Type": "application/json",
-  }
   const [data, setData] = useState([])
 
   useEffect(() => {
     const getEventsData = async () => {
       try {
-        const res = await axios.get(`${BASE_URL}api/events`, {headers})
+        const res = await axios.get(`${BASE_URL}api/events`)
         setData(res.data.data)
       } catch (error) {
         console.log(error)
       }   
     }
     getEventsData()
-  }, [data])
+  }, [])
 
   const displayEventsData = (
     data.map((d) => {

@@ -64,7 +64,7 @@ const CreateParticipantForm = (props) => {
                   type="text"
                   name="alias"
                   placeholder="Alias"
-                  value={name}
+                  value={alias}
                   onChange={(e) => setAlias(e.target.value)}
                   required
                 />
