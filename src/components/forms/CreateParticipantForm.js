@@ -3,32 +3,30 @@ import { useState } from "react";
 import { Alert, Button, Form, FormGroup, Input, UncontrolledAlert } from "reactstrap";
 import { Navigate } from "react-router-dom";
 
-const CreateColosseumForm = (props) => {
+const CreateParticipantForm = (props) => {
     const BASE_URL = "https://id607001-mintep1-project.onrender.com/"
 
-    const [name, setName] = useState("");
-    const [country, setCountry] = useState("");
-    const [city, setCity] = useState("");
-    const [terrainType, setTerrainType] = useState("");
+    const [alias, setAlias] = useState("");
+    const [age, setAge] = useState("");
+    const [memberOf, setMemberOf] = useState("");
     const [isError, setIsError] = useState(false);
     const [isFilled, setIsFilled] = useState(false);
     const [showBanner, setShowBanner] = useState(true);
     
-    const createColosseum = async () => {
+    const createParticipant = async () => {
         setShowBanner(true)
         setIsError(false)
         try {
-            const res = await axios.post(`${BASE_URL}api/colosseums`, {
-                name: name,
-                country: country,
-                city: city,
-                terrainType: terrainType,
+            const res = await axios.post(`${BASE_URL}api/participants`, {
+              alias: alias,
+              age: age,
+              memberOf: memberOf,
             })
 
             setIsFilled(true)
             
             if (res.status === 201) {
-                console.log('Colosseum successfully created')
+                console.log('Participant successfully created')
             }
             
             if (res.status === 400) {
@@ -54,50 +52,40 @@ const CreateColosseumForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        createColosseum();
+        createParticipant();
     }
 
     return (
         <>
-          <h1 style={{ marginTop: "10px" }}>Create Colosseum</h1>
+          <h1 style={{ marginTop: "10px" }}>Create Participant</h1>
           <Form onSubmit={handleSubmit}>
             <FormGroup>
                 <Input
                   type="text"
-                  name="name"
-                  placeholder="Name"
+                  name="alias"
+                  placeholder="Alias"
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => setAlias(e.target.value)}
                   required
                 />
             </FormGroup>
             <FormGroup>
                 <Input
                   type="text"
-                  name="country"
-                  placeholder="Country"
-                  value={country}
-                  onChange={(e) => setCountry(e.target.value)} 
+                  name="age"
+                  placeholder="Age"
+                  value={age}
+                  onChange={(e) => setAge(e.target.value)} 
                   required
                 />
             </FormGroup>
             <FormGroup>
                 <Input
                   type="text"
-                  name="city"
-                  placeholder="City"
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)} 
-                  required
-                />
-            </FormGroup>
-            <FormGroup>
-                <Input
-                  type="text"
-                  name="terrainType"
-                  placeholder="Terrain Type"
-                  value={terrainType}
-                  onChange={(e) => setTerrainType(e.target.value)}
+                  name="memberOf"
+                  placeholder="Member Of"
+                  value={memberOf}
+                  onChange={(e) => setMemberOf(e.target.value)} 
                   required
                 />
             </FormGroup>
@@ -118,4 +106,4 @@ const CreateColosseumForm = (props) => {
     )
 }
 
-export default CreateColosseumForm;
+export default CreateParticipantForm;

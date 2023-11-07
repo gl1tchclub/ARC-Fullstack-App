@@ -3,32 +3,34 @@ import { useState } from "react";
 import { Alert, Button, Form, FormGroup, Input, UncontrolledAlert } from "reactstrap";
 import { Navigate } from "react-router-dom";
 
-const CreateColosseumForm = (props) => {
+const CreateAnimalForm = (props) => {
     const BASE_URL = "https://id607001-mintep1-project.onrender.com/"
 
     const [name, setName] = useState("");
-    const [country, setCountry] = useState("");
-    const [city, setCity] = useState("");
-    const [terrainType, setTerrainType] = useState("");
+    const [taxonomy, setTaxonomy] = useState("");
+    const [species, setSpecies] = useState("");
+    const [rank, setRank] = useState("");
+    const [ownerName, setOwnerName] = useState("");
     const [isError, setIsError] = useState(false);
     const [isFilled, setIsFilled] = useState(false);
     const [showBanner, setShowBanner] = useState(true);
     
-    const createColosseum = async () => {
+    const createAnimal = async () => {
         setShowBanner(true)
         setIsError(false)
         try {
-            const res = await axios.post(`${BASE_URL}api/colosseums`, {
+            const res = await axios.post(`${BASE_URL}api/animals`, {
                 name: name,
-                country: country,
-                city: city,
-                terrainType: terrainType,
+                taxonomy: taxonomy,
+                species: species,
+                rank: rank,
+                ownerName: ownerName,
             })
 
             setIsFilled(true)
             
             if (res.status === 201) {
-                console.log('Colosseum successfully created')
+                console.log('Animal successfully created')
             }
             
             if (res.status === 400) {
@@ -54,12 +56,12 @@ const CreateColosseumForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        createColosseum();
+        createAnimal();
     }
 
     return (
         <>
-          <h1 style={{ marginTop: "10px" }}>Create Colosseum</h1>
+          <h1 style={{ marginTop: "10px" }}>Create Animal</h1>
           <Form onSubmit={handleSubmit}>
             <FormGroup>
                 <Input
@@ -74,30 +76,40 @@ const CreateColosseumForm = (props) => {
             <FormGroup>
                 <Input
                   type="text"
-                  name="country"
-                  placeholder="Country"
-                  value={country}
-                  onChange={(e) => setCountry(e.target.value)} 
+                  name="taxonomy"
+                  placeholder="Taxonomy"
+                  value={taxonomy}
+                  onChange={(e) => setTaxonomy(e.target.value)} 
                   required
                 />
             </FormGroup>
             <FormGroup>
                 <Input
                   type="text"
-                  name="city"
-                  placeholder="City"
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)} 
+                  name="species"
+                  placeholder="Species"
+                  value={species}
+                  onChange={(e) => setSpecies(e.target.value)} 
                   required
                 />
             </FormGroup>
             <FormGroup>
                 <Input
                   type="text"
-                  name="terrainType"
-                  placeholder="Terrain Type"
-                  value={terrainType}
-                  onChange={(e) => setTerrainType(e.target.value)}
+                  name="rank"
+                  placeholder="Rank"
+                  value={rank}
+                  onChange={(e) => setRank(e.target.value)}
+                  required
+                />
+            </FormGroup>
+            <FormGroup>
+                <Input
+                  type="text"
+                  name="ownerName"
+                  placeholder="ownerName"
+                  value={ownerName}
+                  onChange={(e) => setOwnerName(e.target.value)}
                   required
                 />
             </FormGroup>
@@ -118,4 +130,4 @@ const CreateColosseumForm = (props) => {
     )
 }
 
-export default CreateColosseumForm;
+export default CreateAnimalForm;

@@ -3,32 +3,30 @@ import { useState } from "react";
 import { Alert, Button, Form, FormGroup, Input, UncontrolledAlert } from "reactstrap";
 import { Navigate } from "react-router-dom";
 
-const CreateColosseumForm = (props) => {
+const CreateEventForm = (props) => {
     const BASE_URL = "https://id607001-mintep1-project.onrender.com/"
 
-    const [name, setName] = useState("");
-    const [country, setCountry] = useState("");
-    const [city, setCity] = useState("");
-    const [terrainType, setTerrainType] = useState("");
+    const [eventTitle, setEventTitle] = useState("");
+    const [venue, setVenue] = useState("");
+    const [date, setDate] = useState("");
     const [isError, setIsError] = useState(false);
     const [isFilled, setIsFilled] = useState(false);
     const [showBanner, setShowBanner] = useState(true);
     
-    const createColosseum = async () => {
+    const createEvent = async () => {
         setShowBanner(true)
         setIsError(false)
         try {
-            const res = await axios.post(`${BASE_URL}api/colosseums`, {
-                name: name,
-                country: country,
-                city: city,
-                terrainType: terrainType,
+            const res = await axios.post(`${BASE_URL}api/events`, {
+              eventTitle: eventTitle,
+              venue: venue,
+              date: date,
             })
 
             setIsFilled(true)
             
             if (res.status === 201) {
-                console.log('Colosseum successfully created')
+                console.log('Event successfully created')
             }
             
             if (res.status === 400) {
@@ -54,50 +52,40 @@ const CreateColosseumForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        createColosseum();
+        createEvent();
     }
 
     return (
         <>
-          <h1 style={{ marginTop: "10px" }}>Create Colosseum</h1>
+          <h1 style={{ marginTop: "10px" }}>Create Event</h1>
           <Form onSubmit={handleSubmit}>
             <FormGroup>
                 <Input
                   type="text"
-                  name="name"
-                  placeholder="Name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  name="eventTitle"
+                  placeholder="Event Title"
+                  value={eventTitle}
+                  onChange={(e) => setEventTitle(e.target.value)}
                   required
                 />
             </FormGroup>
             <FormGroup>
                 <Input
                   type="text"
-                  name="country"
-                  placeholder="Country"
-                  value={country}
-                  onChange={(e) => setCountry(e.target.value)} 
+                  name="venue"
+                  placeholder="Venue"
+                  value={venue}
+                  onChange={(e) => setVenue(e.target.value)} 
                   required
                 />
             </FormGroup>
             <FormGroup>
                 <Input
                   type="text"
-                  name="city"
-                  placeholder="City"
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)} 
-                  required
-                />
-            </FormGroup>
-            <FormGroup>
-                <Input
-                  type="text"
-                  name="terrainType"
-                  placeholder="Terrain Type"
-                  value={terrainType}
-                  onChange={(e) => setTerrainType(e.target.value)}
+                  name="date"
+                  placeholder="Date"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)} 
                   required
                 />
             </FormGroup>
@@ -118,4 +106,4 @@ const CreateColosseumForm = (props) => {
     )
 }
 
-export default CreateColosseumForm;
+export default CreateEventForm;

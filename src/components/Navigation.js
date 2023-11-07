@@ -12,7 +12,11 @@ import {
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import ColosseumsTable from "./tables/ColosseumsTable";
+import EventsTable from "./tables/EventsTable";
+import ParticipantsTable from "./tables/ParticipantsTable";
+import AnimalsTable from "./tables/AnimalsTable";
 import CreateColosseumForm from "./forms/CreateColosseumForm";
+
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
