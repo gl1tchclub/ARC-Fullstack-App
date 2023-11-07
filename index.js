@@ -16,13 +16,13 @@ import cors from "cors"
 const app = express()
 
 //Limit the number of API requests per minute to 100
-const limit = rateLimit({
-  windowMs: 60 * 1000,
-  max: 100,
-  message: async (req, res) => {
-    return "You have exceeded the number of requests per minute: 100. Please try again later"
-  },
-})
+//const limit = rateLimit({
+  //windowMs: 60 * 1000,
+  //max: 100,
+  //message: async (req, res) => {
+    //return "You have exceeded the number of requests per minute: 100. Please try again later"
+  //},
+//})
 
 // To parse the incoming requests with urlencoded payloads. For example, form data
 app.use(express.urlencoded({ extended: false }))
