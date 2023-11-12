@@ -12,7 +12,7 @@ const ParticipantsTable = () => {
   useEffect(() => {
     const getParticipantsData = async () => {
       try {
-        const res = await axios.get(`${BASE_URL}api/participants?pageSize=40`);
+        const res = await axios.get(`${BASE_URL}api/participants?pageSize=100`);
         console.log(res);
         setData(res.data.data);
       } catch (error) {

@@ -1,15 +1,21 @@
 import axios from "axios";
 import { useState } from "react";
-import { Button, Form, FormGroup, Input, UncontrolledAlert } from "reactstrap";
+import {
+  Button,
+  Form,
+  FormGroup,
+  Input,
+  Alert,
+} from "reactstrap";
 
 const UpdateAnimalForm = (props) => {
   const BASE_URL = "https://id607001-mintep1-project.onrender.com/";
   const [id, setId] = useState("");
-  const [name, setName] = useState("");
-  const [taxonomy, setTaxonomy] = useState("");
-  const [species, setSpecies] = useState("");
-  const [rank, setRank] = useState("");
-  const [ownerName, setOwnerName] = useState("");
+  const [name, setName] = useState();
+  const [taxonomy, setTaxonomy] = useState();
+  const [species, setSpecies] = useState();
+  const [rank, setRank] = useState();
+  const [ownerName, setOwnerName] = useState();
   const [bannerMessage, setMessage] = useState("");
   const [showBanner, setShowBanner] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -17,8 +23,7 @@ const UpdateAnimalForm = (props) => {
 
   const updateAnimal = async () => {
     try {
-      const res = await axios.update(`${BASE_URL}api/animals/${id}`, {
-        id: id,
+      const res = await axios.put(`${BASE_URL}api/animals/${id}`, {
         name: name,
         taxonomy: taxonomy,
         species: species,
@@ -28,17 +33,18 @@ const UpdateAnimalForm = (props) => {
 
       setIsFilled(true);
 
-      if (res.status === 201) {
-        setMessage("Animal successfully created");
+      if (res.status === 200) {
+        setMessage("Animal successfully updated - Refresh the page to see!");
         console.log(bannerMessage);
       }
 
       if (res.status === 400) {
-        setMessage("Error creating object - 400");
-        console.log(bannerMessage);
+        setMessage(res.response.data.msg);
       }
+
     } catch (error) {
-      console.log(error);
+      console.log(bannerMessage);
+      setMessage(error.response.data.msg);
       setIsError(true);
       setTimeout(() => {
         setIsError(false);
@@ -75,10 +81,10 @@ const UpdateAnimalForm = (props) => {
           <Form onSubmit={handleSubmit}>
             <FormGroup>
               <Input
-                type="int"
+                type="text"
                 name="id"
                 placeholder="Animal ID (required)"
-                value={name}
+                value={id}
                 onChange={(e) => setId(e.target.value)}
                 required
               />
@@ -129,12 +135,12 @@ const UpdateAnimalForm = (props) => {
               />
             </FormGroup>
             {isError && showBanner ? (
-              <UncontrolledAlert color="danger" fade={true}>
-                Something went wrong. Please try again.
-              </UncontrolledAlert>
+              <Alert color="danger" fade={true}>
+                {bannerMessage}
+              </Alert>
             ) : null}
             {isFilled && isError === false ? (
-              <UncontrolledAlert color="success">Success!</UncontrolledAlert>
+              <Alert color="success">{bannerMessage}</Alert>
             ) : null}
             <Button
               type="submit"

@@ -6,10 +6,6 @@ import {
   FormGroup,
   Input,
   Alert,
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
 } from "reactstrap";
 
 const UpdateAnimalForm = (props) => {
@@ -38,7 +34,7 @@ const UpdateAnimalForm = (props) => {
       setIsFilled(true);
 
       if (res.status === 200) {
-        setMessage("Animal successfully updated");
+        setMessage("Animal successfully updated - Refresh the page to see!");
         console.log(bannerMessage);
       }
 
