@@ -15,10 +15,10 @@ import ColosseumsTable from "./tables/ColosseumsTable";
 import EventsTable from "./tables/EventsTable";
 import ParticipantsTable from "./tables/ParticipantsTable";
 import AnimalsTable from "./tables/AnimalsTable";
-import CreateColosseumForm from "./forms/CreateColosseumForm";
-import CreateEventForm from "./forms/CreateEventForm";
-import CreateAnimalForm from "./forms/CreateAnimalForm";
-import CreateParticipantForm from "./forms/CreateParticipantForm";
+import CreateColosseumForm from "./forms/colosseum/CreateColosseumForm";
+import CreateEventForm from "./forms/event/CreateEventForm";
+import CreateAnimalForm from "./forms/animal/CreateAnimalForm";
+import CreateParticipantForm from "./forms/participant/CreateParticipantForm";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);

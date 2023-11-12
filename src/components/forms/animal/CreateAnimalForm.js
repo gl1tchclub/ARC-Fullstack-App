@@ -60,8 +60,8 @@ const CreateAnimalForm = (props) => {
 
   return (
     <>
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <div style={{ display: "flex", justifyContent: "center", flexDirection: "column", width: "30%", textAlign: "center" }}>
+      <div style={{ display: "flex", justifyContent: "left", margin: "40px 70px", width: "30%" }}>
+        <div style={{ display: "flex", justifyContent: "center", flexDirection: "column", width: "100%", textAlign: "center" }}>
           <h1 style={{ margin: "20px 0" }}>Create Animal</h1>
           <Form onSubmit={handleSubmit}>
             <FormGroup>
