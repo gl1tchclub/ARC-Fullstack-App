@@ -44,8 +44,8 @@ const UpdateAnimalForm = (props) => {
 
       if (res.status === 400) {
         setMessage(res.response.data.msg);
-        // console.log(bannerMessage);
       }
+
     } catch (error) {
       console.log(bannerMessage);
       setMessage(error.response.data.msg);
@@ -68,10 +68,6 @@ const UpdateAnimalForm = (props) => {
     e.preventDefault();
     updateAnimal();
   };
-
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  const toggle = () => setDropdownOpen((prevState) => !prevState);
 
   return (
     <>
@@ -114,20 +110,6 @@ const UpdateAnimalForm = (props) => {
                 value={taxonomy}
                 onChange={(e) => setTaxonomy(e.target.value)}
               />
-              <Dropdown toggle={function noRefCheck() {}}>
-                <DropdownToggle caret>Dropdown</DropdownToggle>
-                <DropdownMenu container="body">
-                  <DropdownItem onClick={function noRefCheck() {}}>
-                    Action 1
-                  </DropdownItem>
-                  <DropdownItem onClick={function noRefCheck() {}}>
-                    Action 2
-                  </DropdownItem>
-                  <DropdownItem onClick={function noRefCheck() {}}>
-                    Action 3
-                  </DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
             </FormGroup>
             <FormGroup>
               <Input
