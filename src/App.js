@@ -3,7 +3,6 @@
 /* const prop1 = ({}) */
 
 import Navigation from "./components/Navigation";
-import ColosseumsTable from "./components/tables/ColosseumsTable";
 
 const app = () => {
   return (

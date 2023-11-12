@@ -4,15 +4,12 @@ import { Table } from "reactstrap";
 
 const AnimalsTable = () => {
   const BASE_URL = "https://id607001-mintep1-project.onrender.com/"
-  const headers = {
-    "Content-Type": "application/json",
-  }
   const [data, setData] = useState([])
 
   useEffect(() => {
     const getAnimalsData = async () => {
       try {
-        const res = await axios.get(`${BASE_URL}api/animals`, {headers})
+        const res = await axios.get(`${BASE_URL}api/animals`)
         setData(res.data.data)
       } catch (error) {
         console.log(error)

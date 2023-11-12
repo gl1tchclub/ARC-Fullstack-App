@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
-import { Alert, Button, Form, FormGroup, Input, UncontrolledAlert } from "reactstrap";
-import { Navigate } from "react-router-dom";
+import { Button, Form, FormGroup, Input, UncontrolledAlert } from "reactstrap";
+// import { Navigate } from "react-router-dom";
 
 const CreateColosseumForm = (props) => {
     const BASE_URL = "https://id607001-mintep1-project.onrender.com/"

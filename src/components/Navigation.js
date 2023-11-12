@@ -53,7 +53,7 @@ const Navigation = () => {
         <ColosseumsTable />
       </>} />
       <Route path="/events" element={<>
-        {/* <CreateEventForm /> */}
+        <CreateEventForm />
         <EventsTable />
       </>} />
       <Route path="/participants" element={<>

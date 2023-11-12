@@ -4,15 +4,12 @@ import { Table } from "reactstrap";
 
 const ColosseumsTable = () => {
   const BASE_URL = "https://id607001-mintep1-project.onrender.com/"
-  const headers = {
-    "Content-Type": "application/json",
-  }
   const [data, setData] = useState([])
 
   useEffect(() => {
     const getColosseumsData = async () => {
       try {
-        const res = await axios.get(`${BASE_URL}api/colosseums`, {headers})
+        const res = await axios.get(`${BASE_URL}api/colosseums`)
         setData(res.data.data)
       } catch (error) {
         console.log(error)
