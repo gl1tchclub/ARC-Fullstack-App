@@ -17,7 +17,7 @@ const UpdateAnimalForm = (props) => {
 
     const updateAnimal = async () => {
         try {
-            const res = await axios.put(`${BASE_URL}api/animals/${id}`, {
+            const res = await axios.update(`${BASE_URL}api/animals/${id}`, {
                 id: id,
                 name: name,
                 taxonomy: taxonomy,
@@ -39,8 +39,7 @@ const UpdateAnimalForm = (props) => {
             }
 
         } catch (error) {
-            console.log(error.response.data.msg)
-            setMessage(error.response.data.msg)
+            console.log(error)
             setIsError(true);
             setTimeout(() => {
                 setIsError(false);
@@ -54,6 +53,7 @@ const UpdateAnimalForm = (props) => {
             setShowBanner(false);
             setIsError(false);
         }
+
     }
 
     const handleSubmit = (e) => {
@@ -69,10 +69,10 @@ const UpdateAnimalForm = (props) => {
                     <Form onSubmit={handleSubmit}>
                         <FormGroup>
                             <Input
-                                type="text"
+                                type="int"
                                 name="id"
                                 placeholder="Animal ID (required)"
-                                value={id}
+                                value={name}
                                 onChange={(e) => setId(e.target.value)}
                                 required
                             />
@@ -124,11 +124,11 @@ const UpdateAnimalForm = (props) => {
                         </FormGroup>
                         {isError && showBanner ? (
                             <UncontrolledAlert color="danger" fade={true}>
-                                {bannerMessage}
+                                Something went wrong. Please try again.
                             </UncontrolledAlert>
                         ) : null}
                         {isFilled && isError === false ? (
-                            <UncontrolledAlert color="success">{bannerMessage}</UncontrolledAlert>
+                            <UncontrolledAlert color="success">Success!</UncontrolledAlert>
                         ) : null}
                         <Button type="submit" style={{ marginBottom: "1rem", width: "100%" }}>Update</Button>
                     </Form>
