@@ -46,7 +46,7 @@ const AnimalsTable = () => {
         Toggle Table
       </Button>
     </div>
-      <Collapse isOpen={isOpen} table>
+      <Collapse isOpen={isOpen}>
         <Card>
           <CardBody>
             <Table>
