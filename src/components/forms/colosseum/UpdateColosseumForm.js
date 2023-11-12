@@ -1,12 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import {
-  Button,
-  Form,
-  FormGroup,
-  Input,
-  Alert,
-} from "reactstrap";
+import { Button, Form, FormGroup, Input, Alert } from "reactstrap";
 
 const UpdateColosseumForm = (props) => {
   const BASE_URL = "https://id607001-mintep1-project.onrender.com/";
@@ -19,6 +13,7 @@ const UpdateColosseumForm = (props) => {
   const [isFilled, setIsFilled] = useState(false);
   const [showBanner, setShowBanner] = useState(true);
   const [bannerMessage, setMessage] = useState("");
+  
   const updateColosseum = async () => {
     try {
       const res = await axios.put(`${BASE_URL}api/colosseums/${id}`, {
@@ -38,7 +33,6 @@ const UpdateColosseumForm = (props) => {
       if (res.status === 400) {
         setMessage(res.response.data.msg);
       }
-
     } catch (error) {
       console.log(bannerMessage);
       setMessage(error.response.data.msg);

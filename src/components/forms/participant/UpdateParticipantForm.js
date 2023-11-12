@@ -1,12 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import {
-  Button,
-  Form,
-  FormGroup,
-  Input,
-  Alert,
-} from "reactstrap";
+import { Button, Form, FormGroup, Input, Alert } from "reactstrap";
 
 const UpdateParticipantForm = (props) => {
   const BASE_URL = "https://id607001-mintep1-project.onrender.com/";
@@ -30,14 +24,15 @@ const UpdateParticipantForm = (props) => {
       setIsFilled(true);
 
       if (res.status === 200) {
-        setMessage("Participant successfully updated - Refresh the page to see!");
+        setMessage(
+          "Participant successfully updated - Refresh the page to see!",
+        );
         console.log(bannerMessage);
       }
 
       if (res.status === 400) {
         setMessage(res.response.data.msg);
       }
-
     } catch (error) {
       console.log(bannerMessage);
       setMessage(error.response.data.msg);
@@ -110,15 +105,6 @@ const UpdateParticipantForm = (props) => {
                 placeholder="Member Of"
                 value={species}
                 onChange={(e) => setMemberOf(e.target.value)}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Input
-                type="text"
-                name="rank"
-                placeholder="Rank"
-                value={rank}
-                onChange={(e) => setRank(e.target.value)}
               />
             </FormGroup>
             {isError && showBanner ? (

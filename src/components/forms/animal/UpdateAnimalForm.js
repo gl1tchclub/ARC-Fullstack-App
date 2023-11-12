@@ -1,12 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import {
-  Button,
-  Form,
-  FormGroup,
-  Input,
-  Alert,
-} from "reactstrap";
+import { Button, Form, FormGroup, Input, Alert } from "reactstrap";
 
 const UpdateAnimalForm = (props) => {
   const BASE_URL = "https://id607001-mintep1-project.onrender.com/";
@@ -41,7 +35,6 @@ const UpdateAnimalForm = (props) => {
       if (res.status === 400) {
         setMessage(res.response.data.msg);
       }
-
     } catch (error) {
       console.log(bannerMessage);
       setMessage(error.response.data.msg);

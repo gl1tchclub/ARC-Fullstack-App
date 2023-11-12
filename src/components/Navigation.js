@@ -20,6 +20,9 @@ import CreateEventForm from "./forms/event/CreateEventForm";
 import CreateAnimalForm from "./forms/animal/CreateAnimalForm";
 import CreateParticipantForm from "./forms/participant/CreateParticipantForm";
 import UpdateAnimalForm from "./forms/animal/UpdateAnimalForm";
+import UpdateColosseumForm from "./forms/colosseum/UpdateColosseumForm";
+import UpdateEventForm from "./forms/event/UpdateEventForm";
+import UpdateParticipantForm from "./forms/participant/UpdateParticipantForm";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,7 +56,10 @@ const Navigation = () => {
           path="/colosseums"
           element={
             <>
-              <CreateColosseumForm />
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <CreateColosseumForm />
+                <UpdateColosseumForm />
+              </div>
               <ColosseumsTable />
             </>
           }
@@ -62,7 +68,10 @@ const Navigation = () => {
           path="/events"
           element={
             <>
-              <CreateEventForm />
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <CreateEventForm />
+                <UpdateEventForm />
+              </div>
               <EventsTable />
             </>
           }
@@ -71,7 +80,10 @@ const Navigation = () => {
           path="/participants"
           element={
             <>
-              <CreateParticipantForm />
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <CreateParticipantForm />
+                <UpdateParticipantForm />
+              </div>
               <ParticipantsTable />
             </>
           }
