@@ -3,33 +3,31 @@ import axios from "axios";
 import { Table } from "reactstrap";
 
 const ColosseumsTable = () => {
-  const BASE_URL = "https://id607001-mintep1-project.onrender.com/"
-  const [data, setData] = useState([])
+  const BASE_URL = "https://id607001-mintep1-project.onrender.com/";
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const getColosseumsData = async () => {
       try {
-        const res = await axios.get(`${BASE_URL}api/colosseums`)
-        setData(res.data.data)
+        const res = await axios.get(`${BASE_URL}api/colosseums`);
+        setData(res.data.data);
       } catch (error) {
-        console.log(error)
-      }   
-    }
-    getColosseumsData()
-  }, [])
+        console.log(error);
+      }
+    };
+    getColosseumsData();
+  }, []);
 
-  const displayColosseumsData = (
-    data.map((d) => {
-      return (
-        <tr key={d.id}>
-          <td>{d.name}</td>
-          <td>{d.country}</td>
-          <td>{d.city}</td>
-          <td>{d.terrainType}</td>
-        </tr>
-      )
-    })
-  )
+  const displayColosseumsData = data.map((d) => {
+    return (
+      <tr key={d.id}>
+        <td>{d.name}</td>
+        <td>{d.country}</td>
+        <td>{d.city}</td>
+        <td>{d.terrainType}</td>
+      </tr>
+    );
+  });
 
   return (
     <Table>
@@ -41,9 +39,7 @@ const ColosseumsTable = () => {
           <th>Terrain Type</th>
         </tr>
       </thead>
-      <tbody>
-        {displayColosseumsData}
-      </tbody>
+      <tbody>{displayColosseumsData}</tbody>
     </Table>
   );
 };

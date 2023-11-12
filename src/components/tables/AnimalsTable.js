@@ -3,34 +3,32 @@ import axios from "axios";
 import { Table } from "reactstrap";
 
 const AnimalsTable = () => {
-  const BASE_URL = "https://id607001-mintep1-project.onrender.com/"
-  const [data, setData] = useState([])
+  const BASE_URL = "https://id607001-mintep1-project.onrender.com/";
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const getAnimalsData = async () => {
       try {
-        const res = await axios.get(`${BASE_URL}api/animals`)
-        setData(res.data.data)
+        const res = await axios.get(`${BASE_URL}api/animals`);
+        setData(res.data.data);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
-    getAnimalsData()
-  }, [])
+    };
+    getAnimalsData();
+  }, []);
 
-  const displayAnimalsData = (
-    data.map((d) => {
-      return (
-        <tr key={d.id}>
-          <td>{d.name}</td>
-          <td>{d.taxonomy}</td>
-          <td>{d.species}</td>
-          <td>{d.rank}</td>
-          <td>{d.ownerName}</td>
-        </tr>
-      )
-    })
-  )
+  const displayAnimalsData = data.map((d) => {
+    return (
+      <tr key={d.id}>
+        <td>{d.name}</td>
+        <td>{d.taxonomy}</td>
+        <td>{d.species}</td>
+        <td>{d.rank}</td>
+        <td>{d.ownerName}</td>
+      </tr>
+    );
+  });
 
   return (
     <Table>
@@ -43,9 +41,7 @@ const AnimalsTable = () => {
           <th>Owner Name</th>
         </tr>
       </thead>
-      <tbody>
-        {displayAnimalsData}
-      </tbody>
+      <tbody>{displayAnimalsData}</tbody>
     </Table>
   );
 };

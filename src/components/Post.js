@@ -7,7 +7,7 @@ const Post = () => {
   const getPosts = async () => {
     try {
       const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/posts/1"
+        "https://jsonplaceholder.typicode.com/posts/1",
       ); //fetching
       setPost(response.data);
     } catch (error) {
