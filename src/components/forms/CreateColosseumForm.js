@@ -59,8 +59,8 @@ const CreateColosseumForm = (props) => {
   return (
     <>
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <div style={{ display: "flex", justifyContent: "center", flexDirection: "column", width: "fit-content", textAlign: "center" }}>
-          <h1 style={{ marginTop: "10px" }}>Create Colosseum</h1>
+        <div style={{ display: "flex", justifyContent: "center", flexDirection: "column", width: "30%", textAlign: "center" }}>
+          <h1 style={{ margin: "20px 0" }}>Create Colosseum</h1>
           <Form onSubmit={handleSubmit}>
             <FormGroup>
               <Input
@@ -110,7 +110,7 @@ const CreateColosseumForm = (props) => {
             {isFilled && isError === false ? (
               <UncontrolledAlert color="success">Success!</UncontrolledAlert>
             ) : null}
-            <Button type="submit" style={{ margin: '1rem' }}>Create</Button>
+            <Button type="submit" style={{ marginBottom: "1rem", width: "100%" }}>Create</Button>
           </Form>
         </div>
       </div>

@@ -56,58 +56,51 @@ const CreateParticipantForm = (props) => {
 
   return (
     <>
-    <div style={{display: "flex", justifyContent: "center"}}>
-      <div style={{ display: "flex", justifyContent: "center", flexDirection: "column", width: "fit-content", textAlign: "center"}}>
-        <h1 style={{ margin: "1rem", height: "fit-content", width: "fit-content" }}>Create Participant</h1>
-        <Form onSubmit={handleSubmit} style={
-          {
-            margin: "1rem",
-            width: "90%",
-            display: "flex",
-            flexDirection: "column"
-          }
-        }>
-          <FormGroup>
-            <Input
-              type="text"
-              name="alias"
-              placeholder="Alias"
-              value={alias}
-              onChange={(e) => setAlias(e.target.value)}
-              required
-            />
-          </FormGroup>
-          <FormGroup>
-            <Input
-              type="text"
-              name="age"
-              placeholder="Age"
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
-              required
-            />
-          </FormGroup>
-          <FormGroup>
-            <Input
-              type="text"
-              name="memberOf"
-              placeholder="Member Of"
-              value={memberOf}
-              onChange={(e) => setMemberOf(e.target.value)}
-              required
-            />
-          </FormGroup>
-          {isError && showBanner ? (
-            <UncontrolledAlert color="danger" fade={true}>
-              Something went wrong. Please try again.
-            </UncontrolledAlert>
-          ) : null}
-          {isFilled && isError === false ? (
-            <UncontrolledAlert color="success">Success!</UncontrolledAlert>
-          ) : null}
-          <Button type="submit">Create</Button>
-        </Form>
-      </div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <div style={{ display: "flex", justifyContent: "center", flexDirection: "column", width: "30%", textAlign: "center" }}>
+          <h1 style={{ margin: "20px 0" }}>Create Participant</h1>
+          <Form onSubmit={handleSubmit}>
+            <FormGroup>
+              <Input
+                type="text"
+                name="alias"
+                placeholder="Alias"
+                value={alias}
+                onChange={(e) => setAlias(e.target.value)}
+                required
+              />
+            </FormGroup>
+            <FormGroup>
+              <Input
+                type="text"
+                name="age"
+                placeholder="Age"
+                value={age}
+                onChange={(e) => setAge(e.target.value)}
+                required
+              />
+            </FormGroup>
+            <FormGroup>
+              <Input
+                type="text"
+                name="memberOf"
+                placeholder="Member Of"
+                value={memberOf}
+                onChange={(e) => setMemberOf(e.target.value)}
+                required
+              />
+            </FormGroup>
+            {isError && showBanner ? (
+              <UncontrolledAlert color="danger" fade={true}>
+                Something went wrong. Please try again.
+              </UncontrolledAlert>
+            ) : null}
+            {isFilled && isError === false ? (
+              <UncontrolledAlert color="success">Success!</UncontrolledAlert>
+            ) : null}
+            <Button type="submit" style={{ marginBottom: "1rem", width: "100%" }}>Create</Button>
+          </Form>
+        </div>
       </div>
     </>
   );
