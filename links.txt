@@ -1,0 +1,1 @@
+https://docs.amplify.aws/lib/restapi/delete/q/platform/js/
