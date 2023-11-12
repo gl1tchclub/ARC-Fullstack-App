@@ -11,11 +11,9 @@ import {
 const UpdateParticipantForm = (props) => {
   const BASE_URL = "https://id607001-mintep1-project.onrender.com/";
   const [id, setId] = useState("");
-  const [name, setName] = useState();
-  const [taxonomy, setTaxonomy] = useState();
-  const [species, setSpecies] = useState();
-  const [rank, setRank] = useState();
-  const [ownerName, setOwnerName] = useState();
+  const [alias, setAlias] = useState("");
+  const [age, setAge] = useState("");
+  const [memberOf, setMemberOf] = useState("");
   const [bannerMessage, setMessage] = useState("");
   const [showBanner, setShowBanner] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -24,11 +22,9 @@ const UpdateParticipantForm = (props) => {
   const updateParticipant = async () => {
     try {
       const res = await axios.put(`${BASE_URL}api/participants/${id}`, {
-        name: name,
-        taxonomy: taxonomy,
-        species: species,
-        rank: rank,
-        ownerName: ownerName,
+        alias: alias,
+        age: age,
+        memberOf: memberOf,
       });
 
       setIsFilled(true);
@@ -92,28 +88,28 @@ const UpdateParticipantForm = (props) => {
             <FormGroup>
               <Input
                 type="text"
-                name="name"
-                placeholder="Name"
+                name="alias"
+                placeholder="Alias"
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => setAlias(e.target.value)}
               />
             </FormGroup>
             <FormGroup>
               <Input
                 type="text"
-                name="taxonomy"
-                placeholder="Taxonomy"
+                name="age"
+                placeholder="Age"
                 value={taxonomy}
-                onChange={(e) => setTaxonomy(e.target.value)}
+                onChange={(e) => setAge(e.target.value)}
               />
             </FormGroup>
             <FormGroup>
               <Input
                 type="text"
-                name="species"
-                placeholder="Species"
+                name="memberOf"
+                placeholder="Member Of"
                 value={species}
-                onChange={(e) => setSpecies(e.target.value)}
+                onChange={(e) => setMemberOf(e.target.value)}
               />
             </FormGroup>
             <FormGroup>
@@ -123,15 +119,6 @@ const UpdateParticipantForm = (props) => {
                 placeholder="Rank"
                 value={rank}
                 onChange={(e) => setRank(e.target.value)}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Input
-                type="text"
-                name="ownerName"
-                placeholder="Owner Name"
-                value={ownerName}
-                onChange={(e) => setOwnerName(e.target.value)}
               />
             </FormGroup>
             {isError && showBanner ? (
