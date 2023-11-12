@@ -1,12 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import {
-  Table,
-  Collapse,
-  Button,
-  CardBody,
-  Card,
-} from "reactstrap";
+import { Table, Collapse, Button, CardBody, Card } from "reactstrap";
 
 const AnimalsTable = () => {
   const BASE_URL = "https://id607001-mintep1-project.onrender.com/";
@@ -41,11 +35,11 @@ const AnimalsTable = () => {
 
   return (
     <>
-    <div style={{display: "flex", justifyContent: "center"}}>
-      <Button color="warning" onClick={toggle} style={{ margin: '1rem' }}>
-        Toggle Table
-      </Button>
-    </div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <Button color="warning" onClick={toggle} style={{ margin: "1rem" }}>
+          Toggle Table
+        </Button>
+      </div>
       <Collapse isOpen={isOpen}>
         <Card>
           <CardBody>

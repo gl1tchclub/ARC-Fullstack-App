@@ -80,10 +80,10 @@ const Navigation = () => {
           path="/animals"
           element={
             <>
-            <div style={{display: "flex", justifyContent: "center",}}>
-              <CreateAnimalForm />
-              <UpdateAnimalForm />
-            </div>
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <CreateAnimalForm />
+                <UpdateAnimalForm />
+              </div>
               <AnimalsTable />
             </>
           }

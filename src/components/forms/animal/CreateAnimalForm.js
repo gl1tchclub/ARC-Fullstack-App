@@ -61,7 +61,15 @@ const CreateAnimalForm = (props) => {
   return (
     <>
       <div style={{ display: "block", margin: "40px 70px", width: "30%" }}>
-        <div style={{ display: "flex", justifyContent: "center", flexDirection: "column", width: "100%", textAlign: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            flexDirection: "column",
+            width: "100%",
+            textAlign: "center",
+          }}
+        >
           <h1 style={{ margin: "20px 0" }}>Create Animal</h1>
           <Form onSubmit={handleSubmit}>
             <FormGroup>
@@ -122,7 +130,12 @@ const CreateAnimalForm = (props) => {
             {isFilled && isError === false ? (
               <UncontrolledAlert color="success">Success!</UncontrolledAlert>
             ) : null}
-            <Button type="submit" style={{ marginBottom: "1rem", width: "100%" }}>Create</Button>
+            <Button
+              type="submit"
+              style={{ marginBottom: "1rem", width: "100%" }}
+            >
+              Create
+            </Button>
           </Form>
         </div>
       </div>
