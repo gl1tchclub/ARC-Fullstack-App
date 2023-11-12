@@ -29,7 +29,7 @@ app.use(express.urlencoded({ extended: false }))
 
 // To parse the incoming requests with JSON payloads. For example, REST API requests
 app.use(express.json())
-app.use(limit)
+//app.use(limit)
 
 // This code sets up middleware to route incoming requests to different parts of the application.
 // It directs requests to specific routes or endpoints for various functionalities.
