@@ -60,7 +60,7 @@ const CreateAnimalForm = (props) => {
 
   return (
     <>
-      <div style={{ display: "flex", justifyContent: "left", margin: "40px 70px", width: "30%" }}>
+      <div style={{ display: "block", margin: "40px 70px", width: "30%" }}>
         <div style={{ display: "flex", justifyContent: "center", flexDirection: "column", width: "100%", textAlign: "center" }}>
           <h1 style={{ margin: "20px 0" }}>Create Animal</h1>
           <Form onSubmit={handleSubmit}>
@@ -108,7 +108,7 @@ const CreateAnimalForm = (props) => {
               <Input
                 type="text"
                 name="ownerName"
-                placeholder="ownerName"
+                placeholder="Owner Name"
                 value={ownerName}
                 onChange={(e) => setOwnerName(e.target.value)}
                 required

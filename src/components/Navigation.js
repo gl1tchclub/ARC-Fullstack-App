@@ -19,6 +19,7 @@ import CreateColosseumForm from "./forms/colosseum/CreateColosseumForm";
 import CreateEventForm from "./forms/event/CreateEventForm";
 import CreateAnimalForm from "./forms/animal/CreateAnimalForm";
 import CreateParticipantForm from "./forms/participant/CreateParticipantForm";
+import UpdateAnimalForm from "./forms/animal/UpdateAnimalForm";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -79,7 +80,10 @@ const Navigation = () => {
           path="/animals"
           element={
             <>
+            <div style={{display: "flex", justifyContent: "center",}}>
               <CreateAnimalForm />
+              <UpdateAnimalForm />
+            </div>
               <AnimalsTable />
             </>
           }
