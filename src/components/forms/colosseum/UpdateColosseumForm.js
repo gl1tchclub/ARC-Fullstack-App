@@ -13,7 +13,7 @@ const UpdateColosseumForm = (props) => {
   const [isFilled, setIsFilled] = useState(false);
   const [showBanner, setShowBanner] = useState(true);
   const [bannerMessage, setMessage] = useState("");
-  
+
   const updateColosseum = async () => {
     try {
       const res = await axios.put(`${BASE_URL}api/colosseums/${id}`, {
@@ -94,7 +94,7 @@ const UpdateColosseumForm = (props) => {
                 type="text"
                 name="country"
                 placeholder="Country"
-                value={taxonomy}
+                value={country}
                 onChange={(e) => setCountry(e.target.value)}
               />
             </FormGroup>
@@ -103,7 +103,7 @@ const UpdateColosseumForm = (props) => {
                 type="text"
                 name="city"
                 placeholder="City"
-                value={species}
+                value={city}
                 onChange={(e) => setCity(e.target.value)}
               />
             </FormGroup>
@@ -112,7 +112,7 @@ const UpdateColosseumForm = (props) => {
                 type="text"
                 name="terrainType"
                 placeholder="Terrain Type"
-                value={rank}
+                value={terrainType}
                 onChange={(e) => setTerrainType(e.target.value)}
               />
             </FormGroup>

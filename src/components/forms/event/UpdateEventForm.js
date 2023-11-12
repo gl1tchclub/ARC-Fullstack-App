@@ -83,7 +83,7 @@ const UpdateEventForm = (props) => {
                 type="text"
                 name="eventTitle"
                 placeholder="Event Title"
-                value={name}
+                value={eventTitle}
                 onChange={(e) => setEventTitle(e.target.value)}
               />
             </FormGroup>
@@ -92,7 +92,7 @@ const UpdateEventForm = (props) => {
                 type="text"
                 name="venue"
                 placeholder="Venue"
-                value={taxonomy}
+                value={venue}
                 onChange={(e) => setVenue(e.target.value)}
               />
             </FormGroup>
@@ -101,7 +101,7 @@ const UpdateEventForm = (props) => {
                 type="text"
                 name="date"
                 placeholder="Date"
-                value={species}
+                value={date}
                 onChange={(e) => setDate(e.target.value)}
               />
             </FormGroup>

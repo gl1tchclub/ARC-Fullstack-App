@@ -85,7 +85,7 @@ const UpdateParticipantForm = (props) => {
                 type="text"
                 name="alias"
                 placeholder="Alias"
-                value={name}
+                value={alias}
                 onChange={(e) => setAlias(e.target.value)}
               />
             </FormGroup>
@@ -94,7 +94,7 @@ const UpdateParticipantForm = (props) => {
                 type="text"
                 name="age"
                 placeholder="Age"
-                value={taxonomy}
+                value={age}
                 onChange={(e) => setAge(e.target.value)}
               />
             </FormGroup>
@@ -103,7 +103,7 @@ const UpdateParticipantForm = (props) => {
                 type="text"
                 name="memberOf"
                 placeholder="Member Of"
-                value={species}
+                value={memberOf}
                 onChange={(e) => setMemberOf(e.target.value)}
               />
             </FormGroup>
