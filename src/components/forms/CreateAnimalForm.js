@@ -60,68 +60,72 @@ const CreateAnimalForm = (props) => {
 
   return (
     <>
-      <h1 style={{ marginTop: "10px" }}>Create Animal</h1>
-      <Form onSubmit={handleSubmit}>
-        <FormGroup>
-          <Input
-            type="text"
-            name="name"
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </FormGroup>
-        <FormGroup>
-          <Input
-            type="text"
-            name="taxonomy"
-            placeholder="Taxonomy"
-            value={taxonomy}
-            onChange={(e) => setTaxonomy(e.target.value)}
-            required
-          />
-        </FormGroup>
-        <FormGroup>
-          <Input
-            type="text"
-            name="species"
-            placeholder="Species"
-            value={species}
-            onChange={(e) => setSpecies(e.target.value)}
-            required
-          />
-        </FormGroup>
-        <FormGroup>
-          <Input
-            type="text"
-            name="rank"
-            placeholder="Rank"
-            value={rank}
-            onChange={(e) => setRank(e.target.value)}
-            required
-          />
-        </FormGroup>
-        <FormGroup>
-          <Input
-            type="text"
-            name="ownerName"
-            placeholder="ownerName"
-            value={ownerName}
-            onChange={(e) => setOwnerName(e.target.value)}
-            required
-          />
-        </FormGroup>
-        {isError && showBanner ? (
-          <UncontrolledAlert color="danger" fade={true}>
-            Something went wrong. Please try again.
-          </UncontrolledAlert>
-        ) : null}
-        {isFilled && isError === false ? (
-          <UncontrolledAlert color="success">Success!</UncontrolledAlert>
-        ) : null}
-        <Button type="submit">Create</Button>
-      </Form>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <div style={{ display: "flex", justifyContent: "center", flexDirection: "column", width: "fit-content", textAlign: "center" }}>
+          <h1 style={{ marginTop: "10px" }}>Create Animal</h1>
+          <Form onSubmit={handleSubmit}>
+            <FormGroup>
+              <Input
+                type="text"
+                name="name"
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </FormGroup>
+            <FormGroup>
+              <Input
+                type="text"
+                name="taxonomy"
+                placeholder="Taxonomy"
+                value={taxonomy}
+                onChange={(e) => setTaxonomy(e.target.value)}
+                required
+              />
+            </FormGroup>
+            <FormGroup>
+              <Input
+                type="text"
+                name="species"
+                placeholder="Species"
+                value={species}
+                onChange={(e) => setSpecies(e.target.value)}
+                required
+              />
+            </FormGroup>
+            <FormGroup>
+              <Input
+                type="text"
+                name="rank"
+                placeholder="Rank"
+                value={rank}
+                onChange={(e) => setRank(e.target.value)}
+                required
+              />
+            </FormGroup>
+            <FormGroup>
+              <Input
+                type="text"
+                name="ownerName"
+                placeholder="ownerName"
+                value={ownerName}
+                onChange={(e) => setOwnerName(e.target.value)}
+                required
+              />
+            </FormGroup>
+            {isError && showBanner ? (
+              <UncontrolledAlert color="danger" fade={true}>
+                Something went wrong. Please try again.
+              </UncontrolledAlert>
+            ) : null}
+            {isFilled && isError === false ? (
+              <UncontrolledAlert color="success">Success!</UncontrolledAlert>
+            ) : null}
+            <Button type="submit" style={{ margin: '1rem' }}>Create</Button>
+          </Form>
+        </div>
+      </div>
     </>
   );
 };

@@ -56,48 +56,52 @@ const CreateEventForm = (props) => {
 
   return (
     <>
-      <h1 style={{ marginTop: "10px" }}>Create Event</h1>
-      <Form onSubmit={handleSubmit}>
-        <FormGroup>
-          <Input
-            type="text"
-            name="eventTitle"
-            placeholder="Event Title"
-            value={eventTitle}
-            onChange={(e) => setEventTitle(e.target.value)}
-            required
-          />
-        </FormGroup>
-        <FormGroup>
-          <Input
-            type="text"
-            name="venue"
-            placeholder="Venue"
-            value={venue}
-            onChange={(e) => setVenue(e.target.value)}
-            required
-          />
-        </FormGroup>
-        <FormGroup>
-          <Input
-            type="text"
-            name="date"
-            placeholder="Date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            required
-          />
-        </FormGroup>
-        {isError && showBanner ? (
-          <UncontrolledAlert color="danger" fade={true}>
-            Something went wrong. Please try again.
-          </UncontrolledAlert>
-        ) : null}
-        {isFilled && isError === false ? (
-          <UncontrolledAlert color="success">Success!</UncontrolledAlert>
-        ) : null}
-        <Button type="submit">Create</Button>
-      </Form>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <div style={{ display: "flex", justifyContent: "center", flexDirection: "column", width: "fit-content", textAlign: "center" }}>
+          <h1 style={{ marginTop: "10px" }}>Create Event</h1>
+          <Form onSubmit={handleSubmit}>
+            <FormGroup>
+              <Input
+                type="text"
+                name="eventTitle"
+                placeholder="Event Title"
+                value={eventTitle}
+                onChange={(e) => setEventTitle(e.target.value)}
+                required
+              />
+            </FormGroup>
+            <FormGroup>
+              <Input
+                type="text"
+                name="venue"
+                placeholder="Venue"
+                value={venue}
+                onChange={(e) => setVenue(e.target.value)}
+                required
+              />
+            </FormGroup>
+            <FormGroup>
+              <Input
+                type="text"
+                name="date"
+                placeholder="Date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                required
+              />
+            </FormGroup>
+            {isError && showBanner ? (
+              <UncontrolledAlert color="danger" fade={true}>
+                Something went wrong. Please try again.
+              </UncontrolledAlert>
+            ) : null}
+            {isFilled && isError === false ? (
+              <UncontrolledAlert color="success">Success!</UncontrolledAlert>
+            ) : null}
+            <Button type="submit" style={{ margin: '1rem' }}>Create</Button>
+          </Form>
+        </div>
+      </div>
     </>
   );
 };

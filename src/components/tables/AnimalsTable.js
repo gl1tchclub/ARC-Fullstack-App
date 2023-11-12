@@ -41,7 +41,7 @@ const AnimalsTable = () => {
 
   return (
     <>
-      <Button color="primary" onClick={toggle} style={{ margin: '1rem' }}>
+      <Button color="warning" onClick={toggle} style={{ margin: '1rem' }}>
         Toggle Table
       </Button>
       <Collapse isOpen={isOpen} table>

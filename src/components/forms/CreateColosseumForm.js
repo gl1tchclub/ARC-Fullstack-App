@@ -58,58 +58,62 @@ const CreateColosseumForm = (props) => {
 
   return (
     <>
-      <h1 style={{ marginTop: "10px" }}>Create Colosseum</h1>
-      <Form onSubmit={handleSubmit}>
-        <FormGroup>
-          <Input
-            type="text"
-            name="name"
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </FormGroup>
-        <FormGroup>
-          <Input
-            type="text"
-            name="country"
-            placeholder="Country"
-            value={country}
-            onChange={(e) => setCountry(e.target.value)}
-            required
-          />
-        </FormGroup>
-        <FormGroup>
-          <Input
-            type="text"
-            name="city"
-            placeholder="City"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            required
-          />
-        </FormGroup>
-        <FormGroup>
-          <Input
-            type="text"
-            name="terrainType"
-            placeholder="Terrain Type"
-            value={terrainType}
-            onChange={(e) => setTerrainType(e.target.value)}
-            required
-          />
-        </FormGroup>
-        {isError && showBanner ? (
-          <UncontrolledAlert color="danger" fade={true}>
-            Something went wrong. Please try again.
-          </UncontrolledAlert>
-        ) : null}
-        {isFilled && isError === false ? (
-          <UncontrolledAlert color="success">Success!</UncontrolledAlert>
-        ) : null}
-        <Button type="submit">Create</Button>
-      </Form>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <div style={{ display: "flex", justifyContent: "center", flexDirection: "column", width: "fit-content", textAlign: "center" }}>
+          <h1 style={{ marginTop: "10px" }}>Create Colosseum</h1>
+          <Form onSubmit={handleSubmit}>
+            <FormGroup>
+              <Input
+                type="text"
+                name="name"
+                placeholder="Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </FormGroup>
+            <FormGroup>
+              <Input
+                type="text"
+                name="country"
+                placeholder="Country"
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+                required
+              />
+            </FormGroup>
+            <FormGroup>
+              <Input
+                type="text"
+                name="city"
+                placeholder="City"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+                required
+              />
+            </FormGroup>
+            <FormGroup>
+              <Input
+                type="text"
+                name="terrainType"
+                placeholder="Terrain Type"
+                value={terrainType}
+                onChange={(e) => setTerrainType(e.target.value)}
+                required
+              />
+            </FormGroup>
+            {isError && showBanner ? (
+              <UncontrolledAlert color="danger" fade={true}>
+                Something went wrong. Please try again.
+              </UncontrolledAlert>
+            ) : null}
+            {isFilled && isError === false ? (
+              <UncontrolledAlert color="success">Success!</UncontrolledAlert>
+            ) : null}
+            <Button type="submit" style={{ margin: '1rem' }}>Create</Button>
+          </Form>
+        </div>
+      </div>
     </>
   );
 };
