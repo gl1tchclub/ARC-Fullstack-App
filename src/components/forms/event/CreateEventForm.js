@@ -56,13 +56,13 @@ const CreateEventForm = (props) => {
 
   return (
     <>
-      <div style={{ display: "flex", justifyContent: "center" }}>
+      <div style={{ display: "block", margin: "40px 70px", width: "30%" }}>
         <div
           style={{
             display: "flex",
             justifyContent: "center",
             flexDirection: "column",
-            width: "30%",
+            width: "100%",
             textAlign: "center",
           }}
         >
