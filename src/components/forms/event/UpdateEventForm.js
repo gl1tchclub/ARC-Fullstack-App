@@ -8,7 +8,7 @@ import {
   Alert,
 } from "reactstrap";
 
-const UpdateAnimalForm = (props) => {
+const UpdateEventForm = (props) => {
   const BASE_URL = "https://id607001-mintep1-project.onrender.com/";
   const [id, setId] = useState("");
   const [name, setName] = useState();
@@ -21,9 +21,9 @@ const UpdateAnimalForm = (props) => {
   const [isError, setIsError] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
 
-  const updateAnimal = async () => {
+  const updateEvent = async () => {
     try {
-      const res = await axios.put(`${BASE_URL}api/animals/${id}`, {
+      const res = await axios.put(`${BASE_URL}api/events/${id}`, {
         name: name,
         taxonomy: taxonomy,
         species: species,
@@ -34,7 +34,7 @@ const UpdateAnimalForm = (props) => {
       setIsFilled(true);
 
       if (res.status === 200) {
-        setMessage("Animal successfully updated - Refresh the page to see!");
+        setMessage("Event successfully updated - Refresh the page to see!");
         console.log(bannerMessage);
       }
 
@@ -62,7 +62,7 @@ const UpdateAnimalForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateAnimal();
+    updateEvent();
   };
 
   return (
@@ -77,13 +77,13 @@ const UpdateAnimalForm = (props) => {
             textAlign: "center",
           }}
         >
-          <h1 style={{ margin: "20px 0" }}>Update Animal</h1>
+          <h1 style={{ margin: "20px 0" }}>Update Event</h1>
           <Form onSubmit={handleSubmit}>
             <FormGroup>
               <Input
                 type="text"
                 name="id"
-                placeholder="Animal ID (required)"
+                placeholder="Event ID (required)"
                 value={id}
                 onChange={(e) => setId(e.target.value)}
                 required
@@ -155,4 +155,4 @@ const UpdateAnimalForm = (props) => {
   );
 };
 
-export default UpdateAnimalForm;
+export default UpdateEventForm;

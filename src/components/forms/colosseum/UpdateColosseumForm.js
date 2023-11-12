@@ -8,33 +8,30 @@ import {
   Alert,
 } from "reactstrap";
 
-const UpdateAnimalForm = (props) => {
+const UpdateColosseumForm = (props) => {
   const BASE_URL = "https://id607001-mintep1-project.onrender.com/";
   const [id, setId] = useState("");
-  const [name, setName] = useState();
-  const [taxonomy, setTaxonomy] = useState();
-  const [species, setSpecies] = useState();
-  const [rank, setRank] = useState();
-  const [ownerName, setOwnerName] = useState();
-  const [bannerMessage, setMessage] = useState("");
-  const [showBanner, setShowBanner] = useState(true);
+  const [name, setName] = useState("");
+  const [country, setCountry] = useState("");
+  const [city, setCity] = useState("");
+  const [terrainType, setTerrainType] = useState("");
   const [isError, setIsError] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
-
-  const updateAnimal = async () => {
+  const [showBanner, setShowBanner] = useState(true);
+  const [bannerMessage, setMessage] = useState("");
+  const updateColosseum = async () => {
     try {
-      const res = await axios.put(`${BASE_URL}api/animals/${id}`, {
+      const res = await axios.put(`${BASE_URL}api/colosseums/${id}`, {
         name: name,
-        taxonomy: taxonomy,
-        species: species,
-        rank: rank,
-        ownerName: ownerName,
+        country: country,
+        city: city,
+        terrainType: terrainType,
       });
 
       setIsFilled(true);
 
       if (res.status === 200) {
-        setMessage("Animal successfully updated - Refresh the page to see!");
+        setMessage("Colosseum successfully updated - Refresh the page to see!");
         console.log(bannerMessage);
       }
 
@@ -62,7 +59,7 @@ const UpdateAnimalForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateAnimal();
+    updateColosseum();
   };
 
   return (
@@ -77,13 +74,13 @@ const UpdateAnimalForm = (props) => {
             textAlign: "center",
           }}
         >
-          <h1 style={{ margin: "20px 0" }}>Update Animal</h1>
+          <h1 style={{ margin: "20px 0" }}>Update Colosseum</h1>
           <Form onSubmit={handleSubmit}>
             <FormGroup>
               <Input
                 type="text"
                 name="id"
-                placeholder="Animal ID (required)"
+                placeholder="Colosseum ID (required)"
                 value={id}
                 onChange={(e) => setId(e.target.value)}
                 required
@@ -101,37 +98,28 @@ const UpdateAnimalForm = (props) => {
             <FormGroup>
               <Input
                 type="text"
-                name="taxonomy"
-                placeholder="Taxonomy"
+                name="country"
+                placeholder="Country"
                 value={taxonomy}
-                onChange={(e) => setTaxonomy(e.target.value)}
+                onChange={(e) => setCountry(e.target.value)}
               />
             </FormGroup>
             <FormGroup>
               <Input
                 type="text"
-                name="species"
-                placeholder="Species"
+                name="city"
+                placeholder="City"
                 value={species}
-                onChange={(e) => setSpecies(e.target.value)}
+                onChange={(e) => setCity(e.target.value)}
               />
             </FormGroup>
             <FormGroup>
               <Input
                 type="text"
-                name="rank"
-                placeholder="Rank"
+                name="terrainType"
+                placeholder="Terrain Type"
                 value={rank}
-                onChange={(e) => setRank(e.target.value)}
-              />
-            </FormGroup>
-            <FormGroup>
-              <Input
-                type="text"
-                name="ownerName"
-                placeholder="Owner Name"
-                value={ownerName}
-                onChange={(e) => setOwnerName(e.target.value)}
+                onChange={(e) => setTerrainType(e.target.value)}
               />
             </FormGroup>
             {isError && showBanner ? (
@@ -155,4 +143,4 @@ const UpdateAnimalForm = (props) => {
   );
 };
 
-export default UpdateAnimalForm;
+export default UpdateColosseumForm;
