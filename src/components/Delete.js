@@ -17,7 +17,7 @@ const DeleteRow = (props) => {
   rowRemove();
   return (
     <>
-      <Button color="danger">Delete</Button>
+      <Button color="danger" onClick={() => rowRemove()}>Delete</Button>
     </>
   );
 };

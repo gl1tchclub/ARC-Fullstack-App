@@ -32,11 +32,13 @@ const AnimalsTable = () => {
       <>
         {dataFetched && (
           <tr key={d.id}>
+            <td>{d.id}</td>
             <td>{d.name}</td>
             <td>{d.taxonomy}</td>
             <td>{d.species}</td>
             <td>{d.rank}</td>
             <td>{d.ownerName}</td>
+            <Delete model="animals" id={d.id} />
           </tr>
         )}
       </>

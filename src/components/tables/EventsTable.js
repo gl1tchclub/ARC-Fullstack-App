@@ -31,6 +31,7 @@ const EventsTable = () => {
       <>
         {dataFetched && (
           <tr key={d.id}>
+            <td>{d.id}</td>
             <td>{d.eventTitle}</td>
             <td>{d.venue}</td>
             <td>{d.date}</td>

@@ -32,6 +32,7 @@ const ParticipantsTable = () => {
       <>
         {dataFetched && (
           <tr key={d.id}>
+            <td>{d.id}</td>
             <td>{d.alias}</td>
             <td>{d.age}</td>
             <td>{d.memberOf}</td>
