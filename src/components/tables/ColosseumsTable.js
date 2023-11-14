@@ -9,7 +9,7 @@ const ColosseumsTable = () => {
   const [dataFetched, setDataFetched] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
-  
+
   const getColosseumsData = async () => {
     try {
       const res = await axios.get(`${BASE_URL}api/colosseums?pageSize=100`);
@@ -29,16 +29,15 @@ const ColosseumsTable = () => {
   const displayColosseumsData = data.map((d) => {
     return (
       <>
-      {dataFetched &&
-      <tr key={d.id}>
-        <td>{d.id}</td>
-        <td>{d.name}</td>
-        <td>{d.country}</td>
-        <td>{d.city}</td>
-        <td>{d.terrainType}</td>
-      </tr>
-     }
-     </>
+        {dataFetched && (
+          <tr key={d.id}>
+            <td>{d.name}</td>
+            <td>{d.country}</td>
+            <td>{d.city}</td>
+            <td>{d.terrainType}</td>
+          </tr>
+        )}
+      </>
     );
   });
 
@@ -55,6 +54,7 @@ const ColosseumsTable = () => {
             <Table>
               <thead>
                 <tr>
+                  <th>ID</th>
                   <th>Name</th>
                   <th>Country</th>
                   <th>City</th>

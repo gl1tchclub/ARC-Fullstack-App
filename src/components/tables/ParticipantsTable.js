@@ -20,24 +20,23 @@ const ParticipantsTable = () => {
       console.log(error);
     }
   };
-  
+
   useEffect(() => {
     if (!dataFetched) {
-    getParticipantsData();
-  }
+      getParticipantsData();
+    }
   }, [dataFetched]);
 
   const displayParticipantsData = data.map((d) => {
     return (
       <>
-      {dataFetched &&
-      <tr key={d.id}>
-        <td>{d.id}</td>
-        <td>{d.alias}</td>
-        <td>{d.age}</td>
-        <td>{d.memberOf}</td>
-      </tr>
-  }
+        {dataFetched && (
+          <tr key={d.id}>
+            <td>{d.alias}</td>
+            <td>{d.age}</td>
+            <td>{d.memberOf}</td>
+          </tr>
+        )}
       </>
     );
   });
@@ -55,6 +54,7 @@ const ParticipantsTable = () => {
             <Table>
               <thead>
                 <tr>
+                  <th>ID</th>
                   <th>Alias</th>
                   <th>Age</th>
                   <th>Member Of</th>

@@ -22,5 +22,4 @@ const DeleteRow = (props) => {
   );
 };
 
-
-export default { DeleteRow }
+export default { DeleteRow };

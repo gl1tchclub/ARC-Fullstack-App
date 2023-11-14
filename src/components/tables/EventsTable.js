@@ -29,14 +29,13 @@ const EventsTable = () => {
   const displayEventsData = data.map((d) => {
     return (
       <>
-      {dataFetched &&
-      <tr key={d.id}>
-        <td>{d.id}</td>
-        <td>{d.eventTitle}</td>
-        <td>{d.venue}</td>
-        <td>{d.date}</td>
-      </tr>
-  }
+        {dataFetched && (
+          <tr key={d.id}>
+            <td>{d.eventTitle}</td>
+            <td>{d.venue}</td>
+            <td>{d.date}</td>
+          </tr>
+        )}
       </>
     );
   });
@@ -54,6 +53,7 @@ const EventsTable = () => {
             <Table>
               <thead>
                 <tr>
+                  <th>ID</th>
                   <th>Event</th>
                   <th>Venue</th>
                   <th>Date & Time</th>
