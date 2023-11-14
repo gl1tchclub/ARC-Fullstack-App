@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Table, Collapse, Button, CardBody, Card } from "reactstrap";
-import Delete from "../Delete";
 
 const AnimalsTable = () => {
   const BASE_URL = "https://id607001-mintep1-project.onrender.com/";
@@ -21,6 +20,18 @@ const AnimalsTable = () => {
     }
   };
 
+  const rowRemove = async (id) => {
+    try {
+      await axios.delete(`${BASE_URL}api/animals/${id}`);
+    } catch (error) {
+      console.log(error.response.data.msg);
+    }
+  };
+  rowRemove();
+    <>
+      
+    </>
+
   useEffect(() => {
     if (!dataFetched) {
       getAnimalsData();
@@ -38,9 +49,9 @@ const AnimalsTable = () => {
             <td>{d.species}</td>
             <td>{d.rank}</td>
             <td>{d.ownerName}</td>
-            <Delete model="animals" id={d.id} />
           </tr>
         )}
+        <Button color="danger" onClick={() => rowRemove(d.id)}>Delete</Button>
       </>
     );
   });
@@ -56,6 +67,7 @@ const AnimalsTable = () => {
         <Card>
           <CardBody>
             <Table>
+                <div style={{display: "flex"}}>
               <thead>
                 <tr>
                   <th>ID</th>
@@ -67,6 +79,7 @@ const AnimalsTable = () => {
                 </tr>
               </thead>
               <tbody>{displayAnimalsData}</tbody>
+                </div>
             </Table>
           </CardBody>
         </Card>
