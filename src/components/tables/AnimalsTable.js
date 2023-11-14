@@ -24,6 +24,7 @@ const AnimalsTable = () => {
   const displayAnimalsData = data.map((d) => {
     return (
       <tr key={d.id}>
+        <td>{d.id}</td>
         <td>{d.name}</td>
         <td>{d.taxonomy}</td>
         <td>{d.species}</td>

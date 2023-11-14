@@ -24,9 +24,7 @@ const UpdateParticipantForm = (props) => {
       setIsFilled(true);
 
       if (res.status === 200) {
-        setMessage(
-          "Participant successfully updated",
-        );
+        setMessage("Participant successfully updated");
         console.log(bannerMessage);
       }
 
@@ -55,7 +53,7 @@ const UpdateParticipantForm = (props) => {
     e.preventDefault();
     updateParticipant();
     setAge("");
-    setAlias("")
+    setAlias("");
     setMemberOf("");
   };
 

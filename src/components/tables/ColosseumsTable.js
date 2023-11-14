@@ -24,6 +24,7 @@ const ColosseumsTable = () => {
   const displayColosseumsData = data.map((d) => {
     return (
       <tr key={d.id}>
+        <td>{d.id}</td>
         <td>{d.name}</td>
         <td>{d.country}</td>
         <td>{d.city}</td>

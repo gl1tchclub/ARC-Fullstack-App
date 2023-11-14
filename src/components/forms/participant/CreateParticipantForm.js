@@ -53,7 +53,7 @@ const CreateParticipantForm = (props) => {
     e.preventDefault();
     createParticipant();
     setAge("");
-    setAlias("")
+    setAlias("");
     setMemberOf("");
   };
 

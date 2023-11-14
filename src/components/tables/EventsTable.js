@@ -24,6 +24,7 @@ const EventsTable = () => {
   const displayEventsData = data.map((d) => {
     return (
       <tr key={d.id}>
+        <td>{d.id}</td>
         <td>{d.eventTitle}</td>
         <td>{d.venue}</td>
         <td>{d.date}</td>

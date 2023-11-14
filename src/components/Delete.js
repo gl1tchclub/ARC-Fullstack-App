@@ -1,26 +1,24 @@
 import { useState } from "react";
 
-const DeleteAnimal = (props) => {
-    const BASE_URL = "https://id607001-mintep1-project.onrender.com/";
-    const [id, setId] = useState("");
-    const [isError, setIsError] = useState(false);
+const DeleteRow = (props) => {
+  const BASE_URL = "https://id607001-mintep1-project.onrender.com/";
+  const [isError, setIsError] = useState(false);
 
-    const deleteFunction = async () => {
-        try {
-            const res = await axios.post(`${BASE_URL}api/animals/${id}`);
-            
-
-        } catch (error) {
-            console.log(error.response.data.msg)
-        }
-    } 
-}
+  const rowRemove = async () => {
+    try {
+      await axios.delete(`${BASE_URL}/api/${props.model}/${props.id}`);
+    } catch (error) {
+      setIsError(error.response.data.msg);
+      console.log(error.response.data.msg);
+    }
+  };
+  rowRemove();
+};
 
 return (
-    <>
-<Button color="danger">
-danger
-</Button>
-      
-    </>
+  <>
+    <Button color="danger">danger</Button>
+  </>
 );
+
+export default { DeleteRow }

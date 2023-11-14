@@ -32,7 +32,6 @@ const CreateAnimalForm = (props) => {
 
       if (res.status === 201) {
         console.log("Animal successfully created");
-
       }
 
       if (res.status === 400) {
