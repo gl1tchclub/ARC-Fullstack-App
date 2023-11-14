@@ -28,7 +28,7 @@ const UpdateAnimalForm = (props) => {
       setIsFilled(true);
 
       if (res.status === 200) {
-        setMessage("Animal successfully updated - Refresh the page to see!");
+        setMessage("Animal successfully updated");
         console.log(bannerMessage);
       }
 

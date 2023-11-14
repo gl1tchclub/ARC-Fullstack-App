@@ -18,6 +18,7 @@ const CreateAnimalForm = (props) => {
   const createAnimal = async () => {
     setShowBanner(true);
     setIsError(false);
+
     try {
       const res = await axios.post(`${BASE_URL}api/animals`, {
         name: name,
@@ -31,6 +32,7 @@ const CreateAnimalForm = (props) => {
 
       if (res.status === 201) {
         console.log("Animal successfully created");
+
       }
 
       if (res.status === 400) {
@@ -56,6 +58,7 @@ const CreateAnimalForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     createAnimal();
+    e.target.reset();
   };
 
   return (

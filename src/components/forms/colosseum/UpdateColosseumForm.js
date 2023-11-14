@@ -26,7 +26,7 @@ const UpdateColosseumForm = (props) => {
       setIsFilled(true);
 
       if (res.status === 200) {
-        setMessage("Colosseum successfully updated - Refresh the page to see!");
+        setMessage("Colosseum successfully updated");
         console.log(bannerMessage);
       }
 

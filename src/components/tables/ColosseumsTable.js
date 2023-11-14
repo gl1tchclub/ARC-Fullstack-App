@@ -19,7 +19,7 @@ const ColosseumsTable = () => {
       }
     };
     getColosseumsData();
-  }, []);
+  }, [data]);
 
   const displayColosseumsData = data.map((d) => {
     return (

@@ -25,7 +25,7 @@ const UpdateParticipantForm = (props) => {
 
       if (res.status === 200) {
         setMessage(
-          "Participant successfully updated - Refresh the page to see!",
+          "Participant successfully updated",
         );
         console.log(bannerMessage);
       }

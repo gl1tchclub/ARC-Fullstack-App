@@ -19,7 +19,7 @@ const AnimalsTable = () => {
       }
     };
     getAnimalsData();
-  }, []);
+  }, [data]);
 
   const displayAnimalsData = data.map((d) => {
     return (

@@ -24,7 +24,7 @@ const UpdateEventForm = (props) => {
       setIsFilled(true);
 
       if (res.status === 200) {
-        setMessage("Event successfully updated - Refresh the page to see!");
+        setMessage("Event successfully updated");
         console.log(bannerMessage);
       }
 

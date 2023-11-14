@@ -20,7 +20,7 @@ const ParticipantsTable = () => {
       }
     };
     getParticipantsData();
-  }, []);
+  }, [data]);
 
   const displayParticipantsData = data.map((d) => {
     return (

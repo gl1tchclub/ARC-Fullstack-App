@@ -19,7 +19,7 @@ const EventsTable = () => {
       }
     };
     getEventsData();
-  }, []);
+  }, [data]);
 
   const displayEventsData = data.map((d) => {
     return (
