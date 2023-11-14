@@ -28,9 +28,7 @@ const AnimalsTable = () => {
     }
   };
   rowRemove();
-    <>
-      
-    </>
+  <></>;
 
   useEffect(() => {
     if (!dataFetched) {
@@ -49,9 +47,11 @@ const AnimalsTable = () => {
             <td>{d.species}</td>
             <td>{d.rank}</td>
             <td>{d.ownerName}</td>
+            <Button color="danger" onClick={() => rowRemove(d.id)}>
+              Delete
+            </Button>
           </tr>
         )}
-        <Button color="danger" onClick={() => rowRemove(d.id)}>Delete</Button>
       </>
     );
   });
@@ -67,7 +67,6 @@ const AnimalsTable = () => {
         <Card>
           <CardBody>
             <Table>
-                <div style={{display: "flex"}}>
               <thead>
                 <tr>
                   <th>ID</th>
@@ -79,7 +78,6 @@ const AnimalsTable = () => {
                 </tr>
               </thead>
               <tbody>{displayAnimalsData}</tbody>
-                </div>
             </Table>
           </CardBody>
         </Card>
