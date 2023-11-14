@@ -58,7 +58,11 @@ const CreateAnimalForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     createAnimal();
-    e.target.reset();
+    setName("");
+    setRank("");
+    setOwnerName("");
+    setSpecies("");
+    setTaxonomy("");
   };
 
   return (

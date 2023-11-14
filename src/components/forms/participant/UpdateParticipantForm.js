@@ -54,6 +54,9 @@ const UpdateParticipantForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     updateParticipant();
+    setAge("");
+    setAlias("")
+    setMemberOf("");
   };
 
   return (

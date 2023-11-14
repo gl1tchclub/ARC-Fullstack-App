@@ -54,6 +54,10 @@ const CreateColosseumForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     createColosseum();
+    setCity("");
+    setCountry("");
+    setName("");
+    setTerrainType("");
   };
 
   return (

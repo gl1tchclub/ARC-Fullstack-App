@@ -52,6 +52,9 @@ const CreateEventForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     createEvent();
+    setDate("");
+    setEventTitle("");
+    setVenue("");
   };
 
   return (

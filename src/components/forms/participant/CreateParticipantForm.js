@@ -52,6 +52,9 @@ const CreateParticipantForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     createParticipant();
+    setAge("");
+    setAlias("")
+    setMemberOf("");
   };
 
   return (
