@@ -10,19 +10,23 @@ const ColosseumsTable = () => {
   const toggle = () => setIsOpen(!isOpen);
 
   useEffect(() => {
-    const getColosseumsData = async () => {
-      try {
-        const res = await axios.get(`${BASE_URL}api/colosseums?pageSize=100`);
-        setData(res.data.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getColosseumsData();
+    if (!data) {
+      const getColosseumsData = async () => {
+        try {
+          const res = await axios.get(`${BASE_URL}api/colosseums?pageSize=100`);
+          setData(res.data.data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      getColosseumsData();
+    }
   }, [data]);
 
   const displayColosseumsData = data.map((d) => {
     return (
+      <>
+      {data &&
       <tr key={d.id}>
         <td>{d.id}</td>
         <td>{d.name}</td>
@@ -30,6 +34,8 @@ const ColosseumsTable = () => {
         <td>{d.city}</td>
         <td>{d.terrainType}</td>
       </tr>
+     }
+     </>
     );
   });
 

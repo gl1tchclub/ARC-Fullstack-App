@@ -10,20 +10,24 @@ const AnimalsTable = () => {
   const toggle = () => setIsOpen(!isOpen);
 
   useEffect(() => {
-    const getAnimalsData = async () => {
-      try {
-        const res = await axios.get(`${BASE_URL}api/animals?pageSize=100`);
-        setData(res.data.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getAnimalsData();
+    if (!data) {
+      const getAnimalsData = async () => {
+        try {
+          const res = await axios.get(`${BASE_URL}api/animals?pageSize=100`);
+          setData(res.data.data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      getAnimalsData();
+    }
   }, [data]);
 
   const displayAnimalsData = data.map((d) => {
     return (
-      <tr key={d.id}>
+      <>
+      {data && (
+        <tr key={d.id}>
         <td>{d.id}</td>
         <td>{d.name}</td>
         <td>{d.taxonomy}</td>
@@ -31,7 +35,9 @@ const AnimalsTable = () => {
         <td>{d.rank}</td>
         <td>{d.ownerName}</td>
       </tr>
-    );
+      )}
+      </>
+    )
   });
 
   return (

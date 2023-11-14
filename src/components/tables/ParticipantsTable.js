@@ -10,6 +10,7 @@ const ParticipantsTable = () => {
   const toggle = () => setIsOpen(!isOpen);
 
   useEffect(() => {
+    if (!data) {
     const getParticipantsData = async () => {
       try {
         const res = await axios.get(`${BASE_URL}api/participants?pageSize=100`);
@@ -20,16 +21,21 @@ const ParticipantsTable = () => {
       }
     };
     getParticipantsData();
+  }
   }, [data]);
 
   const displayParticipantsData = data.map((d) => {
     return (
+      <>
+      {data &&
       <tr key={d.id}>
         <td>{d.id}</td>
         <td>{d.alias}</td>
         <td>{d.age}</td>
         <td>{d.memberOf}</td>
       </tr>
+  }
+      </>
     );
   });
 

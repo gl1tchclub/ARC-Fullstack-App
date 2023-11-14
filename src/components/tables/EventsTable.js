@@ -10,25 +10,31 @@ const EventsTable = () => {
   const toggle = () => setIsOpen(!isOpen);
 
   useEffect(() => {
-    const getEventsData = async () => {
-      try {
-        const res = await axios.get(`${BASE_URL}api/events?pageSize=100`);
-        setData(res.data.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getEventsData();
+    if (!data) {
+      const getEventsData = async () => {
+        try {
+          const res = await axios.get(`${BASE_URL}api/events?pageSize=100`);
+          setData(res.data.data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      getEventsData();
+    }
   }, [data]);
 
   const displayEventsData = data.map((d) => {
     return (
+      <>
+      {data &&
       <tr key={d.id}>
         <td>{d.id}</td>
         <td>{d.eventTitle}</td>
         <td>{d.venue}</td>
         <td>{d.date}</td>
       </tr>
+  }
+      </>
     );
   });
 
