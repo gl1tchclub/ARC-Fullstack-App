@@ -1,32 +1,36 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Table, Collapse, Button, CardBody, Card } from "reactstrap";
+import Delete from "../Delete";
 
 const AnimalsTable = () => {
   const BASE_URL = "https://id607001-mintep1-project.onrender.com/";
   const [data, setData] = useState([]);
+  const [dataFetched, setDataFetched] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
 
+  const getAnimalsData = async () => {
+    try {
+      const res = await axios.get(`${BASE_URL}api/animals?pageSize=100`);
+      setData(res.data.data);
+      setDataFetched(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    if (!data) {
-      const getAnimalsData = async () => {
-        try {
-          const res = await axios.get(`${BASE_URL}api/animals?pageSize=100`);
-          setData(res.data.data);
-        } catch (error) {
-          console.log(error);
-        }
-      };
+    if (!dataFetched) {
       getAnimalsData();
     }
-  }, [data]);
+  }, [dataFetched]);
 
   const displayAnimalsData = data.map((d) => {
     return (
       <>
-      {data && (
+      {dataFetched && (
         <tr key={d.id}>
         <td>{d.id}</td>
         <td>{d.name}</td>

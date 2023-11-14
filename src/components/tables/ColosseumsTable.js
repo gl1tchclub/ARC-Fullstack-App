@@ -6,27 +6,30 @@ const ColosseumsTable = () => {
   const BASE_URL = "https://id607001-mintep1-project.onrender.com/";
   const [data, setData] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [dataFetched, setDataFetched] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+  
+  const getColosseumsData = async () => {
+    try {
+      const res = await axios.get(`${BASE_URL}api/colosseums?pageSize=100`);
+      setData(res.data.data);
+      setDataFetched(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    if (!data) {
-      const getColosseumsData = async () => {
-        try {
-          const res = await axios.get(`${BASE_URL}api/colosseums?pageSize=100`);
-          setData(res.data.data);
-        } catch (error) {
-          console.log(error);
-        }
-      };
+    if (!dataFetched) {
       getColosseumsData();
     }
-  }, [data]);
+  }, [dataFetched]);
 
   const displayColosseumsData = data.map((d) => {
     return (
       <>
-      {data &&
+      {dataFetched &&
       <tr key={d.id}>
         <td>{d.id}</td>
         <td>{d.name}</td>

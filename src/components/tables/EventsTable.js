@@ -6,27 +6,30 @@ const EventsTable = () => {
   const BASE_URL = "https://id607001-mintep1-project.onrender.com/";
   const [data, setData] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [dataFetched, setDataFetched] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
 
+  const getEventsData = async () => {
+    try {
+      const res = await axios.get(`${BASE_URL}api/events?pageSize=100`);
+      setData(res.data.data);
+      setDataFetched(true);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    if (!data) {
-      const getEventsData = async () => {
-        try {
-          const res = await axios.get(`${BASE_URL}api/events?pageSize=100`);
-          setData(res.data.data);
-        } catch (error) {
-          console.log(error);
-        }
-      };
+    if (!dataFetched) {
       getEventsData();
     }
-  }, [data]);
+  }, [dataFetched]);
 
   const displayEventsData = data.map((d) => {
     return (
       <>
-      {data &&
+      {dataFetched &&
       <tr key={d.id}>
         <td>{d.id}</td>
         <td>{d.eventTitle}</td>
