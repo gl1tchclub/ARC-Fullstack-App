@@ -18,6 +18,10 @@ To run the ARC website locally, in the terminal run the following command
 npm start
 ```
 
+Here is the link to the web service. The react site takes a while to get the data. Opening the web service (which the front end here uses as its base url) will trigger the react site to realize that the DB has data.
+
+https://id607001-mintep1-project.onrender.com/ 
+
 # Code Formatting
 
 The code is formatted using Prettier. The following scripts check what files need formatting, and format the files:
