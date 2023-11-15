@@ -23,13 +23,12 @@ const UpdateColosseumForm = (props) => {
         terrainType: terrainType,
       });
 
-      setIsFilled(true);
-
+      
       if (res.status === 200) {
         setMessage("Colosseum successfully updated");
         console.log(bannerMessage);
       }
-
+      
       if (res.status === 400) {
         setMessage(res.response.data.msg);
       }
@@ -41,13 +40,15 @@ const UpdateColosseumForm = (props) => {
         setIsError(false);
       }, 3000);
     }
-
+    
     if (isError === false) {
+      setIsFilled(true);
       setTimeout(() => {
         setIsError(true);
       }, 3000);
       setShowBanner(false);
       setIsError(false);
+      setIsFilled(false);
     }
   };
 

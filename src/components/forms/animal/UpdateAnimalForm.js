@@ -5,11 +5,11 @@ import { Button, Form, FormGroup, Input, Alert } from "reactstrap";
 const UpdateAnimalForm = (props) => {
   const BASE_URL = "https://id607001-mintep1-project.onrender.com/";
   const [id, setId] = useState("");
-  const [name, setName] = useState();
-  const [taxonomy, setTaxonomy] = useState();
-  const [species, setSpecies] = useState();
-  const [rank, setRank] = useState();
-  const [ownerName, setOwnerName] = useState();
+  const [name, setName] = useState("");
+  const [taxonomy, setTaxonomy] = useState("");
+  const [species, setSpecies] = useState("");
+  const [rank, setRank] = useState("");
+  const [ownerName, setOwnerName] = useState("");
   const [bannerMessage, setMessage] = useState("");
   const [showBanner, setShowBanner] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -33,7 +33,7 @@ const UpdateAnimalForm = (props) => {
       }
 
       if (res.status === 400) {
-        setMessage(res.response.data.msg);
+        setMessage(res.data.msg);
       }
     } catch (error) {
       console.log(bannerMessage);
