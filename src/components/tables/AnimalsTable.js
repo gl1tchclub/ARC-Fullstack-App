@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Table, Collapse, Button, CardBody, Card } from "reactstrap";
+import { deleteRow } from "../Delete";
 
 const AnimalsTable = () => {
   const BASE_URL = "https://id607001-mintep1-project.onrender.com/";
@@ -20,22 +21,18 @@ const AnimalsTable = () => {
     }
   };
 
-  const rowRemove = async (id) => {
-    try {
-      await axios.delete(`${BASE_URL}api/animals/${id}`);
-    } catch (error) {
-      console.log(error.response.data.msg);
-    }
-  };
-  rowRemove();
-  <></>;
+  const handleDelete = async (e, id, type) => {
+    e.preventDefault()
+    await deleteRow(id, type)
+    setDataFetched(false);
+  }
 
   useEffect(() => {
     if (!dataFetched) {
       getAnimalsData();
     }
   }, [dataFetched]);
-
+  
   const displayAnimalsData = data.map((d) => {
     return (
       <>
@@ -47,7 +44,10 @@ const AnimalsTable = () => {
             <td>{d.species}</td>
             <td>{d.rank}</td>
             <td>{d.ownerName}</td>
-            <Button color="danger" onClick={() => rowRemove(d.id)}>
+            <Button 
+            color="danger"
+            type="delete" 
+            onClick={(e) => handleDelete(e, d.id, "animals")}>
               Delete
             </Button>
           </tr>
@@ -86,4 +86,4 @@ const AnimalsTable = () => {
   );
 };
 
-export default AnimalsTable;
+export default AnimalsTable
