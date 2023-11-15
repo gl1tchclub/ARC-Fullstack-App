@@ -3,7 +3,7 @@ After cloning the repository, open the repo in an IDE (VSCode is recommended her
 
 In a terminal, run the following command
 
-```
+```console
 npm i
 ```
 
@@ -12,7 +12,7 @@ These commands will install the necessary extensions and applications for runnin
 # Running Locally
 To run the ARC website locally, in the terminal run the following command
 
-```
+```console
 npm start
 ```
 
@@ -20,7 +20,7 @@ npm start
 
 The code is formatted using Prettier. The following scripts check what files need formatting, and format the files:
 
-```
+```console
 npm run check
 npm run write
 ```
