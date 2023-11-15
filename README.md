@@ -9,6 +9,8 @@ npm i
 
 These commands will install the necessary extensions and applications for running the website. If you are working in VSCode or an IDE that has this function, ensure autosave is on while working.
 
+Lastly, the web service needs to be redeployed. Follow the instructions sent to your email for this.
+
 # Running Locally
 To run the ARC website locally, in the terminal run the following command
 
