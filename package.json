@@ -10,7 +10,7 @@
     "check": "npx prettier --check .",
     "migrate": "npx prisma migrate dev",
     "reset": "npx prisma migrate reset --force",
-    "db-reset": "npx prisma db reset --force",
+    "db-reset": "npx prisma db push --force-reset && npx prisma db seed",
     "studio": "npx prisma studio",
     "seed": "npx prisma db seed",
     "erd": "npx prisma generate"
