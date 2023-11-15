@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Table, Collapse, Button, CardBody, Card } from "reactstrap";
+import { deleteRow } from "../Delete";
 
 const EventsTable = () => {
   const BASE_URL = "https://id607001-mintep1-project.onrender.com/";
@@ -20,6 +21,12 @@ const EventsTable = () => {
     }
   };
 
+  const handleDelete = async (e, id, type) => {
+    e.preventDefault()
+    await deleteRow(id, type)
+    setDataFetched(false);
+  }
+
   useEffect(() => {
     if (!dataFetched) {
       getEventsData();
@@ -35,6 +42,12 @@ const EventsTable = () => {
             <td>{d.eventTitle}</td>
             <td>{d.venue}</td>
             <td>{d.date}</td>
+            <Button 
+            color="danger"
+            type="delete" 
+            onClick={(e) => handleDelete(e, d.id, "events")}>
+              Delete
+            </Button>
           </tr>
         )}
       </>
